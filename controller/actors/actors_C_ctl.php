@@ -1,25 +1,42 @@
 <?php
-require_once 'model/business/Actor.class.php';
-require_once 'model/business/Paper.class.php';
-session_start();
-$ProductesDAO = new ProductesDAO();
-$TipusDAO = new TipusDAO();
 
-$tipo = null;
-$limite = null;
-if (isset($_REQUEST['estudis'])) {
-    $estudis = $_REQUEST['estudis'];
-}
-if (isset($_REQUEST['quantitat'])) {
-    $limite = $_REQUEST['quantitat'];
-}
+include_once("controller/metodesPropis/function_AutoLoad.php");
 
-$modify = true;
-$lProductes = $_SESSION['llistaProductesSes'];
-$productesArray = $ProductesDAO->relacio($tipo);
-$llistaTitle = "Resultats de Productes";
-$headerTitle = "Productes";
-require_once 'view/header.php';
-require_once 'view/viewCRUDproductes/listaProductos.php';
-require_once 'view/footer.php';
+//crear actor
+if (isset($_REQUEST['submit'])) {
+    $nif;
+    $name;
+    $lastname;
+    $genre;
+    $foto;
+    if (isset($_REQUEST['nif'])) {
+        $nif = $_REQUEST['nif'];
+    }
+    if (isset($_REQUEST['name'])) {
+        $nom = $_REQUEST['name'];
+    }
+    if (isset($_REQUEST['lastname'])) {
+        $lastname = $_REQUEST['lastname'];
+    }
+    if (isset($_REQUEST['genre'])) {
+        $genre = $_REQUEST['genre'];
+    }
+    if (isset($_REQUEST['photoURL'])) {
+        $foto = $_REQUEST['photoURL'];
+    }
+
+    if ($name != null && $lastname != null && $nif != null && $genre != null && $foto != null) {
+        $actor = new Actor($nif, $name, $lastname, $genre, $foto);
+        $db = new ActorDB();
+        $db->inserirActor($actor);
+    }
+}
+if (checkSession()) {
+    $headerTitle = "Afegir Actor";
+    require_once 'view/header.php';
+    require_once 'view/formularis/actors/actors_C_view.php';
+    require_once 'view/footer.php';
+} else {
+    include "controller/login/login_ctl.php";
+}
 ?>
