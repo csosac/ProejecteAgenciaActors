@@ -56,11 +56,11 @@
 
         <?php if (checkSession()) { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?ctl=usuari&act=logout">Tancar Sessio</a></li>
+                <li><a href="?ctl=usuari&act=logout"><span class="glyphicon glyphicon-log-in"/>Tancar Sessio</a></li>
 
             </ul><?php } else { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?ctl=usuari&act=login"><span class="glyphicon glyphicon-log-in"></span>   Iniciar Sessio</a></li>
+                <li><a href="?ctl=usuari&act=login"><span class="glyphicon glyphicon-log-in"/>   Iniciar Sessio</a></li>
             </ul>
         <?php } ?>
     </div>

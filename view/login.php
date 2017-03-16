@@ -11,7 +11,7 @@ if (isset($_COOKIE['usuari'])) {
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-sm-offset-4 ">
                 <form action='?ctl=usuari&act=login' method="POST">
-                    <h3> INICIAR SESSIÓ</h3>
+                    <h3> <?php echo $headerTitle; ?></h3>
                     <div class="form-group">
                         <label>Usuari:</label>
                         <!-- El value d'el input és el valor de la cookie-->
@@ -22,7 +22,7 @@ if (isset($_COOKIE['usuari'])) {
                         <input class="form-control" type="password" name="pass">
                     </div>
                     <p>Recordar Usuari <input type="checkbox" name="recordarUsuari"></p>
-                    <button name="Submit" class="btn btn-lg btn-block btn-default">REGISTRAR-SE</button>
+                    <button name="Submit" class="btn btn-lg btn-block btn-default">LOGIN</button>
                 </form>
             </div>
         </div> 
