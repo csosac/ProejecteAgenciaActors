@@ -4,10 +4,11 @@ function __autoload($class_name){
     $curdir = getcwd();
     
     chdir("$root/ProejecteAgenciaActors/");
-
-    $nomFile="class_".$class_name.".php";
+    
+    $nomFile="".$class_name.".php";
     $arxiuPersistence="model/persistence/".$nomFile;
     $arxiuBusiness="model/business/".$nomFile;
+
 
     if(file_exists($arxiuPersistence)){
         require_once $arxiuPersistence;

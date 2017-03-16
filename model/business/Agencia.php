@@ -1,5 +1,4 @@
 <?php
-require_once("controller/metodesPropis/function_AutoLoad.php"); 	
 
 class Agencia
 {
