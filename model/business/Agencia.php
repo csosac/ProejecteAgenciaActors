@@ -69,9 +69,9 @@ class Agencia
     
     public function populateAgencia() {
         $agenciadb = new AgenciaDB();
-        $this->$arrayDeActors = $agenciadb->populateActorsDb();  
-        $this->$arrayDeDirectors = $agenciadb->populateDirectorsDb();
-        $this->$arrayDeObres = $agenciadb->populateObresDb();
+        $this->arrayDeActors = $agenciadb->populateActorsDb();  
+        $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
+        $this->arrayDeObres = $agenciadb->populateObresDb();
         $this->arrayDePapers = $agenciadb->populatePapersDb();
         $this->arrayDeUsers = $agenciadb->populateUsersDb();
     }
