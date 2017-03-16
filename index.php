@@ -26,19 +26,18 @@ if (isset($_REQUEST['ctl'])) {
     
 }
 switch ($ctl) {
-//    case"producte";
-//        if ($act == 'afegir') {
-//            include "controller/productes/afegirProducte_ctl.php";
-//        }elseif ($act == 'modificar') {
-//            include "controller/productes/modificarProducte_ctl.php";
-//        }elseif ($act == 'eliminar') {
-//            include "controller/productes/eliminarProducte_ctl.php";
-//        }elseif ($act == 'llista') {
-//            include "controller/productes/llistaProducte_ctl.php";
-//        }else{
-//            include "controller/productes/producte_ctl.php";
-//        }
-//        break;
+    case"usuari";
+        if ($act == 'login') {
+            include "controller/usuari/login_ctl.php";
+            break;
+        }
+    case"actor":
+        if ($act == 'crear') {
+            include "controller/actors/actors_C_ctl.php";
+        }elseif ($act == 'modificar') {
+            include "controller/actors/actors_U_ctl.php";
+        break;
+        }
     default:
         include "controller/" . $ctl . "_ctl.php";
         break;
