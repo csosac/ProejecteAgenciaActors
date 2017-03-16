@@ -4,5 +4,5 @@
         require_once("model/business/Obra.php");
         require_once("model/business/Paper.php");
         require_once("model/business/User.php");
-	require_once("model/DAO/class_db.php");	
+	require_once("model/business/class_db.php");	
 ?>
