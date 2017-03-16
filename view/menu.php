@@ -6,7 +6,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>Home</a>
+            </button>
+            <a class="navbar-brand" href="?ctl=index">Home</a>
         </div>
     </div>
 
@@ -17,10 +18,10 @@
                 <li class="dropdown active">
                     <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?ctl=producte&act=papers">Papers</a></li>
+                        <li><a href="?ctl=papers">Papers</a></li>
                         <?php if (checkSession()) { ?>
-<!--                        <li><a href="?ctl=producte&act=afegir">Afegir Producte</a></li>
-                            <li><a href="?ctl=producte&act=modificar">Modificar Producte</a></li>-->
+                        <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
+                        <li><a href="?ctl=actor&act=modificar">Modificar Actor</a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -28,10 +29,10 @@
                 <li class="dropdown">
                     <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?ctl=actor&act=paper">Papers</a></li>
+                        <li><a href="?ctl=papers">Papers</a></li>
                         <?php if (checkSession()) { ?>
-<!--                        <li><a href="?ctl=producte&act=afegir">Afegir Producte</a></li>
-                            <li><a href="?ctl=producte&act=modificar">Modificar Producte</a></li>-->
+                        <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
+                        <li><a href="?ctl=actor&act=modificar">Modificar Actor</a></li>
                         <?php } ?>
                     </ul>
                 </li>
