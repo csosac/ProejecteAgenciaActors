@@ -1,6 +1,6 @@
 <?php
 
-class Paper
+class User
 {
     private $id_User;
     private $username;
