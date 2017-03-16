@@ -1,23 +1,34 @@
 <?php
 
-class Actor
+class Director
 {
-    private $id_actor;
+    private $id_director;
     private $nif;
     private $name;
     private $lastname;
     
-    function __construct($id_actor, $nif, $name, $lastname, $genre, $photoURL) {
-        $this->setId_actor(null);
-        $this->setNif($nif);
-        $this->setName($name);
-        $this->setLastname($lastname);
+    function __construct() {
+        switch (func_num_args()) {
+            case 3:
+        $this->setId_director(null);
+        $this->setName(func_get_args()[0]);
+        $this->setNif(func_get_args()[1]);
+        $this->setLastname(func_get_args()[2]); 
+                break;
+            case 4:
+        $this->setId_director(func_get_args()[0]);
+        $this->setName(func_get_args()[1]);
+        $this->setNif(func_get_args()[2]);
+        $this->setLastname(func_get_args()[3]);
+                break;
+        }
     }
     
-    function getId_actor() {
-        return $this->id_actor;
+    function getId_director() {
+        return $this->id_director;
     }
 
+    
     function getNif() {
         return $this->nif;
     }
@@ -30,8 +41,8 @@ class Actor
         return $this->lastname;
     }
 
-    function setId_actor($id_actor) {
-        $this->id_actor = $id_actor;
+    function setId_director($id_director) {
+        $this->id_director = $id_director;
     }
 
     function setNif($nif) {

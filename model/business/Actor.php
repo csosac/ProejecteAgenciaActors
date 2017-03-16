@@ -1,5 +1,4 @@
 <?php
-require_once("controller/function_AutoLoad.php"); 
 
 class Actor
 {
@@ -9,13 +8,25 @@ class Actor
     private $lastname;
     private $genre;
     private $photoURL;
-    function __construct($id_actor, $nif, $name, $lastname, $genre, $photoURL) {
+    function __construct() {
+         switch (func_num_args()) {
+            case 5:
         $this->setId_actor(null);
-        $this->setNif($nif);
-        $this->setName($name);
-        $this->setLastname($lastname);
-        $this->setGenre($genre);
-        $this->setPhotoURL($photoURL);
+        $this->setNif(func_get_args()[0]);
+        $this->setName(func_get_args()[1]);
+        $this->setLastname(func_get_args()[2]);
+        $this->setGenre(func_get_args()[3]);
+        $this->setPhotoURL(func_get_args()[4]);  
+                break;
+            case 6:
+        $this->setId_actor(func_get_args()[0]);
+        $this->setNif(func_get_args()[1]);
+        $this->setName(func_get_args()[2]);
+        $this->setLastname(func_get_args()[3]);
+        $this->setGenre(func_get_args()[4]);
+        $this->setPhotoURL(func_get_args()[5]);  
+                break;
+        }
     }
     function getId_actor() {
         return $this->id_actor;

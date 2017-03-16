@@ -4,6 +4,16 @@ include 'controller/metodesPropis/createCookie.php';
 include 'controller/metodesPropis/deleteCookie.php';
 include 'controller/metodesPropis/getCookie.php';
 
+require_once("config/inici.inc.php");
+require_once("controller/metodesPropis/function_AutoLoad.php"); 	
+	
+if(isset($_SESSION['agencia'])){
+	$agencia= unserialize($_SESSION['agencia']);
+} else {
+	$agencia = New Agencia("Agencia Actors");
+	$agencia->populateAgencia(); 
+	$_SESSION['agencia'] = serialize($agencia);
+}
 $ctl = "index";
 
 if (isset($_REQUEST['ctl'])) {
