@@ -1,62 +1,78 @@
 <?php
 require_once("controller/metodesPropis/function_AutoLoad.php"); 	
 
-class agencia {
-    private $nameAgencia;
-	private $arrayObres;
-	private $arrayActors;
-	private $arrayPapers;
-	private $arrayDirectors;
-        
-        function __construct($nameAgencia) {
-            $this->setNameAgencia($nameAgencia);
-            $this->populateAgencia();
-        }
-        
-        function getNameAgencia() {
-            return $this->nameAgencia;
-        }
+class Agencia
+{
+    private $name_agencia;
+    private $arrayDeActors;
+    private $arrayDeDirectors;
+    private $arrayDeObres;
+    private $arrayDePapers;
+    private $arrayDeUsers;
+    
+    public function __construct($nameLib) {
+        $this->setName_agencia($nameLib);
+        $arrayDeActors = array();
+	$arrayDeDirectors = array();
+        $arrayDeObres = array();
+        $arrayDePapers = array();
+        $arrayDeUsers = array();
+    }
+    
+    public function getName_agencia() {
+        return $this->name_agencia;
+    }
 
-        function getArrayObres() {
-            return $this->arrayObres;
-        }
+    public function getArrayDeActors() {
+        return $this->arrayDeActors;
+    }
 
-        function getArrayActors() {
-            return $this->arrayActors;
-        }
+    public function getArrayDeDirectors() {
+        return $this->arrayDeDirectors;
+    }
 
-        function getArrayPapers() {
-            return $this->arrayPapers;
-        }
+    public function getArrayDeObres() {
+        return $this->arrayDeObres;
+    }
 
-        function getArrayDirectors() {
-            return $this->arrayDirectors;
-        }
+    public function getArrayDePapers() {
+        return $this->arrayDePapers;
+    }
 
-        function setNameAgencia($nameAgencia) {
-            $this->nameAgencia = $nameAgencia;
-        }
+    public function getArrayDeUsers() {
+        return $this->arrayDeUsers;
+    }
 
-        function setArrayObres($arrayObres) {
-            $this->arrayObres = $arrayObres;
-        }
+    public function setName_agencia($name_agencia) {
+        $this->name_agencia = $name_agencia;
+    }
 
-        function setArrayActors($arrayActors) {
-            $this->arrayActors = $arrayActors;
-        }
+    public function setArrayDeActors($arrayDeActors) {
+        $this->arrayDeActors = $arrayDeActors;
+    }
 
-        function setArrayPapers($arrayPapers) {
-            $this->arrayPapers = $arrayPapers;
-        }
+    public function setArrayDeDirectors($arrayDeDirectors) {
+        $this->arrayDeDirectors = $arrayDeDirectors;
+    }
 
-        function setArrayDirectors($arrayDirectors) {
-            $this->arrayDirectors = $arrayDirectors;
-        }
+    public function setArrayDeObres($arrayDeObres) {
+        $this->arrayDeObres = $arrayDeObres;
+    }
 
-        function populateAgencia(){
-            
-        }
+    public function setArrayDePapers($arrayDePapers) {
+        $this->arrayDePapers = $arrayDePapers;
+    }
 
-        
+    public function setArrayDeUsers($arrayDeUsers) {
+        $this->arrayDeUsers = $arrayDeUsers;
+    }
+    
+    public function populateAgencia() {
+        $agenciadb = new AgenciaDB();
+        $this->arrayDeActors = $agenciadb->populateActorsDb();  
+        $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
+        $this->arrayDeObres = $agenciadb->populateObresDb();
+        $this->arrayDePapers = $agenciadb->populatePapersDb();
+        $this->arrayDeUsers = $agenciadb->populateUsersDb();
+    }
 }
-        

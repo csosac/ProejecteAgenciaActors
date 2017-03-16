@@ -1,8 +1,8 @@
 <?php
 
-class Actor
+class Director
 {
-    private $id_actor;
+    private $id_director;
     private $nif;
     private $name;
     private $lastname;
@@ -14,10 +14,11 @@ class Actor
         $this->setLastname($lastname);
     }
     
-    function getId_actor() {
-        return $this->id_actor;
+    function getId_director() {
+        return $this->id_director;
     }
 
+    
     function getNif() {
         return $this->nif;
     }
@@ -30,8 +31,8 @@ class Actor
         return $this->lastname;
     }
 
-    function setId_actor($id_actor) {
-        $this->id_actor = $id_actor;
+    function setId_director($id_director) {
+        $this->id_director = $id_director;
     }
 
     function setNif($nif) {
