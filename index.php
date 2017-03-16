@@ -28,7 +28,7 @@ if (isset($_REQUEST['ctl'])) {
 switch ($ctl) {
     case"usuari";
         if ($act == 'login') {
-            include "controller/usuari/login_ctl.php";
+            include "controller/login/login_ctl.php";
             break;
         }
     case"actor":
@@ -42,4 +42,6 @@ switch ($ctl) {
         include "controller/" . $ctl . "_ctl.php";
         break;
 }
+
+
 ?>
