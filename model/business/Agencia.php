@@ -74,7 +74,10 @@ class Agencia
         $this->arrayDePapers = $agenciadb->populatePapersDb();
         $this->arrayDeUsers = $agenciadb->populateUsersDb();
     }
-    
+     public function populateDirectors() {
+        $agenciadb = new AgenciaDB();    
+        $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
+    }
     public function validarUsuari($user,$password){
         $valid = false;
         foreach ($this->arrayDeUsers as $usuari){

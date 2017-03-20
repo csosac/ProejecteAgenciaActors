@@ -20,11 +20,15 @@ $ctl = "index";
 if (isset($_REQUEST['ctl'])) {
     $ctl = $_REQUEST['ctl'];
     $act = null;
-    $param = null;
+    $id = null;
     if (isset($_REQUEST['act'])) {
         $act = $_REQUEST['act'];
     }
+    if (isset($_REQUEST['id'])) {
+        $id = $_REQUEST['id'];
+    }
 }
+
 switch ($ctl) {
     case"usuari";
         if ($act == 'login') {
@@ -39,9 +43,39 @@ switch ($ctl) {
         if ($act == 'afegir') {
             include "controller/actors/actors_C_ctl.php";
         } elseif ($act == 'modificar') {
-            include "controller/actors/actors_U_ctl.php";
-            break;
+            include "controller/actors/actors_U_ctl.php";           
         }
+        break;
+    case"paper":
+        if ($act == 'afegir') {
+            include "controller/papers/papers_C_ctl.php";
+        } elseif ($act == 'eliminar') {
+            include "controller/papers/papers_D_ctl.php";           
+        }
+        break;
+        case"obra":
+        if ($act == 'afegir') {
+            include "controller/obres/obres_C_ctl.php";
+        } elseif ($act == 'eliminar') {
+            include "controller/obres/obres_D_ctl.php";           
+        }
+        break;
+    case"director":
+        if ($act == 'afegir') {
+            include "controller/directors/directors_C_ctl.php";
+        } elseif ($act == 'eliminar') {
+            include "controller/directors/directors_D_ctl.php";           
+        }elseif($act== 'modificar'){
+            include "controller/directors/directors_U_ctl.php";
+        }elseif($act== 'llistar'){
+            include "controller/directors/directors_ctl.php";           
+        }elseif($act== 'veure'){
+            include "controller/directors/director_ctl.php";           
+        }else{
+          include "controller/directors/directors_ctl.php";           
+        }
+        break;
+        
     default:
         include "controller/" . $ctl . "_ctl.php";
         break;
