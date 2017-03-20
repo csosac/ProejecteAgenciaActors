@@ -3,7 +3,7 @@ function __autoload($class_name){
     $root = $_SERVER['DOCUMENT_ROOT'];
     $curdir = getcwd();
     
-    chdir("$root/web/ProejecteAgenciaActors/");
+    chdir("$root/ProejecteAgenciaActors/");
     
     $nomFile="".$class_name.".php";
     $arxiuPersistence="model/persistence/".$nomFile;
