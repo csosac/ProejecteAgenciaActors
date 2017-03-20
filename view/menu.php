@@ -6,10 +6,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>Home</a>
+            </button>
+            <a class="navbar-brand" href="?ctl=index">Home</a>
         </div>
     </div>
-
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
             <!--<a class="navbar-brand" href="?ctl=index">Inicio</a>-->
@@ -17,10 +17,10 @@
                 <li class="dropdown active">
                     <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?ctl=producte&act=papers">Papers</a></li>
+                        <li><a href="?ctl=papers">Papers</a></li>
                         <?php if (checkSession()) { ?>
-<!--                        <li><a href="?ctl=producte&act=afegir">Afegir Producte</a></li>
-                            <li><a href="?ctl=producte&act=modificar">Modificar Producte</a></li>-->
+                            <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
+                            <li><a href="?ctl=actor&act=modificar">Modificar Actor</a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -28,10 +28,10 @@
                 <li class="dropdown">
                     <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?ctl=actor&act=paper">Papers</a></li>
+                        <li><a href="?ctl=papers">Papers</a></li>
                         <?php if (checkSession()) { ?>
-<!--                        <li><a href="?ctl=producte&act=afegir">Afegir Producte</a></li>
-                            <li><a href="?ctl=producte&act=modificar">Modificar Producte</a></li>-->
+                            <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
+                            <li><a href="?ctl=actor&act=modificar">Modificar Actor</a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -56,11 +56,11 @@
 
         <?php if (checkSession()) { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?ctl=logout">Tancar Sessio</a></li>
+                <li><a href="?ctl=usuari&act=logout"><span class="glyphicon glyphicon-log-in"/>Tancar Sessio</a></li>
 
             </ul><?php } else { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?ctl=login"><span class="glyphicon glyphicon-log-in"></span>   Iniciar Sessio</a></li>
+                <li><a href="?ctl=usuari&act=login"><span class="glyphicon glyphicon-log-in"/>   Iniciar Sessio</a></li>
             </ul>
         <?php } ?>
     </div>

@@ -84,8 +84,7 @@ class db implements interface_db{
 	$consulta = mysqli_query($con, $query) or die('Error, query failed: '.$this->error());
 	$cont = 0;
 	while ($row=mysqli_fetch_array($consulta)) {
-            $actor = new Actor($row["nif"], $row["name"], $row["lastname"], $row["genre"], $row["photoURL"]);
-            $actor->setId($row["id"]);
+            $actor = new Actor($row["id"],$row["nif"], $row["name"], $row["lastname"], $row["genre"], $row["photoURL"]);
             $arrayActors[$cont] = $actor;
             $cont++;
 	}
@@ -98,8 +97,7 @@ class db implements interface_db{
 	$consulta = mysqli_query($con, $query) or die('Error, query failed: '.$this->error());
 	$cont = 0;
 	while ($row=mysqli_fetch_array($consulta)) {
-            $director = new Director($row["nif"], $row["name"], $row["lastname"]);
-            $director->setId($row["id"]);
+            $director = new Director($row["id"],$row["nif"], $row["name"], $row["lastname"]);
             $arrayDirectors[$cont] = $director;
             $cont++;
 	}
@@ -111,8 +109,7 @@ class db implements interface_db{
 	$consulta = mysqli_query($con, $query) or die('Error, query failed: '.$this->error());
 	$cont = 0;
 	while ($row=mysqli_fetch_array($consulta)) {
-            $obra = new Obra($row["name"], $row["description"], $row["type"], $row["startDate"], $row["endDate"], $row["directorId"]);
-            $obra->setId($row["id"]);
+            $obra = new Obra($row["id"],$row["name"], $row["description"], $row["type"], $row["startDate"], $row["endDate"], $row["directorId"]);
             $arrayObres[$cont] = $obra;
             $cont++;
 	}
@@ -124,8 +121,7 @@ class db implements interface_db{
 	$consulta = mysqli_query($con, $query) or die('Error, query failed: '.$this->error());
 	$cont = 0;
 	while ($row=mysqli_fetch_array($consulta)) {
-            $paper = new Paper($row["paper"], $row["actorId"], $row["filmId"]);
-            $paper->setId($row["id"]);
+            $paper = new Paper($row["id"],$row["paper"], $row["actorId"], $row["filmId"]);
             $arrayPapers[$cont] = $paper;
             $cont++;
 	}
@@ -137,8 +133,7 @@ class db implements interface_db{
 	$consulta = mysqli_query($con, $query) or die('Error, query failed: '.$this->error());
 	$cont = 0;
 	while ($row=mysqli_fetch_array($consulta)) {
-            $user = new User($row["username"], $row["password"], $row["role"]);
-            $user->setId($row["id"]);
+            $user = new User($row["id"],$row["username"], $row["password"], $row["role"]);
             $arrayUsers[$cont] = $user;
             $cont++;
 	}

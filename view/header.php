@@ -28,7 +28,6 @@
         <div class="container-fluid">
             <div class="encabezado">
             </div>
-
             <?php
             require_once 'menu.php';
             ?>

@@ -1,5 +1,4 @@
 <?php
-require_once("controller/metodesPropis/function_AutoLoad.php"); 	
 
 class Agencia
 {
@@ -74,5 +73,14 @@ class Agencia
         $this->arrayDeObres = $agenciadb->populateObresDb();
         $this->arrayDePapers = $agenciadb->populatePapersDb();
         $this->arrayDeUsers = $agenciadb->populateUsersDb();
+    }
+    
+    public function validarUsuari($user,$password){
+        $valid = false;
+        foreach ($this->arrayDeUsers as $usuari){
+            if($usuari->getUsername()==$user && $usuari->getPassword() == $password)
+            $valid=true;
+        }
+        return $valid;
     }
 }
