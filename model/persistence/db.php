@@ -121,7 +121,7 @@ class db implements interface_db{
 	$consulta = mysqli_query($con, $query) or die('Error, query failed: '.$this->error());
 	$cont = 0;
 	while ($row=mysqli_fetch_array($consulta)) {
-            $paper = new Paper($row["id"],$row["paper"], $row["actorId"], $row["filmId"]);
+            $paper = new Paper($row["id"],$row["paper"], $row["actorId"], $row["obraId"]);
             $arrayPapers[$cont] = $paper;
             $cont++;
 	}

@@ -2,7 +2,7 @@
 <div class="container-fluid ">
     <div class="articulo contenido"> 
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-sm-offset-4 ">
+            <div class="col-xs-12 col-sm-12 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 ">
                 <h3> <?php echo $headerTitle; ?></h3>
                 <form action="<?php echo $action; ?>" method="post">
                     <div class="form-group">
