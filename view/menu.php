@@ -42,10 +42,28 @@
                 <li><a href="?ctl=obras">Obras</a></li>
             <?php } ?>
             <?php if ($ctl == 'director') { ?>
-                <li class="active"><a href="?ctl=director">Director</a></li>
+                <li class="dropdown active">
+                    <a href="?ctl=director" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Director<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?ctl=director&act=llistar">Directors</a></li>
+                        <?php if (checkSession()) { ?>
+                            <li><a href="?ctl=director&act=afegir">Afegir Director</a></li>
+                            <li><a href="?ctl=director&act=modificar">Modificar Director</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
             <?php } else { ?>
-                <li><a href="?ctl=director">Director</a></li>
-            <?php } ?>
+               <li class="dropdown">
+                    <a href="?ctl=director" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Director<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?ctl=director&act=llistar">Directors</a></li>
+                        <?php if (checkSession()) { ?>
+                            <li><a href="?ctl=director&act=afegir">Afegir Director</a></li>
+                            <li><a href="?ctl=director&act=modificar">Modificar Director</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
+            <?php } ?>               
             <?php if ($ctl == 'contacto') { ?>
                 <li class="active"><a href="?ctl=contacto">Contacto</a></li>
             <?php } else { ?>
