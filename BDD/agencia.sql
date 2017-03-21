@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 14-03-2017 a las 16:42:26
--- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 7.0.13
+-- Servidor: localhost
+-- Tiempo de generación: 21-03-2017 a las 15:30:16
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -64,8 +64,7 @@ CREATE TABLE `director` (
 
 INSERT INTO `director` (`id`, `nif`, `name`, `lastname`) VALUES
 (1, '47807197H', 'David', 'Yates'),
-(2, '47807123B', 'Sam', 'Raimi'),
-(3, '47807197B', 'Francis', 'Laurence');
+(2, '47807123B', 'Sam', 'Raimi');
 
 -- --------------------------------------------------------
 
@@ -90,7 +89,7 @@ CREATE TABLE `obra` (
 INSERT INTO `obra` (`id`, `name`, `description`, `type`, `startDate`, `endDate`, `directorId`) VALUES
 (1, 'Harry Potter y la piedra filosofal', 'Harry Potter y la piedra filosofal es una película de fantasía y aventuras basada en el libro homónimo de J. K. Rowling, dirigida por el cineasta Chris Columbus y estrenada en 2001', 'ciencia ficcion', '2012-01-01', '2012-01-02', 1),
 (2, 'Spiderman', 'Spider-Man (El Hombre Araña en Hispanoamérica) es una película estadounidense de 2002 dirigida por Sam Raimi, escrita por David Koepp, e inspirada en el personaje homónimo creado por Stan Lee y Steve Ditko en 1962. Fue la segunda de la serie de películas ', 'ciencia ficcion', '2012-01-01', '2012-01-02', 2),
-(3, 'Los Juegos del Hambre', 'Los juegos del hambre: sinsajo - Parte 1 es el tercer largometraje de la trilogía de Los juegos del hambre, de la escritora estadounidense Suzanne Collins', 'ciencia ficcion', '2014-01-01', '2014-04-08', 3);
+(3, 'Los Juegos del Hambre', 'Los juegos del hambre: sinsajo - Parte 1 es el tercer largometraje de la trilogía de Los juegos del hambre, de la escritora estadounidense Suzanne Collins', 'ciencia ficcion', '2014-01-01', '2014-04-08', NULL);
 
 -- --------------------------------------------------------
 
@@ -102,14 +101,14 @@ CREATE TABLE `paper` (
   `id` int(11) NOT NULL,
   `paper` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `actorId` int(11) DEFAULT NULL,
-  `filmId` int(11) DEFAULT NULL
+  `obraId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `paper`
 --
 
-INSERT INTO `paper` (`id`, `paper`, `actorId`, `filmId`) VALUES
+INSERT INTO `paper` (`id`, `paper`, `actorId`, `obraId`) VALUES
 (1, 'Hermione Grangere', 1, 1),
 (2, 'Ronald Weasley', 2, 1),
 (3, 'Katniss Everdreen', 4, 3),
@@ -133,7 +132,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'barchar', 'iOgyhdY1gJJPj7y7mMN8obgqMQZH2fLDuQuXfqZesC1Iqxo6iHxRuAA9m8E1ZUz76OIiPGTann7uJ3BNhPDoEA==', NULL);
+(1, 'admin', 'admin', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -166,7 +165,7 @@ ALTER TABLE `obra`
 ALTER TABLE `paper`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_57698A6A6DCBA9B2` (`actorId`),
-  ADD KEY `IDX_57698A6AA1D6191D` (`filmId`);
+  ADD KEY `IDX_57698A6AA1D6191D` (`obraId`);
 
 --
 -- Indices de la tabla `user`
@@ -211,14 +210,14 @@ ALTER TABLE `user`
 -- Filtros para la tabla `obra`
 --
 ALTER TABLE `obra`
-  ADD CONSTRAINT `FK_8244BE2221DB3FB1` FOREIGN KEY (`directorId`) REFERENCES `director` (`id`);
+  ADD CONSTRAINT `FK_8244BE2221DB3FB1` FOREIGN KEY (`directorId`) REFERENCES `director` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `paper`
 --
 ALTER TABLE `paper`
-  ADD CONSTRAINT `FK_57698A6A6DCBA9B2` FOREIGN KEY (`actorId`) REFERENCES `actor` (`id`),
-  ADD CONSTRAINT `FK_57698A6AA1D6191D` FOREIGN KEY (`filmId`) REFERENCES `obra` (`id`);
+  ADD CONSTRAINT `FK_57698A6A6DCBA9B2` FOREIGN KEY (`actorId`) REFERENCES `actor` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_57698A6AA1D6191D` FOREIGN KEY (`obraId`) REFERENCES `obra` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
