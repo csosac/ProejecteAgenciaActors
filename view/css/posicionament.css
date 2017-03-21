@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : cristian
 */
 
+.imgListaCrud{
+    max-width: 150px;
+}
+
 .border{
     width: 100%;
     margin-bottom: 40px;

@@ -11,7 +11,7 @@ and open the template in the editor.
 .encabezado{
     background-image: url('../images/header.png');
     min-height: 200px;
-    border-radius: 15px; 
+     border-radius: 15px 15px 0px 0px ; 
 }
 .articulo{
     line-height: 16pt;
@@ -31,7 +31,7 @@ body{
 }
 
 .navbar{
-    border-radius: 15px; 
+    border-radius: 0px 0px 15px 15px; 
 }
 
 .footer{
