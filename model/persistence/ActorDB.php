@@ -71,7 +71,7 @@ class ActorDB
         }
     }
 
-    public function Actualitzar(Director $data) {
+    public function Actualitzar(Actor $data) {
         try {
             $sql = "UPDATE actor SET nif = ?, name  = ?, lastname = ? , genre = ?, photoURL = ? WHERE id = ?";
 
