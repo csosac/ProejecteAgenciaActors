@@ -11,8 +11,9 @@
                                 <th>Nif</th>
                                 <th>Nom</th>
                                 <th>Cognoms</th>                     
-                                <th style="width:60px;"></th>
-                                <th style="width:60px;"></th>
+                                <th class="text-center">Veure</th>
+                                <th class="text-center">Modificar</th>
+                                <th class="text-center">Eliminar</th>
                             </tr>
                         </thead>    
                         <?php
@@ -22,12 +23,14 @@
                                 <td><?php echo $r->__GET('nif'); ?></td>
                                 <td><?php echo $r->__GET('name'); ?></td>
                                 <td><?php echo $r->__GET('lastname'); ?></td>
-                                <td>
-                                    <a href="?ctl=director&act=veure&id=<?php echo $r->__GET('id_director'); ?>">Veure</a>
-                                    <a href="?ctl=director&act=modificar&id=<?php echo $r->__GET('id_director'); ?>">Editar</a>
+                                <td class="text-center">
+                                    <a href="?ctl=director&act=veure&id=<?php echo $r->__GET('id_director'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>
-                                <td>
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=director&act=eliminar&id=<?php echo $r->id_director; ?>">Eliminar</a>
+                                <td class="text-center">            
+                                    <a href="?ctl=director&act=modificar&id=<?php echo $r->__GET('id_director'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
+                                </td>
+                                <td class="text-center">
+                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=director&act=eliminar&id=<?php echo $r->id_director; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -39,3 +42,8 @@
         </div> 
     </div>
 </div>
+<style>
+    .fa-lg{
+        color:black;
+    }
+</style>
