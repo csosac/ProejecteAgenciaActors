@@ -36,7 +36,6 @@ class DirectorDB {
 
                 $result[] = $director;
             }
-
             return $result;
         } catch (Exception $e) {
             die($e->getMessage());
@@ -85,8 +84,6 @@ class DirectorDB {
                                 $data->__GET('lastname'),
                                 $data->__GET('id_director'))
                     );
-            $i = null;
-            $p = 'afqrgf';
         } catch (Exception $e) {
             die($e->getMessage());
         }
