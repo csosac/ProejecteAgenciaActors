@@ -22,6 +22,8 @@ if (checkSession()) {
                 $actor->__SET('name', $_REQUEST['name']);
                 $actor->__SET('lastname', $_REQUEST['lastname']);
                 $actor->__SET('nif', $_REQUEST['nif']);
+                $actor->__SET('photoURL', $_REQUEST['photoURL']);
+                $actor->__SET('genre', $_REQUEST['genre']);
 
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
