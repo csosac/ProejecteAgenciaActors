@@ -52,7 +52,7 @@ if (checkSession()) {
                 $button = 'Tornar';
                 
                 require_once 'view/header.php';
-                require_once 'view/formularis/actors/fitxa_view.php';
+                require_once 'view/formularis/actors/actor_fitxa_view.php';
                 
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
