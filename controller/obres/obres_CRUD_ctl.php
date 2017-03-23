@@ -3,21 +3,21 @@
 include_once("controller/metodesPropis/function_AutoLoad.php");
 
 if (checkSession()) {
-    $actorDB = new ActorDB();
-    $actor = new Actor();
+    $obraDB = new ObraDB();
+    $obra = new Obra();
     $action = "";
     if (isset($_REQUEST['act'])) {
         if ($_REQUEST['act'] == 'llistar') {
-            $arrayDeActors = $actorDB->Llistar();
-            $headerTitle = "Llista Actors";
+            $arrayDeObres = $obraDB->Llistar();
+            $headerTitle = "Llista Obres";
             $button = 'Crear';
             require_once 'view/header.php';
-            require_once 'view/formularis/actors/actors_view.php';
+            require_once 'view/formularis/obres/obres_view.php';
             require_once 'view/footer.php';
         } else {
             if (isset($_REQUEST['submit'])) {
                 if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $actor=$actorDB->Obtenir($_REQUEST['id']);
+                    $obra=$obraDB->Obtenir($_REQUEST['id']);
                 }
                 $actor->__SET('name', $_REQUEST['name']);
                 $actor->__SET('lastname', $_REQUEST['lastname']);
