@@ -8,11 +8,11 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nif</th>
-                                <th>Nom</th>
-                                <th>Cognoms</th>                     
-                                <th>Genere</th>
-                                <th>Foto</th>              
+                                <th class='text-center'>Nif</th>
+                                <th class='text-center'>Nom</th>
+                                <th class='text-center'>Cognoms</th>                     
+                                <th class='text-center'>Genere</th>
+                                <th >Foto</th>              
                                 <th style="width:60px;"></th>
                                 <th style="width:60px;"></th>
                             </tr>
@@ -21,12 +21,12 @@
                         foreach ($arrayDeActors as $r):
                             ?>
                             <tr>
-                                <td><?php echo $r->__GET('nif'); ?></td>
-                                <td><?php echo $r->__GET('name'); ?></td>
-                                <td><?php echo $r->__GET('lastname'); ?></td>
-                                <td><?php if ($r->__GET('genre')== 'female'){echo 'Dona';}
+                                <td class='text-center'><?php echo $r->__GET('nif'); ?></td>
+                                <td class='text-center'><?php echo $r->__GET('name'); ?></td>
+                                <td class='text-center'><?php echo $r->__GET('lastname'); ?></td>
+                                <td class='text-center'><?php if ($r->__GET('genre')== 'female'){echo 'Dona';}
                                           else{echo 'Home';}?></td>
-                                <td><img src="<?php echo $r->__GET('photoURL'); ?>" class="imgListaCrud img-responsive img-rounded" alt="Cinque Terre"/> </td>
+                                <td><img src="<?php echo 'view/images/actors/'.$r->__GET('photoURL').'.png'; ?>" class="imgListaCrud img-responsive img-rounded " alt="Cinque Terre"/> </td>
                                 <td>
                                     <a href="?ctl=actor&act=veure&id=<?php echo $r->__GET('id_actor'); ?>">Veure</a>
                                     <a href="?ctl=actor&act=modificar&id=<?php echo $r->__GET('id_actor'); ?>">Editar</a>
