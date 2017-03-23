@@ -9,15 +9,36 @@ class Obra
     private $startDate;
     private $endDate;
     private $directorId;
-    
-    function __construct($id_obra, $name, $description, $type, $startDate, $endDate, $directorId) {
-        $this->setId_obra($id_obra);
-        $this->setName($name);
-        $this->setDescription($description);
-        $this->setType($type);
-        $this->setStartDate($startDate);
-        $this->setEndDate($endDate);
-        $this->setDirectorId($directorId);
+        
+        function __construct() {
+        switch (func_num_args()) {
+            case 6:
+                $this->setId_obra(null);
+                $this->setName(func_get_args()[0]);
+                $this->setDescription(func_get_args()[1]);
+                $this->setType(func_get_args()[2]);
+                $this->setStartDate(func_get_args()[3]);
+                $this->setEndDate(func_get_args()[4]);
+                $this->setDirectorId(func_get_args()[5]);
+                break;
+            case 7:
+                $this->setId_obra(func_get_args()[0]);
+                $this->setName(func_get_args()[1]);
+                $this->setDescription(func_get_args()[2]);
+                $this->setType(func_get_args()[3]);
+                $this->setStartDate(func_get_args()[4]);
+                $this->setEndDate(func_get_args()[5]);
+                $this->setDirectorId(func_get_args()[6]);
+                break;
+        }
+    }
+ 
+    public function __GET($k) {
+        return $this->$k;
+    }
+
+    public function __SET($k, $v) {
+        return $this->$k = $v;
     }
 
     
