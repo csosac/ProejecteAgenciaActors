@@ -89,7 +89,7 @@ class ActorDB
         }
     }
 
-    public function Insertar(Actor $data) {
+    public function Registrar(Actor $data) {
         try {
             $sql = "INSERT INTO actor (nif,name,lastname,genre,photoURL) 
 		        VALUES (?, ?, ? , ? , ?)";
