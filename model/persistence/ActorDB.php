@@ -91,7 +91,7 @@ class ActorDB
 
     public function Insertar(Actor $data) {
         try {
-            $sql = "INSERT INTO director (nif,name,lastname,genre,photoURL) 
+            $sql = "INSERT INTO actor (nif,name,lastname,genre,photoURL) 
 		        VALUES (?, ?, ? , ? , ?)";
 
             $this->pdo->prepare($sql)

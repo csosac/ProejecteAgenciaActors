@@ -53,13 +53,14 @@ switch ($ctl) {
             include "controller/papers/papers_D_ctl.php";           
         }
         break;
-        case"obra":
-        if ($act == 'afegir') {
-            include "controller/obres/obres_C_ctl.php";
-        } elseif ($act == 'eliminar') {
-            include "controller/obres/obres_D_ctl.php";           
+    case"obra":
+        if ($act == 'afegir'||$act== 'modificar' || $act== 'llistar'|| $act== 'veure'||$act == 'eliminar') {
+            include "controller/obres/obres_CRUD_ctl.php";
+        }else {
+            header("Location: index.php?ctl=obra&act=llistar");
         }
         break;
+        
     case"director":
         if ($act == 'afegir'||$act== 'modificar' || $act== 'llistar'|| $act== 'veure'||$act == 'eliminar') {
             include "controller/directors/directors_CRUD_ctl.php";
