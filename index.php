@@ -33,9 +33,10 @@ switch ($ctl) {
     case"usuari";
         if ($act == 'login') {
             include "controller/login/login_ctl.php";
-            break;
+           
         } elseif ($act == 'logout') {
             include "controller/login/logout_ctl.php";
+           
         }
         break;
 
