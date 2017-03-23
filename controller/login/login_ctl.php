@@ -1,5 +1,6 @@
 <?php
-require_once("controller/metodesPropis/function_AutoLoad.php"); 
+
+require_once("controller/metodesPropis/function_AutoLoad.php");
 $headerTitle = "Iniciar Sessio";
 
 if (isset($_REQUEST['recordarUsuari'])) {
@@ -19,7 +20,6 @@ if (isset($_SESSION['agencia'])) {
 $loginError = false;
 if (empty($_REQUEST['pass']) || empty($_REQUEST['username']))
     $loginError = true;
-require_once 'view/header.php';
 if (isset($_REQUEST['Submit']) && !empty($_REQUEST['pass']) && !empty($_REQUEST['username'])) {
     if ($agencia->validarUsuari($_REQUEST['username'], $_REQUEST['pass'])) {
         $_SESSION["login"] = true;
@@ -30,9 +30,11 @@ if (isset($_REQUEST['Submit']) && !empty($_REQUEST['pass']) && !empty($_REQUEST[
         $_SESSION["usuari"] = "";
         session_unset("usuari");
         session_destroy();
+        require_once 'view/header.php';
         require_once 'view/login.php';
     }
 } else {
+    require_once 'view/header.php';
     require_once 'view/login.php';
 }
 require_once 'view/footer.php';
