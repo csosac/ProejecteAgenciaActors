@@ -26,13 +26,13 @@
                                 <td class='text-center'><?php echo $r->__GET('lastname'); ?></td>
                                 <td class='text-center'><?php if ($r->__GET('genre')== 'female'){echo 'Dona';}
                                           else{echo 'Home';}?></td>
-                                <td><img src="<?php echo 'view/images/actors/'.$r->__GET('photoURL').'.png'; ?>" class="imgListaCrud img-responsive img-rounded " alt="Cinque Terre"/> </td>
+                                <td><img src="<?php echo $r->__GET('photoURL'); ?>" class="imgListaCrud img-responsive img-rounded " alt="Cinque Terre"/> </td>
                                 <td>
-                                    <a href="?ctl=actor&act=veure&id=<?php echo $r->__GET('id_actor'); ?>">Veure</a>
-                                    <a href="?ctl=actor&act=modificar&id=<?php echo $r->__GET('id_actor'); ?>">Editar</a>
+                                    <a href="?ctl=actor&act=veure&id=<?php echo $r->__GET('id_actor'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
+                                    <a href="?ctl=actor&act=modificar&id=<?php echo $r->__GET('id_actor'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
                                 </td>
                                 <td>
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=actor&act=eliminar&id=<?php echo $r->id_actor; ?>">Eliminar</a>
+                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=actor&act=eliminar&id=<?php echo $r->id_actor; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
