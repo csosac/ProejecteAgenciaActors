@@ -1,11 +1,11 @@
 <?php
 
-include_once("controller/metodesPropis/function_AutoLoad.php"); 	
+include_once("controller/metodesPropis/function_AutoLoad.php");
 require_once("config/config.inc.php");
 require_once("config/db.inc.php");
 
-class ActorDB
-{
+class ActorDB {
+
     private $pdo;
 
     public function __CONSTRUCT() {
@@ -45,16 +45,16 @@ class ActorDB
         try {
             $stm = $this->pdo->prepare("SELECT * FROM actor WHERE id = ?");
             $stm->execute(array($id));
-            
+
             $r = $stm->fetch(PDO::FETCH_OBJ);
 
             $actor = new Actor();
-                $actor->__SET('id_actor', $r->id);
-                $actor->__SET('nif', $r->nif);
-                $actor->__SET('name', $r->name);
-                $actor->__SET('lastname', $r->lastname);
-                $actor->__SET('genre', $r->genre);
-                $actor->__SET('photoURL', $r->photoURL);
+            $actor->__SET('id_actor', $r->id);
+            $actor->__SET('nif', $r->nif);
+            $actor->__SET('name', $r->name);
+            $actor->__SET('lastname', $r->lastname);
+            $actor->__SET('genre', $r->genre);
+            $actor->__SET('photoURL', $r->photoURL);
             return $actor;
         } catch (Exception $e) {
             die($e->getMessage());
@@ -77,13 +77,13 @@ class ActorDB
 
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-                                $data->__GET('nif'),
-                                $data->__GET('name'),
-                                $data->__GET('lastname'),
-                                $data->__GET('genre'),
-                                $data->__GET('photoURL'),
-                                $data->__GET('id_actor'))
-                    );
+                $data->__GET('nif'),
+                $data->__GET('name'),
+                $data->__GET('lastname'),
+                $data->__GET('genre'),
+                $data->__GET('photoURL'),
+                $data->__GET('id_actor'))
+            );
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -96,7 +96,7 @@ class ActorDB
 
             $this->pdo->prepare($sql)
                     ->execute(
-                            array(                     
+                            array(
                                 $data->__GET('nif'),
                                 $data->__GET('name'),
                                 $data->__GET('lastname'),
@@ -107,4 +107,26 @@ class ActorDB
             die($e->getMessage());
         }
     }
+
+    public function dadesActor() {
+        try{
+        $consulta = "select id,name,lastname FROM actor ";
+
+        $result = $conexion->query($consulta);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+        
+        	$respuesta = new stdClass();
+        
+	if($result->num_rows > 0){
+		$fila = $result->fetch_array();
+		$respuesta->id = $fila['id'];
+		$respuesta->name = $fila['name'];
+                $respuesta->lastname = $fila['lastname'];
+	}
+	echo json_encode($respuesta);
+        
+    }
+
 }
