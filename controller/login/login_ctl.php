@@ -1,5 +1,6 @@
 <?php
-require_once("controller/metodesPropis/function_AutoLoad.php"); 
+
+require_once("controller/metodesPropis/function_AutoLoad.php");
 $headerTitle = "Iniciar Sessio";
 
 if (isset($_REQUEST['recordarUsuari'])) {

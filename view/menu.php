@@ -77,7 +77,7 @@
                             <?php } ?>
                         </ul>
                     </li>
-                <?php } ?>               
+                <?php } ?>  
                 <?php if ($ctl == 'contacto') { ?>
                     <li class="active"><a href="?ctl=contacto">Contacto</a></li>
                 <?php } else { ?>
