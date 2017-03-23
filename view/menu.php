@@ -35,11 +35,28 @@
                         </ul>
                     </li>
                 <?php } ?>
-                <?php if ($ctl == 'obras') { ?>
-                    <li class="active"><a href="?ctl=obras">Obras</a></li>
+                <?php if ($ctl == 'obra') { ?>
+                    <li class="dropdown active">
+                        <a href="?ctl=obra" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Obra<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="?ctl=obra&act=llistar">Obres</a></li>
+                            <?php if (checkSession()) { ?>
+                                <li><a href="?ctl=obra&act=afegir">Afegir Obra</a></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
                 <?php } else { ?>
-                    <li><a href="?ctl=obras">Obras</a></li>
+                    <li class="dropdown">
+                        <a href="?ctl=obra" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Obra<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="?ctl=obra&act=llistar">Obres</a></li>
+                            <?php if (checkSession()) { ?>
+                                <li><a href="?ctl=obra&act=afegir">Afegir Obra</a></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
                 <?php } ?>
+                    
                 <?php if ($ctl == 'director') { ?>
                     <li class="dropdown active">
                         <a href="?ctl=director" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Director<span class="caret"></span></a>
