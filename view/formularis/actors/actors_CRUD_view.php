@@ -18,9 +18,10 @@
                         <input class="form-control" type="text" name="lastname" value="<?php echo $actor->__GET('lastname'); ?>">
                     </div>
                     <div class="form-group">
-                        <label>Sexe</label>
-                        <label class="radio-inline" <?php if ($actor->__GET('genre')== 'male')echo 'checked'; ?>><input type="radio" name="genre">Home</label>
-                        <label class="radio-inline" <?php if ($actor->__GET('genre')== 'female')echo 'checked'; ?>><input type="radio" name="genre">Dona</label>
+                        <label>Sexe</label><br/>
+                        <label class="radio-inline" ><input type="radio" name="genre" value="male" <?php if ($actor->__GET('genre')== 'male')echo 'checked'; ?>> Home<br></label>
+                        <label class="radio-inline" ><input type="radio" name="genre" value="female" <?php if ($actor->__GET('genre')== 'female')echo 'checked'; ?>> Dona<br></label>
+                        
                     </div>
                     <div class="form-group">
                         <label>URL de la foto</label>
