@@ -12,80 +12,70 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <!--<a class="navbar-brand" href="?ctl=index">Inicio</a>-->
-                <?php if ($ctl == 'actor' | $ctl == 'papel') { ?>
-                    <li class="dropdown active">
-                        <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?ctl=actor&act=llistar">Actors</a></li>
-                            <li><a href="?ctl=papers">Papers</a></li>
-                            <?php if (checkSession()) { ?>
-                                <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } else { ?>
-                    <li class="dropdown">
-                        <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?ctl=actor&act=llistar">Actors</a></li>
-                            <li><a href="?ctl=papers">Papers</a></li>
-                            <?php if (checkSession()) { ?>
-                                <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } ?>
-                <?php if ($ctl == 'obra') { ?>
-                    <li class="dropdown active">
-                        <a href="?ctl=obra" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Obra<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?ctl=obra&act=llistar">Obres</a></li>
-                            <?php if (checkSession()) { ?>
-                                <li><a href="?ctl=obra&act=afegir">Afegir Obra</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } else { ?>
-                    <li class="dropdown">
-                        <a href="?ctl=obra" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Obra<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?ctl=obra&act=llistar">Obres</a></li>
-                            <?php if (checkSession()) { ?>
-                                <li><a href="?ctl=obra&act=afegir">Afegir Obra</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } ?>
-                    
-                <?php if ($ctl == 'director') { ?>
-                    <li class="dropdown active">
-                        <a href="?ctl=director" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Director<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?ctl=director&act=llistar">Directors</a></li>
-                            <?php if (checkSession()) { ?>
-                                <li><a href="?ctl=director&act=afegir">Afegir Director</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } else { ?>
-                    <li class="dropdown">
-                        <a href="?ctl=director" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Director<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?ctl=director&act=llistar">Directors</a></li>
-                            <?php if (checkSession()) { ?>
-                                <li><a href="?ctl=director&act=afegir">Afegir Director</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } ?>  
-                <?php if ($ctl == 'contacto') { ?>
-                    <li class="active"><a href="?ctl=contacto">Contacto</a></li>
-                <?php } else { ?>
-                    <li><a href="?ctl=contacto">Contacto</a></li>
-                <?php } ?>
 
+                <li class="dropdown 
+                <?php
+                if ($ctl == 'actor' | $ctl == 'papel') {
+                    echo 'active';
+                }
+                ?>">
+                    <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?ctl=actor&act=llistar">Actors</a></li>
+                        <li><a href="?ctl=papers">Papers</a></li>
+                        <?php if (checkSession()) { ?>
+                            <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
+                <li 
+                <?php
+                if ($ctl == 'obras') {
+                    echo'class="active"';
+                }
+                ?>>
+                    <a href="?ctl=obras">Obras</a>
+                </li>
+
+                <li class="dropdown  <?php
+                if ($ctl == 'director') {
+                    echo 'active';
+                }
+                ?>">
+                    <a href="?ctl=director" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Director<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?ctl=director&act=llistar">Directors</a></li>
+                        <?php if (checkSession()) { ?>
+                            <li><a href="?ctl=director&act=afegir">Afegir Director</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
+                <li class="dropdown 
+                <?php
+                if ($ctl == 'paper') {
+                    echo 'active';
+                }
+                ?>">
+                    <a href="?ctl=paper" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Paper<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?ctl=paper&act=llistar">Papers</a>
+                        </li>
+                        <?php if (checkSession()) { ?>
+                            <li>
+                                <a href="?ctl=paper&act=afegir">Afegir Paper</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </li>
+                <li 
+                <?php
+                if ($ctl == 'contacto') {
+                    echo 'class="active';
+                }
+                ?>>
+                    <a href="?ctl=contacto">Contacto</a>
+                </li>
             </ul>
-
             <?php if (checkSession()) { ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="?ctl=usuari&act=logout" value ="Tancar Sessio"><span class="glyphicon glyphicon-log-in" /> Tancar Sessio</a></li>

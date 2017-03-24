@@ -89,13 +89,6 @@ class DirectorDB {
         }
     }
 
-//    public function inserir($director) {
-//        $query = "insert into director values('','" . $director->getNif() . "', '" . $director->getName() . "', '" . $director->getLastname() . "');";
-//        $con = new db();
-//        $con->consulta($query);
-//        $con->close();
-//    }
-
     public function Registrar(Director $data) {
         try {
             $sql = "INSERT INTO director (nif,name,lastname) 

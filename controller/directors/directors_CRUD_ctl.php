@@ -39,12 +39,16 @@ if (checkSession()) {
                 $action = "?ctl=director&act=modificar&id=" . $director->__GET('id_director');
                 $headerTitle = "Modificar Director";
                 $button = 'Modificar';
+                require_once 'view/header.php';
+                require_once 'view/formularis/directors/directors_CRUD_view.php';
                //este enseña uno
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
                 $action = "?ctl=director&act=llistar";
                 $headerTitle = "Director";
                 $director = $directorDB->Obtenir($_REQUEST['id']);
                 $button = 'Tornar';
+                require_once 'view/header.php';
+                require_once 'view/formularis/directors/directors_fitxa_view.php';
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
                 $directorDB->Eliminar($_REQUEST['id']);
@@ -54,9 +58,10 @@ if (checkSession()) {
                 $action = "?ctl=director&act=afegir";
                 $headerTitle = "Afegir Director";
                 $button = 'Crear';
+                require_once 'view/header.php';
+                require_once 'view/formularis/directors/directors_CRUD_view.php';
             }
-            require_once 'view/header.php';
-            require_once 'view/formularis/directors/directors_CRUD_view.php';
+            
             require_once 'view/footer.php';
         }
     }
