@@ -97,7 +97,7 @@ class ObraDB{
             die($e->getMessage());
         }
     }
-
+    
     public function Insertar(Obra $data) {
         try {
             $sql = "INSERT INTO obra (name,description,type,startDate,endDate,directorId) 
