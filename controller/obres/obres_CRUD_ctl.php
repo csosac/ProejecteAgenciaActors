@@ -19,52 +19,52 @@ if (checkSession()) {
                 if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
                     $obra=$obraDB->Obtenir($_REQUEST['id']);
                 }
-                $actor->__SET('name', $_REQUEST['name']);
-                $actor->__SET('lastname', $_REQUEST['lastname']);
-                $actor->__SET('nif', $_REQUEST['nif']);
-                $actor->__SET('genre', $_REQUEST['genre']);
-                $actor->__SET('photoURL', $_REQUEST['photoURL']);
-                
+                $obra->__SET('name', $_REQUEST['name']);
+                $obra->__SET('description', $_REQUEST['description']);
+                $obra->__SET('type', $_REQUEST['type']);
+                $obra->__SET('startDate', $_REQUEST['startDate']);
+                $obra->__SET('endDate', $_REQUEST['endDate']);
+                $obra->__SET('directorId', $_REQUEST['directorId']);
 
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
-                    $actorDB->Registrar($actor);
-                    header("Location: index.php?ctl=actor&act=llistar");
+                    $obraDB->Insertar($obra);
+                    header("Location: index.php?ctl=obra&act=llistar");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
-                    $actorDB->Actualitzar($actor);
-                    header("Location: index.php?ctl=actor&act=llistar");
+                    $obraDB->Actualitzar($obra);
+                    header("Location: index.php?ctl=obra&act=llistar");
                 }
                 //act modificar sense submit
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'modificar') {
-                $actor = $actorDB->Obtenir($_REQUEST['id']);
-                $action = "?ctl=actor&act=modificar&id=" . $actor->__GET('id_actor');
-                $headerTitle = "Modificar Actor";
+                $obra = $obraDB->Obtenir($_REQUEST['id']);
+                $action = "?ctl=obra&act=modificar&id=" . $obra->__GET('id_obra');
+                $headerTitle = "Modificar Obra";
                 $button = 'Modificar';
                 require_once 'view/header.php';
-                require_once 'view/formularis/actors/actors_CRUD_view.php';
+                require_once 'view/formularis/obres/obres_CRUD_view.php';
                //este enseña uno
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
-                $action = "?ctl=actor&act=llistar";
-                $headerTitle = "Actor";
-                $actor = $actorDB->Obtenir($_REQUEST['id']);
+                $action = "?ctl=obra&act=llistar";
+                $headerTitle = "Obra";
+                $obra = $obraDB->Obtenir($_REQUEST['id']);
                 $button = 'Tornar';
                 
                 require_once 'view/header.php';
-                require_once 'view/formularis/actors/actor_fitxa_view.php';
+                require_once 'view/formularis/obres/obra_fitxa_view.php';
                 
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
-                $actorDB->Eliminar($_REQUEST['id']);
-                header("Location: index.php?ctl=actor&act=llistar");
+                $obraDB->Eliminar($_REQUEST['id']);
+                header("Location: index.php?ctl=obra&act=llistar");
                 //añade
             } elseif ($_REQUEST['act'] == 'afegir') {
-                $action = "?ctl=actor&act=afegir";
-                $headerTitle = "Afegir Actor";
+                $action = "?ctl=obra&act=afegir";
+                $headerTitle = "Afegir Obra";
                 $button = 'Crear';
                 require_once 'view/header.php';
-                require_once 'view/formularis/actors/actors_CRUD_view.php';
+                require_once 'view/formularis/obres/obres_CRUD_view.php';
             }
             
             require_once 'view/footer.php';
