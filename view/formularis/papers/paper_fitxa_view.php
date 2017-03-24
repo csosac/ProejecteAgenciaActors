@@ -4,7 +4,6 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6  lletraViewActor">
 
-                <div class="col-xs-12 col-sm-8"><img src="<?php echo $actor->__GET('photoURL'); ?>" class="img-responsive img-rounded grande" alt="Cinque Terre"/></div>
                 <div class="col-xs-12 col-sm-4">
 
                     <div><h2>Nom: <?php echo $actor->__GET('name'); ?></h2></div>

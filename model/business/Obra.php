@@ -19,7 +19,7 @@ class Obra
                 $this->setType(func_get_args()[2]);
                 $this->setStartDate(func_get_args()[3]);
                 $this->setEndDate(func_get_args()[4]);
-                $this->setDirectorId(func_get_args()[5]);
+                $this->setObraId(func_get_args()[5]);
                 break;
             case 7:
                 $this->setId_obra(func_get_args()[0]);
@@ -28,7 +28,7 @@ class Obra
                 $this->setType(func_get_args()[3]);
                 $this->setStartDate(func_get_args()[4]);
                 $this->setEndDate(func_get_args()[5]);
-                $this->setDirectorId(func_get_args()[6]);
+                $this->setObraId(func_get_args()[6]);
                 break;
         }
     }
@@ -66,7 +66,7 @@ class Obra
         return $this->endDate;
     }
 
-    function getDirectorId() {
+    function getObraId() {
         return $this->directorId;
     }
 
@@ -94,11 +94,33 @@ class Obra
         $this->endDate = $endDate;
     }
 
-    function setDirectorId($directorId) {
+    function setObraId($directorId) {
         $this->directorId = $directorId;
     }
+    public function Llistar() {
+        $ObraDB = new ObraDB();
+        return $ObraDB->Llistar();
+    }
 
+    public function Obtenir($id) {
+        $ObraDB = new ObraDB();
+        return $ObraDB->Obtenir($id);
+    }
 
+    public function Eliminar($id) {
+        $ObraDB = new ObraDB();
+        return $ObraDB->Eliminar($id);
+    }
+
+    public function Actualitzar(Obra $data) {
+        $ObraDB = new ObraDB();
+        $ObraDB->Actualitzar($data);
+    }
+    
+    public function Insertar(Obra $data) {
+        $ObraDB = new ObraDB();
+        $ObraDB->Insertar($data);
+    }
     
 }
 ?>
