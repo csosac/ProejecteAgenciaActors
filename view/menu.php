@@ -30,11 +30,17 @@
                 </li>
                 <li 
                 <?php
-                if ($ctl == 'obras') {
+                if ($ctl == 'obra') {
                     echo'class="active"';
                 }
                 ?>>
-                    <a href="?ctl=obras">Obras</a>
+                    <a href="?ctl=obra" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Obres<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?ctl=obra&act=llistar">Obres</a></li>
+                        <?php if (checkSession()) { ?>
+                            <li><a href="?ctl=obra&act=afegir">Afegir Obra</a></li>
+                        <?php } ?>
+                    </ul>
                 </li>
 
                 <li class="dropdown  <?php
