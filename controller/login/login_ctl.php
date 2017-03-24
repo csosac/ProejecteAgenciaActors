@@ -36,6 +36,7 @@ if (isset($_REQUEST['Submit']) && !empty($_REQUEST['pass']) && !empty($_REQUEST[
 } else {
     require_once 'view/header.php';
     require_once 'view/login.php';
+    
 }
 require_once 'view/footer.php';
 ?>

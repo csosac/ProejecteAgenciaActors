@@ -30,46 +30,48 @@ if (isset($_REQUEST['ctl'])) {
 }
 
 switch ($ctl) {
+    case"peticioAJAX";
+        if ($act == 'actor')
+            include "controller/dadesActor.php";
+        break;
     case"usuari";
         if ($act == 'login') {
             include "controller/login/login_ctl.php";
-           
         } elseif ($act == 'logout') {
             include "controller/login/logout_ctl.php";
-           
         }
         break;
 
     case"actor":
-        if ($act == 'afegir'||$act== 'modificar' || $act== 'llistar'|| $act== 'veure'||$act == 'eliminar') {
+        if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
             include "controller/actors/actors_CRUD_ctl.php";
-        }else {
+        } else {
             header("Location: index.php?ctl=actor&act=llistar");
         }
         break;
     case"paper":
-        if ($act == 'afegir') {
-            include "controller/papers/papers_C_ctl.php";
-        } elseif ($act == 'eliminar') {
-            include "controller/papers/papers_D_ctl.php";           
+        if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
+            include "controller/papers/papers_CRUD_ctl.php";
+        } else {
+            header("Location: index.php?ctl=paper&act=llistar");
         }
         break;
     case"obra":
-        if ($act == 'afegir'||$act== 'modificar' || $act== 'llistar'|| $act== 'veure'||$act == 'eliminar') {
+        if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
             include "controller/obres/obres_CRUD_ctl.php";
-        }else {
+        } else {
             header("Location: index.php?ctl=obra&act=llistar");
         }
         break;
-        
+
     case"director":
-        if ($act == 'afegir'||$act== 'modificar' || $act== 'llistar'|| $act== 'veure'||$act == 'eliminar') {
+        if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
             include "controller/directors/directors_CRUD_ctl.php";
-        }else {
+        } else {
             header("Location: index.php?ctl=director&act=llistar");
         }
         break;
-        
+
     default:
         include "controller/" . $ctl . "_ctl.php";
         break;
