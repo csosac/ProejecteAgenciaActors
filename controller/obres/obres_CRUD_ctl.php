@@ -3,11 +3,12 @@
 include_once("controller/metodesPropis/function_AutoLoad.php");
 
 if (checkSession()) {
+    $agencia = new Agencia();
     $obra = new Obra();
     $action = "";
     if (isset($_REQUEST['act'])) {
         if ($_REQUEST['act'] == 'llistar') {
-            $arrayDeObres = $obra->Llistar();
+            $arrayDeObres = $agencia->getArrayDeObres();
             $headerTitle = "Llista Obres";
             $button = 'Crear';
             require_once 'view/header.php';
@@ -16,7 +17,7 @@ if (checkSession()) {
         } else {
             if (isset($_REQUEST['submit'])) {
                 if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $obra=$obra->Obtenir($_REQUEST['id']);
+                    $obra=$agencia->searchObraById($_REQUEST['id']);
                 }
                 $obra->__SET('name', $_REQUEST['name']);
                 $obra->__SET('description', $_REQUEST['description']);
@@ -27,17 +28,17 @@ if (checkSession()) {
 
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
-                    $obra->Insertar($obra);
-                    header("Location: index.php?ctl=obra&act=llistar");
+                    $id_obra = $obra->insertar($obra);
+                    header("Location: index.php?ctl=paper&act=afegir&id_obra='".$id_obra);
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
-                    $obra->Actualitzar($obra);
+                    $obra->actualitzar($obra);
                     header("Location: index.php?ctl=obra&act=llistar");
                 }
                 //act modificar sense submit
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'modificar') {
-                $obra = $obra->Obtenir($_REQUEST['id']);
+                $obra = $agencia->searchObraById($_REQUEST['id']);
                 $action = "?ctl=obra&act=modificar&id=" . $obra->__GET('id_obra');
                 $headerTitle = "Modificar Obra";
                 $button = 'Modificar';
@@ -47,7 +48,7 @@ if (checkSession()) {
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
                 $action = "?ctl=obra&act=llistar";
                 $headerTitle = "Obra";
-                $obra = $obra->Obtenir($_REQUEST['id']);
+                $obra = $agencia->searchObraById($_REQUEST['id']);
                 $button = 'Tornar';
                 
                 require_once 'view/header.php';
@@ -55,7 +56,7 @@ if (checkSession()) {
                 
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
-                $obra->Eliminar($_REQUEST['id']);
+                $obra->eliminar($_REQUEST['id']);
                 header("Location: index.php?ctl=obra&act=llistar");
                 //añade
             } elseif ($_REQUEST['act'] == 'afegir') {

@@ -19,9 +19,8 @@
                         <select class="form-control" id="obra">
                         </select>
                     </div>
-
-
-
+                    <input type="hidden" name="actorid" value="<?php echo $paper->__GET('id_actor'); ?>">
+                    <input type="hidden" name="obraid" value="<?php echo $paper->__GET('id_obra'); ?>">
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button ?></button>
                 </form>
             </div>

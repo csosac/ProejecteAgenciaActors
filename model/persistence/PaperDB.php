@@ -6,22 +6,12 @@ require_once("config/db.inc.php");
 
 class PaperDB {
 
-    private $pdo;
-
-    public function __CONSTRUCT() {
-        try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=agencia', 'root', '');
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
     public function Llistar() {
         try {
+            $con = new db();
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM paper");
+            $stm = $con->prepare("SELECT * FROM paper");
             $stm->execute();
 
             foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
@@ -42,7 +32,8 @@ class PaperDB {
 
     public function Obtenir($id) {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM paper WHERE id = ?");
+            $con = new db();
+            $stm = $con->prepare("SELECT * FROM paper WHERE id = ?");
             $stm->execute(array($id));
 
             $r = $stm->fetch(PDO::FETCH_OBJ);
@@ -63,7 +54,8 @@ class PaperDB {
 
     public function Eliminar($id) {
         try {
-            $stm = $this->pdo->prepare("DELETE FROM paper WHERE id = ?");
+            $con = new db();
+            $stm = $con->prepare("DELETE FROM paper WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -73,9 +65,10 @@ class PaperDB {
 
     public function Actualitzar(Paper $data) {
         try {
+            $con = new db();
             $sql = "UPDATE paper SET nif = ?, name  = ?, lastname = ? WHERE id = ?";
 
-            $stm = $this->pdo->prepare($sql);
+            $stm = $con->prepare($sql);
             $stm->execute(array(
                 $data->__GET('id_paper'),
                 $data->__GET('paper'),
@@ -89,10 +82,11 @@ class PaperDB {
 
     public function Registrar(Paper $data) {
         try {
+            $con = new db();
             $sql = "INSERT INTO paper (paper,id_actor,id_obra) 
 		        VALUES (?, ?, ?)";
 
-            $this->pdo->prepare($sql)
+            $con->prepare($sql)
                     ->execute(
                             array(
                                 $data->__GET('paper'),

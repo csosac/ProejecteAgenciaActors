@@ -106,9 +106,9 @@ class Actor {
         $ActorDB->Actualitzar($data);
     }
     
-    public function Registrar(Actor $data) {
+    public function Insertar() {
         $ActorDB = new ActorDB();
-        $ActorDB->Registrar($data);
+        $ActorDB->Insertar($this);
     }
 }
 
