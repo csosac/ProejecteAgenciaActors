@@ -89,7 +89,7 @@ class PaperDB {
 
     public function Registrar(Paper $data) {
         try {
-            $sql = "INSERT INTO paper (nif,name,lastname) 
+            $sql = "INSERT INTO paper (paper,id_actor,id_obra) 
 		        VALUES (?, ?, ?)";
 
             $this->pdo->prepare($sql)

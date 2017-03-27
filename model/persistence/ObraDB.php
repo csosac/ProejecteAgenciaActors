@@ -1,18 +1,18 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-include_once("controller/metodesPropis/function_AutoLoad.php"); 	
+include_once("controller/metodesPropis/function_AutoLoad.php");
 require_once("config/config.inc.php");
 require_once("config/db.inc.php");
 
-class ObraDB{
+class ObraDB {
 
-	private $pdo;
+    private $pdo;
 
     public function __CONSTRUCT() {
         try {
@@ -52,17 +52,17 @@ class ObraDB{
         try {
             $stm = $this->pdo->prepare("SELECT * FROM obra WHERE id = ?");
             $stm->execute(array($id));
-            
+
             $r = $stm->fetch(PDO::FETCH_OBJ);
 
-                $obra = new Obra();
-                $obra->__SET('id_obra', $r->id);
-                $obra->__SET('name', $r->name);
-                $obra->__SET('description', $r->description);
-                $obra->__SET('type', $r->type);
-                $obra->__SET('startDate', $r->startDate);
-                $obra->__SET('endDate', $r->endDate);
-                $obra->__SET('directorId', $r->directorId);
+            $obra = new Obra();
+            $obra->__SET('id_obra', $r->id);
+            $obra->__SET('name', $r->name);
+            $obra->__SET('description', $r->description);
+            $obra->__SET('type', $r->type);
+            $obra->__SET('startDate', $r->startDate);
+            $obra->__SET('endDate', $r->endDate);
+            $obra->__SET('directorId', $r->directorId);
             return $obra;
         } catch (Exception $e) {
             die($e->getMessage());
@@ -85,19 +85,19 @@ class ObraDB{
 
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-                                $data->__GET('name'),
-                                $data->__GET('description'),
-                                $data->__GET('type'),
-                                $data->__GET('startDate'),
-                                $data->__GET('endDate'),
-                                $data->__GET('directorId'),
-                                $data->__GET('id_obra'))
-                    );
+                $data->__GET('name'),
+                $data->__GET('description'),
+                $data->__GET('type'),
+                $data->__GET('startDate'),
+                $data->__GET('endDate'),
+                $data->__GET('directorId'),
+                $data->__GET('id_obra'))
+            );
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
-    
+
     public function Insertar(Obra $data) {
         try {
             $sql = "INSERT INTO obra (name,description,type,startDate,endDate,directorId) 
@@ -105,7 +105,7 @@ class ObraDB{
 
             $this->pdo->prepare($sql)
                     ->execute(
-                            array(                     
+                            array(
                                 $data->__GET('name'),
                                 $data->__GET('description'),
                                 $data->__GET('type'),
@@ -117,5 +117,7 @@ class ObraDB{
             die($e->getMessage());
         }
     }
+
 }
+
 ?>

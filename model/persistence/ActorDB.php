@@ -108,25 +108,4 @@ class ActorDB {
         }
     }
 
-    public function dadesActor() {
-        try{
-        $consulta = "select id,name,lastname FROM actor ";
-
-        $result = $conexion->query($consulta);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-        
-        	$respuesta = new stdClass();
-        
-	if($result->num_rows > 0){
-		$fila = $result->fetch_array();
-		$respuesta->id = $fila['id'];
-		$respuesta->name = $fila['name'];
-                $respuesta->lastname = $fila['lastname'];
-	}
-	echo json_encode($respuesta);
-        
-    }
-
 }

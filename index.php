@@ -31,8 +31,11 @@ if (isset($_REQUEST['ctl'])) {
 
 switch ($ctl) {
     case"peticioAJAX";
-        if ($act == 'actor')
+        if ($act == 'actor'){
             include "controller/dadesActor.php";
+        }elseif($act == 'obra'){
+            include "controller/dadesObra.php";
+        }
         break;
     case"usuari";
         if ($act == 'login') {
