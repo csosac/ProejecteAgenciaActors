@@ -8,37 +8,34 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class='text-center'>Nif</th>
-                                <th class='text-center'>Nom</th>
-                                <th class='text-center'>Cognoms</th>                     
-                                <th class='text-center'>Genere</th>
-                                <th >Foto</th>              
-                                <th style="width:60px;"></th>
-                                <th style="width:60px;"></th>
+                                <th class='text-center'>Paper</th>
+                                <th class='text-center'>Obra</th>
+                                <th class='text-center'>Actors</th>  
+                                <th class="text-center">Veure</th>
+                                <th class="text-center">Modificar</th>
+                                <th class="text-center">Eliminar</th>
                             </tr>
                         </thead>    
                         <?php
-                        foreach ($arrayDeActors as $r):
-                            ?>
-                            <tr>
-                                <td class='text-center'><?php echo $r->__GET('nif'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('name'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('lastname'); ?></td>
-                                <td class='text-center'><?php if ($r->__GET('genre')== 'female'){echo 'Dona';}
-                                          else{echo 'Home';}?></td>
-                                <td><img src="<?php echo 'view/images/actors/'.$r->__GET('photoURL').'.png'; ?>" class="imgListaCrud img-responsive img-rounded " alt="Cinque Terre"/> </td>
-                                <td>
-                                    <a href="?ctl=actor&act=veure&id=<?php echo $r->__GET('id_actor'); ?>">Veure</a>
-                                    <a href="?ctl=actor&act=modificar&id=<?php echo $r->__GET('id_actor'); ?>">Editar</a>
+                        foreach ($arrayDePapers as $r):
+                            ?><tr>
+                                <td class='text-center'><?php echo $r->__GET('paper'); ?></td>
+                                <td class='text-center'><?php echo $r->__GET('id_obra'); ?></td>
+                                <td class='text-center'><?php echo $r->__GET('id_actor'); ?></td>
+                                                              <td class="text-center">
+                                    <a href="?ctl=paper&act=veure&id=<?php echo $r->__GET('id_paper'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>
-                                <td>
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=actor&act=eliminar&id=<?php echo $r->id_actor; ?>">Eliminar</a>
+                                <td class="text-center">            
+                                    <a href="?ctl=paper&act=modificar&id=<?php echo $r->__GET('id_paper'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
+                                </td>
+                                <td class="text-center">
+                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=paper&act=eliminar&id=<?php echo $r->id_paper; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </table> 
                 </div>
-                <button onclick="window.location.href='?ctl=actor&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button;?></button>
+                <button onclick="window.location.href='?ctl=paper&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button;?></button>
                 </form>
             </div>
         </div> 
