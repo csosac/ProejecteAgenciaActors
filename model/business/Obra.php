@@ -97,27 +97,18 @@ class Obra
     function setObraId($directorId) {
         $this->directorId = $directorId;
     }
-    public function Llistar() {
-        $ObraDB = new ObraDB();
-        return $ObraDB->Llistar();
-    }
 
-    public function Obtenir($id) {
-        $ObraDB = new ObraDB();
-        return $ObraDB->Obtenir($id);
-    }
-
-    public function Eliminar($id) {
+    public function eliminar($id) {
         $ObraDB = new ObraDB();
         return $ObraDB->Eliminar($id);
     }
 
-    public function Actualitzar(Obra $data) {
+    public function actualitzar(Obra $data) {
         $ObraDB = new ObraDB();
         $ObraDB->Actualitzar($data);
     }
     
-    public function Insertar(Obra $data) {
+    public function insertar(Obra $data) {
         $ObraDB = new ObraDB();
         $ObraDB->Insertar($data);
     }

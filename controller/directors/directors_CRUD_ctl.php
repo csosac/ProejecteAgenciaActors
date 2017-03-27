@@ -4,10 +4,11 @@ include_once("controller/metodesPropis/function_AutoLoad.php");
 
 if (checkSession()) {
     $director = new Director();
+    $agencia = new Agencia();
     $action = "";
     if (isset($_REQUEST['act'])) {
         if ($_REQUEST['act'] == 'llistar') {
-            $arrayDeDirectors = $director->Llistar();
+            $arrayDeDirectors = $agencia->getArrayDeDirectors();
             $headerTitle = "Llista Directors";
             $button = 'Crear';
             require_once 'view/header.php';
@@ -16,7 +17,7 @@ if (checkSession()) {
         } else {
             if (isset($_REQUEST['submit'])) {
                 if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $director=$director->Obtenir($_REQUEST['id']);
+                    $director=$agencia->searchDirectorById($_REQUEST['id']);
                 }
                 $director->__SET('name', $_REQUEST['name']);
                 $director->__SET('lastname', $_REQUEST['lastname']);
@@ -24,17 +25,17 @@ if (checkSession()) {
 
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
-                    $director->Registrar($director);
+                    $director->insertar($director);
                     header("Location: index.php?ctl=director&act=llistar");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
-                    $director->Actualitzar($director);
+                    $director->actualitzar($director);
                     header("Location: index.php?ctl=director&act=llistar");
                 }
                 //act modificar sense submit
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'modificar') {
-                $director = $director->Obtenir($_REQUEST['id']);
+                $director = $agencia->searchDirectorById($_REQUEST['id']);
                 $action = "?ctl=director&act=modificar&id=" . $director->__GET('id_director');
                 $headerTitle = "Modificar Director";
                 $button = 'Modificar';
@@ -44,13 +45,13 @@ if (checkSession()) {
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
                 $action = "?ctl=director&act=llistar";
                 $headerTitle = "Director";
-                $director = $director->Obtenir($_REQUEST['id']);
+                $director = $agencia->searchDirectorById($_REQUEST['id']);
                 $button = 'Tornar';
                 require_once 'view/header.php';
                 require_once 'view/formularis/directors/directors_fitxa_view.php';
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
-                $director->Eliminar($_REQUEST['id']);
+                $director->eliminar($_REQUEST['id']);
                 header("Location: index.php?ctl=director&act=llistar");
                 //añade
             } elseif ($_REQUEST['act'] == 'afegir') {

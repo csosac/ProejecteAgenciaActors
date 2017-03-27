@@ -9,13 +9,13 @@ class Agencia
     private $arrayDePapers;
     private $arrayDeUsers;
     
-    public function __construct($nameLib) {
-        $this->setName_agencia($nameLib);
+    public function __construct() {
         $arrayDeActors = array();
 	$arrayDeDirectors = array();
         $arrayDeObres = array();
         $arrayDePapers = array();
         $arrayDeUsers = array();
+        $this->populateAgencia();
     }
     
     public function getName_agencia() {
@@ -71,13 +71,26 @@ class Agencia
         $this->arrayDeActors = $agenciadb->populateActorsDb();  
         $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
         $this->arrayDeObres = $agenciadb->populateObresDb();
-        $this->arrayDePapers = $agenciadb->populatePapersDb();
-        $this->arrayDeUsers = $agenciadb->populateUsersDb();
+//        $this->arrayDePapers = $agenciadb->populatePapersDb();
+//        $this->arrayDeUsers = $agenciadb->populateUsersDb();
     }
-     public function populateDirectors() {
-        $agenciadb = new AgenciaDB();    
-        $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
+    
+    public function searchObraById($id){
+        $AgenciaDB= new AgenciaDB();
+        return $AgenciaDB->searchObraById($id);
     }
+    
+    public function searchActorById($id){
+        $AgenciaDB= new AgenciaDB();
+        return $AgenciaDB->searchActorById($id);
+    }
+    
+    public function searchDirectorById($id){
+        $AgenciaDB= new AgenciaDB();
+        return $AgenciaDB->searchDirectorById($id);
+        
+    }
+    
     public function validarUsuari($user,$password){
         $valid = false;
         foreach ($this->arrayDeUsers as $usuari){

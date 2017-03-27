@@ -2,22 +2,25 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
+    
     demanaActor();
     demanaObres();
 }
 
-function demanaActor()
+function demanaActor($id)
 {
-    $.get('index.php?ctl=peticioAJAX&act=actor', mostraActor)
+    //var id = $('#actor').val();
+    $.get('index.php?ctl=peticioAJAX&act=actor',{id: id}, mostraActor)
             .fail(function () {
                 console.log("error");
             });
     return false;
 }
 
-function demanaObres()
+function demanaObres($id)
 {
-    $.get('index.php?ctl=peticioAJAX&act=obra', mostraObra)
+    var id = $('#obra').val();
+    $.get('index.php?ctl=peticioAJAX&act=obra',{id:id}, mostraObra)
             .fail(function () {
                 console.log("error");
             });
