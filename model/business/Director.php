@@ -66,12 +66,12 @@ class Director {
 
     public function eliminar($id) {
         $DirectorDB = new DirectorDB();
-        return $DirectorDB->Eliminar($id);
+        return $DirectorDB->eliminar($id);
     }
 
     public function actualitzar($data) {
         $DirectorDB = new DirectorDB();
-        $DirectorDB->Actualitzar($data);
+        $DirectorDB->actualitzar($data);
     }
     
     public function insertar($data) {

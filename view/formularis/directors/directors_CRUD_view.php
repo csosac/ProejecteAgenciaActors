@@ -11,11 +11,11 @@
                     </div>
                     <div class="form-group">
                         <label>Nom:</label>
-                        <input class="form-control required" value="<?php echo $director->__GET('name'); ?>">
+                        <input class="form-control required"  name ="name" value="<?php echo $director->__GET('name'); ?>">
                     </div>
                     <div class="form-group">
                         <label>Cognom</label>
-                        <input class="form-control required"  name="name"  value="<?php echo $director->__GET('lastname'); ?>" >
+                        <input class="form-control required"  name="lastname"  value="<?php echo $director->__GET('lastname'); ?>" >
 
                     </div>                   
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button; ?></button>
