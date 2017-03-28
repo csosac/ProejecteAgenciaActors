@@ -193,6 +193,10 @@ class AgenciaDB {
     public function getNameObraById($id){
         return $this->searchObraById($id)->__GET('name');
     }
+    
+    public function getNameDirectorById($id){
+        return $this->searchDirectorById($id)->__GET('name')." ".$this->searchDirectorById($id)->__GET('lastname');
+    }
 
 }
 ?>

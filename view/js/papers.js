@@ -2,12 +2,11 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
-    
     demanaActor();
     demanaObres();
 }
 
-function demanaActor($id)
+function demanaActor()
 {
     var id = $('#actorid').val();
     $.get('index.php?ctl=peticioAJAX&act=actor',{id: id}, mostraActor)
@@ -17,7 +16,7 @@ function demanaActor($id)
     return false;
 }
 
-function demanaObres($id)
+function demanaObres()
 {
     var id = $('#obraid').val();
     $.get('index.php?ctl=peticioAJAX&act=obra',{id:id}, mostraObra)

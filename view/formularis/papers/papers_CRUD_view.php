@@ -11,12 +11,12 @@
                     </div>
                     <div class="form-group">
                         <label>Actor:</label>
-                        <select class="form-control" name="actorId" id="id_actor">
+                        <select class="form-control" name="actorId" id="actor">
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Obra:</label>
-                        <select class="form-control" name="obraId" id="id_obra">
+                        <select class="form-control" name="obraId" id="obra">
                         </select>
                     </div>
                     <input type="hidden" id="actorid" value="<?php echo $paper->__GET('id_actor'); ?>">

@@ -1,23 +1,23 @@
 <?php
 
-class Agencia
-{
+class Agencia {
+
     private $name_agencia;
     private $arrayDeActors;
     private $arrayDeDirectors;
     private $arrayDeObres;
     private $arrayDePapers;
     private $arrayDeUsers;
-    
+
     public function __construct() {
         $arrayDeActors = array();
-	$arrayDeDirectors = array();
+        $arrayDeDirectors = array();
         $arrayDeObres = array();
         $arrayDePapers = array();
         $arrayDeUsers = array();
         $this->populateAgencia();
     }
-    
+
     public function getName_agencia() {
         return $this->name_agencia;
     }
@@ -65,46 +65,49 @@ class Agencia
     public function setArrayDeUsers($arrayDeUsers) {
         $this->arrayDeUsers = $arrayDeUsers;
     }
-    
+
     public function populateAgencia() {
         $agenciadb = new AgenciaDB();
-        $this->arrayDeActors = $agenciadb->populateActorsDb();  
+        $this->arrayDeActors = $agenciadb->populateActorsDb();
         $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
         $this->arrayDeObres = $agenciadb->populateObresDb();
         $this->arrayDePapers = $agenciadb->populatePapersDb();
 //        $this->arrayDeUsers = $agenciadb->populateUsersDb();
     }
-    
-    public function searchObraById($id){
-        $AgenciaDB= new AgenciaDB();
+
+    public function searchObraById($id) {
+        $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->searchObraById($id);
     }
-    
-    public function searchActorById($id){
-        $AgenciaDB= new AgenciaDB();
+
+    public function searchActorById($id) {
+        $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->searchActorById($id);
     }
-    
-    public function searchDirectorById($id){
-        $AgenciaDB= new AgenciaDB();
+
+    public function searchDirectorById($id) {
+        $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->searchDirectorById($id);
-        
     }
-    
-    public function searchPaperById($id){
-        $AgenciaDB= new AgenciaDB();
+
+    public function searchPaperById($id) {
+        $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->searchPaperById($id);
     }
-    
+
     public function getNameActorById($id_actor) {
         $AgenciaDB = new AgenciaDB();
-        return  $AgenciaDB->getNameActorById($id_actor);
-//        return $actor->__GET('name') . " " . $actor->__GET('lastname');
+        return $AgenciaDB->getNameActorById($id_actor);
     }
 
     public function getNameObraById($id_obra) {
         $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->getNameObraById($id_obra);
     }
-    
+
+    public function getNameDirectorById($id_director) {
+        $AgenciaDB = new AgenciaDB();
+        return $AgenciaDB->getNameDirectorById($id_director);
+    }
+
 }
