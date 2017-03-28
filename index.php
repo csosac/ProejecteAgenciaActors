@@ -29,15 +29,7 @@ if (isset($_REQUEST['ctl'])) {
     }
 }
 
-switch ($ctl) {
-    case"adjudicarPaper";
-        if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/actors/adjudicarPapers_ctl.php";
-        } else {
-            header("Location: index.php?ctl=actor&act=llistar");
-        }
-        break;
-        break;    
+switch ($ctl) {   
     case"peticioAJAX";
         if ($act == 'actor'){
             include "controller/dadesActor.php";

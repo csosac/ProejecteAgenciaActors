@@ -1,5 +1,6 @@
 <?php
-require_once("controller/metodesPropis/function_AutoLoad.php"); 		
+
+require_once("controller/metodesPropis/function_AutoLoad.php");
 require_once("config/config.inc.php");
 require_once("config/db.inc.php");
 
@@ -8,9 +9,10 @@ class DirectorDB {
     public function eliminar($id) {
         try {
             $con = new db();
-            $stm = $con->prepare("DELETE FROM director WHERE id = ?");
-
-            $stm->execute(array($id));
+            $query = $con->prepare("DELETE FROM director WHERE id = :id");
+            $query->bindValue(":id", $id);
+            $con->consulta($query);
+            $con=null;
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -19,15 +21,13 @@ class DirectorDB {
     public function actualitzar($data) {
         try {
             $con = new db();
-            $sql = "UPDATE director SET nif = ?, name  = ?, lastname = ? WHERE id = ?";
-
-            $stm = $con->prepare($sql);
-            $stm->execute(array(
-                                $data->__GET('nif'),
-                                $data->__GET('name'),
-                                $data->__GET('lastname'),
-                                $data->__GET('id_director'))
-                    );
+            $sql =$con->prepare("UPDATE director SET nif = :nif, name  = :name, lastname = :lastname WHERE id = :id");
+            $sql->bindValue(":id", $data->__GET('id_director'));
+            $sql->bindValue(":nif", $data->__GET('nif'));
+            $sql->bindValue(":name", $data->__GET('name'));
+            $sql->bindValue(":lastname", $data->__GET('lastname'));
+            $con->consulta($sql);  
+            $con=null;
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -36,17 +36,13 @@ class DirectorDB {
     public function insertar($data) {
         try {
             $con = new db();
-            $sql = "INSERT INTO director (nif,name,lastname) 
-		        VALUES (?, ?, ?)";
-
-            $con->prepare($sql)
-                    ->execute(
-                            array(
-                                $data->__GET('nif'),
-                                $data->__GET('name'),
-                                $data->__GET('lastname')
-                            )
-            );
+            $sql = $con->prepare("INSERT INTO director (nif,name,lastname) 
+		        VALUES (:nif, :name, :lastname)");
+            $sql->bindValue(":nif", $data->__GET('nif'));
+            $sql->bindValue(":name", $data->__GET('name'));
+            $sql->bindValue(":lastname", $data->__GET('lastname'));
+            $con->consulta($sql);
+            $con = null;
         } catch (Exception $e) {
             die($e->getMessage());
         }

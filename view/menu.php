@@ -22,7 +22,7 @@
                     <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="?ctl=actor&act=llistar">Actors</a></li>
-                        <li><a href="?ctl=papers">Papers</a></li>
+                        <li><a href="?ctl=paper">Papers</a></li>
                         <?php if (checkSession()) { ?>
                             <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
                         <?php } ?>
@@ -73,25 +73,6 @@
                         <?php } ?>
                     </ul>
                 </li>
-                
-                <li class="dropdown 
-                <?php
-                if ($ctl == 'adjudicarPaper') {
-                    echo 'active';
-                }
-                ?>">
-                    <a href="?ctl=adjudicarPaper" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adjudicar Paper<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="?ctl=adjudicarPaper&act=llistar">Papers</a>
-                        </li>
-                        <?php if (checkSession()) { ?>
-                            <li>
-                                <a href="?ctl=adjudicarPaper&act=afegir">Afegir Paper</a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </li>
-                
                 
                 <li 
                 <?php
