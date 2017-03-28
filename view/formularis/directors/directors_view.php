@@ -42,8 +42,3 @@
         </div> 
     </div>
 </div>
-<style>
-    .fa-lg{
-        color:black;
-    }
-</style>
