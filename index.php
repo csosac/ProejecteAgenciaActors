@@ -35,6 +35,8 @@ switch ($ctl) {
             include "controller/dadesActor.php";
         }elseif($act == 'obra'){
             include "controller/dadesObra.php";
+        }elseif($act == 'director'){
+            include "controller/dadesDirector.php";
         }
         break;
     case"usuari";
