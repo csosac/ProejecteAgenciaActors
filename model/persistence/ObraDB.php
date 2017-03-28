@@ -13,51 +13,46 @@ require_once("config/db.inc.php");
 class ObraDB {
 
     public function eliminar($id) {
-        try {
-            $stm = $this->pdo->prepare("DELETE FROM obra WHERE id = ?");
-
-            $stm->execute(array($id));
+        try {   
+            $con = new db();
+            $query = $con->prepare("DELETE FROM obra WHERE id = :id");
+            $query->bindParam(":id", $id);
+            $con->consulta($query);
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
-    public function actualitzar(Obra $data) {
+    public function actualitzar($data) {
         try {
-            $sql = "UPDATE obra SET name = ?, description  = ?, type = ? , startDate = ?, endDate = ?, directorId = ? WHERE id = ?";
-
-            $stm = $this->pdo->prepare($sql);
-            $stm->execute(array(
-                $data->__GET('name'),
-                $data->__GET('description'),
-                $data->__GET('type'),
-                $data->__GET('startDate'),
-                $data->__GET('endDate'),
-                $data->__GET('directorId'),
-                $data->__GET('id_obra'))
-            );
+            $con = new db();
+            $query = $con->prepare("UPDATE obra SET name = :name, description  = :description, type = :type, startDate = :startDate, endDate = endDate, directorId = :directorId WHERE id = :id");
+            
+            $query->bindValue(":name", $data->__GET('name'));
+            $query->bindValue(":description", $data->__GET('description'));
+            $query->bindValue(":type", $data->__GET('type'));
+            $query->bindValue(":startDate", $data->__GET('startDate'));
+            $query->bindValue(":endDate", $data->__GET('endDate'));
+            $query->bindValue(":directorId", $data->__GET('directorId'));
+            $query->bindValue(":id", $data->__GET('id_obra'));
+            $con->consulta($query);
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
-    public function insertar(Obra $data) {
+    public function insertar($data) {
         try {
             $sql = "INSERT INTO obra (name,description,type,startDate,endDate,directorId) 
-		        VALUES (?, ?, ? , ? , ? , ?)";
-
-            $this->pdo->prepare($sql)
-                    ->execute(
-                            array(
-                                $data->__GET('name'),
-                                $data->__GET('description'),
-                                $data->__GET('type'),
-                                $data->__GET('startDate'),
-                                $data->__GET('endDate'),
-                                $data->__GET('directorId'))
-            
-            );
-            return $this->pdo->lastInsertId();
+		        VALUES (:name, :description, :type , :startDate , :endDate , :directorId)";
+            $query->bindValue(":name", $data->__GET('name'));
+            $query->bindValue(":description", $data->__GET('description'));
+            $query->bindValue(":type", $data->__GET('type'));
+            $query->bindValue(":startDate", $data->__GET('startDate'));
+            $query->bindValue(":endDate", $data->__GET('endDate'));
+            $query->bindValue(":directorId", $data->__GET('directorId'));
+            $con->consulta($query);
+            return $con->lastInsertId();
         } catch (Exception $e) {
             die($e->getMessage());
         }

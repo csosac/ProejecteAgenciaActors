@@ -65,30 +65,23 @@ class Paper {
         $this->id_obra = $id_obra;
     }
 
-    public function Llistar() {
+
+    public function eliminar($id) {
         $PaperDB = new PaperDB();
-        return $PaperDB->Llistar();
+        return $PaperDB->eliminar($id);
     }
 
-    public function Obtenir($id) {
+    public function actualitzar(Paper $data) {
         $PaperDB = new PaperDB();
-        return $PaperDB->Obtenir($id);
+        $PaperDB->actualitzar($data);
+    }
+    
+    public function insertar() {
+        $PaperDB = new PaperDB();
+        $PaperDB->insertar($this);
     }
 
-    public function Eliminar($id) {
-        $PaperDB = new PaperDB();
-        return $PaperDB->Eliminar($id);
-    }
 
-    public function Actualitzar(Paper $data) {
-        $PaperDB = new PaperDB();
-        $PaperDB->Actualitzar($data);
-    }
-
-    public function Insertar(Paper $data) {
-        $PaperDB = new PaperDB();
-        $PaperDB->Insertar($data);
-    }
 
     public function getActorById($id_actor) {
         $ActorDB = new ActorDB();

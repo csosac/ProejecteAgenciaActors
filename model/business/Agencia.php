@@ -71,7 +71,7 @@ class Agencia
         $this->arrayDeActors = $agenciadb->populateActorsDb();  
         $this->arrayDeDirectors = $agenciadb->populateDirectorsDb();
         $this->arrayDeObres = $agenciadb->populateObresDb();
-//        $this->arrayDePapers = $agenciadb->populatePapersDb();
+        $this->arrayDePapers = $agenciadb->populatePapersDb();
 //        $this->arrayDeUsers = $agenciadb->populateUsersDb();
     }
     
@@ -91,12 +91,9 @@ class Agencia
         
     }
     
-    public function validarUsuari($user,$password){
-        $valid = false;
-        foreach ($this->arrayDeUsers as $usuari){
-            if($usuari->getUsername()==$user && $usuari->getPassword() == $password)
-            $valid=true;
-        }
-        return $valid;
+    public function searchPaperById($id){
+        $AgenciaDB= new AgenciaDB();
+        return $AgenciaDB->searchPaperById($id);
     }
+    
 }
