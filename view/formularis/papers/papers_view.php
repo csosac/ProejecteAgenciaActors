@@ -20,8 +20,8 @@
                         foreach ($arrayDePapers as $r):
                             ?><tr>
                                 <td class='text-center'><?php echo $r->__GET('paper'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('id_obra'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('id_actor'); ?></td>
+                                <td class='text-center'><?php echo $r->getNameObraById($r->__GET('id_obra')); ?></td>
+                                <td class='text-center'><?php echo $r->getNameActorById($r->__GET('id_actor')); ?></td>
                                                               <td class="text-center">
                                     <a href="?ctl=paper&act=veure&id=<?php echo $r->__GET('id_paper'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>
