@@ -8,7 +8,7 @@ if (checkSession()) {
     if (isset($_REQUEST['act'])) {
         if ($_REQUEST['act'] == 'llistar') {
             
-            $arrayDePapers = $paper->Llistar();
+            $arrayDePapers = $agencia->getArrayDePapers();
             $headerTitle = "Llista Papers";
             $button = 'Crear';
             require_once 'view/header.php';
@@ -17,7 +17,7 @@ if (checkSession()) {
         } else {
             if (isset($_REQUEST['submit'])) {
                 if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $paper=$paper->Obtenir($_REQUEST['id']);
+                    $paper=$agencia->searchPaperById($_REQUEST['id']);
                 }
                 $paper->__SET('paper', $_REQUEST['paper']);
                 $paper->__SET('id_actor', $_REQUEST['id_actor']);
@@ -25,17 +25,17 @@ if (checkSession()) {
 
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
-                    $paper->Registrar($paper);
+                    $paper->registrar($paper);
                     header("Location: index.php?ctl=paper&act=afegir&id_obra".$paper->__GET('id_obra'));
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
-                    $paper->Actualitzar($paper);
+                    $paper->actualitzar($paper);
                     header("Location: index.php?ctl=paper&act=llistar");
                 }
                 //act modificar sense submit
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'modificar') {
-                $paper = $paper->Obtenir($_REQUEST['id']);
+                $paper =$agencia->searchPaperById($_REQUEST['id']);
                 $action = "?ctl=paper&act=modificar&id=" . $paper->__GET('id_paper');
                 $headerTitle = "Modificar Paper";
                 $button = 'Modificar';
@@ -48,11 +48,11 @@ if (checkSession()) {
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
                 $action = "?ctl=paper&act=llistar";
                 $headerTitle = "Paper";
-                $paper = $paper->Obtenir($_REQUEST['id']);
+                $paper =$agencia->searchPaperById($_REQUEST['id']);
                 $button = 'Tornar';
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
-                $paper->Eliminar($_REQUEST['id']);
+                $paper->eliminar($_REQUEST['id']);
                 header("Location: index.php?ctl=paper&act=llistar");
                 //añade
             } elseif ($_REQUEST['act'] == 'afegir') {

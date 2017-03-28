@@ -26,12 +26,12 @@ if (checkSession()) {
                 $actor->__SET('photoURL', $_REQUEST['photoURL']);
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
-                    $actor->Insertar();
+                    $actor->insertar();
                     header("Location: index.php?ctl=actor&act=llistar");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
-                    $actor->Actualitzar($actor);
+                    $actor->actualitzar($actor);
                     header("Location: index.php?ctl=actor&act=llistar");
                 }
                 //act modificar sense submit
@@ -54,7 +54,7 @@ if (checkSession()) {
                 
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
-                $actor->Eliminar($_REQUEST['id']);
+                $actor->eliminar($_REQUEST['id']);
                 header("Location: index.php?ctl=actor&act=llistar");
                 //añade
             } elseif ($_REQUEST['act'] == 'afegir') {
