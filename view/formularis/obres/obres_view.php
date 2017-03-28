@@ -15,8 +15,10 @@
                                 <th class='text-center'>Data finalització</th>
                                 <th class='text-center'>Director</th>  
                                 <th class="text-center">Veure</th>
-                                <th class="text-center">Modificar</th>
-                                <th class="text-center">Eliminar</th>
+                                <?php if (checkSession()) { ?>
+                                    <th class="text-center">Modificar</th>
+                                    <th class="text-center">Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </thead>    
                         <?php
@@ -32,17 +34,21 @@
                                 <td class="text-center">
                                     <a href="?ctl=obra&act=veure&id=<?php echo $r->__GET('id_obra'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>
                                 </td>
-                                <td class="text-center">
-                                    <a href="?ctl=obra&act=modificar&id=<?php echo $r->__GET('id_obra'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
-                                </td>
-                                <td class="text-center">
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=obra&act=eliminar&id=<?php echo $r->id_obra; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
-                                </td>
+                                <?php if (checkSession()) { ?>
+                                    <td class="text-center">
+                                        <a href="?ctl=obra&act=modificar&id=<?php echo $r->__GET('id_obra'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=obra&act=eliminar&id=<?php echo $r->id_obra; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
+                                    </td>
+                                        <?php } ?>
                             </tr>
                         <?php endforeach; ?>
                     </table> 
                 </div>
-                <button onclick="window.location.href='?ctl=obra&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button;?></button>
+                <?php if (checkSession()) { ?>
+                    <button onclick="window.location.href = '?ctl=obra&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button; ?></button>
+                <?php } ?>    
                 </form>
             </div>
         </div> 

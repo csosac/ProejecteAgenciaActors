@@ -12,8 +12,10 @@
                                 <th class='text-center'>Obra</th>
                                 <th class='text-center'>Actors</th>  
                                 <th class="text-center">Veure</th>
-                                <th class="text-center">Modificar</th>
-                                <th class="text-center">Eliminar</th>
+                                <?php if (checkSession()) { ?>
+                                    <th class="text-center">Modificar</th>
+                                    <th class="text-center">Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </thead>    
                         <?php
@@ -22,20 +24,24 @@
                                 <td class='text-center'><?php echo $r->__GET('paper'); ?></td>
                                 <td class='text-center'><?php echo $agencia->getNameObraById($r->__GET('id_obra')); ?></td>
                                 <td class='text-center'><?php echo $agencia->getNameActorById($r->__GET('id_actor')); ?></td>
-                                                              <td class="text-center">
+                                <td class="text-center">
                                     <a href="?ctl=paper&act=veure&id=<?php echo $r->__GET('id_paper'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>
-                                <td class="text-center">            
-                                    <a href="?ctl=paper&act=modificar&id=<?php echo $r->__GET('id_paper'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
-                                </td>
-                                <td class="text-center">
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=paper&act=eliminar&id=<?php echo $r->id_paper; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
-                                </td>
+                                <?php if (checkSession()) { ?>
+                                    <td class="text-center">            
+                                        <a href="?ctl=paper&act=modificar&id=<?php echo $r->__GET('id_paper'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=paper&act=eliminar&id=<?php echo $r->id_paper; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php endforeach; ?>
                     </table> 
                 </div>
-                <button onclick="window.location.href='?ctl=paper&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button;?></button>
+                <?php if (checkSession()) { ?>
+                    <button onclick="window.location.href = '?ctl=paper&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button; ?></button>
+                <?php } ?>    
                 </form>
             </div>
         </div> 
