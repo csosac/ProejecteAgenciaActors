@@ -96,4 +96,15 @@ class Agencia
         return $AgenciaDB->searchPaperById($id);
     }
     
+    public function getNameActorById($id_actor) {
+        $AgenciaDB = new AgenciaDB();
+        return  $AgenciaDB->getNameActorById($id_actor);
+//        return $actor->__GET('name') . " " . $actor->__GET('lastname');
+    }
+
+    public function getNameObraById($id_obra) {
+        $AgenciaDB = new AgenciaDB();
+        return $AgenciaDB->getNameObraById($id_obra);
+    }
+    
 }

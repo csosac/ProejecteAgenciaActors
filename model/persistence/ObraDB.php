@@ -26,7 +26,7 @@ class ObraDB {
     public function actualitzar($data) {
         try {
             $con = new db();
-            $query = $con->prepare("UPDATE obra SET name = :name, description  = :description, type = :type, startDate = :startDate, endDate = endDate, directorId = :directorId WHERE id = :id");
+            $query = $con->prepare("UPDATE obra SET name = :name, description  = :description, type = :type, startDate = :startDate, endDate = :endDate, directorId = :directorId WHERE id = :id");
             
             $query->bindValue(":name", $data->__GET('name'));
             $query->bindValue(":description", $data->__GET('description'));
@@ -43,8 +43,9 @@ class ObraDB {
 
     public function insertar($data) {
         try {
-            $sql = "INSERT INTO obra (name,description,type,startDate,endDate,directorId) 
-		        VALUES (:name, :description, :type , :startDate , :endDate , :directorId)";
+            $con = new db();
+            $query = $con->prepare("INSERT INTO obra (name,description,type,startDate,endDate,directorId) 
+		        VALUES (:name, :description, :type , :startDate , :endDate , :directorId)");
             $query->bindValue(":name", $data->__GET('name'));
             $query->bindValue(":description", $data->__GET('description'));
             $query->bindValue(":type", $data->__GET('type'));
