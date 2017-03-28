@@ -86,6 +86,30 @@ class Actor {
         $this->photoURL = $photoURL;
     }
 
+    public function Llistar() {
+        $ActorDB = new ActorDB();
+        return $ActorDB->Llistar();
+    }
+
+    public function Obtenir($id) {
+        $ActorDB = new ActorDB();
+        return $ActorDB->Obtenir($id);
+    }
+
+    public function Eliminar($id) {
+        $ActorDB = new ActorDB();
+        return $ActorDB->Eliminar($id);
+    }
+
+    public function Actualitzar(Actor $data) {
+        $ActorDB = new ActorDB();
+        $ActorDB->Actualitzar($data);
+    }
+    
+    public function Insertar() {
+        $ActorDB = new ActorDB();
+        $ActorDB->Insertar($this);
+    }
 }
 
 ?>

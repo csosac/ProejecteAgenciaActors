@@ -64,6 +64,20 @@ class Director {
         $this->lastname = $lastname;
     }
 
+    public function eliminar($id) {
+        $DirectorDB = new DirectorDB();
+        return $DirectorDB->Eliminar($id);
+    }
+
+    public function actualitzar($data) {
+        $DirectorDB = new DirectorDB();
+        $DirectorDB->Actualitzar($data);
+    }
+    
+    public function insertar($data) {
+        $DirectorDB = new DirectorDB();
+        $DirectorDB->insertar($data);
+    }
 }
 
 ?>

@@ -8,31 +8,34 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nif</th>
-                                <th>Nom</th>
-                                <th>Cognoms</th>                     
-                                <th>Genere</th>
-                                <th>Foto</th>              
-                                <th style="width:60px;"></th>
-                                <th style="width:60px;"></th>
+                                <th class='text-center'>Nif</th>
+                                <th class='text-center'>Nom</th>
+                                <th class='text-center'>Cognoms</th>                     
+                                <th class='text-center'>Genere</th>
+                                <th class='text-center'>Foto</th>     
+                                <th class="text-center">Veure</th>
+                                <th class="text-center">Modificar</th>
+                                <th class="text-center">Eliminar</th>
                             </tr>
                         </thead>    
                         <?php
                         foreach ($arrayDeActors as $r):
                             ?>
                             <tr>
-                                <td><?php echo $r->__GET('nif'); ?></td>
-                                <td><?php echo $r->__GET('name'); ?></td>
-                                <td><?php echo $r->__GET('lastname'); ?></td>
-                                <td><?php if ($r->__GET('genre')== 'female'){echo 'Dona';}
+                                <td class='text-center'><?php echo $r->__GET('nif'); ?></td>
+                                <td class='text-center'><?php echo $r->__GET('name'); ?></td>
+                                <td class='text-center'><?php echo $r->__GET('lastname'); ?></td>
+                                <td class='text-center'><?php if ($r->__GET('genre')== 'female'){echo 'Dona';}
                                           else{echo 'Home';}?></td>
-                                <td><img src="<?php echo $r->__GET('photoURL'); ?>" class="imgListaCrud img-responsive img-rounded" alt="Cinque Terre"/> </td>
-                                <td>
-                                    <a href="?ctl=actor&act=veure&id=<?php echo $r->__GET('id_actor'); ?>">Veure</a>
-                                    <a href="?ctl=actor&act=modificar&id=<?php echo $r->__GET('id_actor'); ?>">Editar</a>
+                                <td><img src="<?php echo $r->__GET('photoURL'); ?>" class="imgListaCrud img-responsive img-rounded " alt="Cinque Terre"/> </td>
+                                <td class="text-center">
+                                    <a href="?ctl=actor&act=veure&id=<?php echo $r->__GET('id_actor'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>
-                                <td>
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=actor&act=eliminar&id=<?php echo $r->id_actor; ?>">Eliminar</a>
+                                <td class="text-center">
+                                    <a href="?ctl=actor&act=modificar&id=<?php echo $r->__GET('id_actor'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
+                                </td>
+                                <td class="text-center">
+                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=actor&act=eliminar&id=<?php echo $r->id_actor; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

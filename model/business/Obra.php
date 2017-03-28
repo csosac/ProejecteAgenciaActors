@@ -9,15 +9,36 @@ class Obra
     private $startDate;
     private $endDate;
     private $directorId;
-    
-    function __construct($id_obra, $name, $description, $type, $startDate, $endDate, $directorId) {
-        $this->setId_obra($id_obra);
-        $this->setName($name);
-        $this->setDescription($description);
-        $this->setType($type);
-        $this->setStartDate($startDate);
-        $this->setEndDate($endDate);
-        $this->setDirectorId($directorId);
+        
+        function __construct() {
+        switch (func_num_args()) {
+            case 6:
+                $this->setId_obra(null);
+                $this->setName(func_get_args()[0]);
+                $this->setDescription(func_get_args()[1]);
+                $this->setType(func_get_args()[2]);
+                $this->setStartDate(func_get_args()[3]);
+                $this->setEndDate(func_get_args()[4]);
+                $this->setObraId(func_get_args()[5]);
+                break;
+            case 7:
+                $this->setId_obra(func_get_args()[0]);
+                $this->setName(func_get_args()[1]);
+                $this->setDescription(func_get_args()[2]);
+                $this->setType(func_get_args()[3]);
+                $this->setStartDate(func_get_args()[4]);
+                $this->setEndDate(func_get_args()[5]);
+                $this->setObraId(func_get_args()[6]);
+                break;
+        }
+    }
+ 
+    public function __GET($k) {
+        return $this->$k;
+    }
+
+    public function __SET($k, $v) {
+        return $this->$k = $v;
     }
 
     
@@ -45,7 +66,7 @@ class Obra
         return $this->endDate;
     }
 
-    function getDirectorId() {
+    function getObraId() {
         return $this->directorId;
     }
 
@@ -73,11 +94,24 @@ class Obra
         $this->endDate = $endDate;
     }
 
-    function setDirectorId($directorId) {
+    function setObraId($directorId) {
         $this->directorId = $directorId;
     }
 
+    public function eliminar($id) {
+        $ObraDB = new ObraDB();
+        return $ObraDB->Eliminar($id);
+    }
 
+    public function actualitzar(Obra $data) {
+        $ObraDB = new ObraDB();
+        $ObraDB->Actualitzar($data);
+    }
+    
+    public function insertar(Obra $data) {
+        $ObraDB = new ObraDB();
+        $ObraDB->Insertar($data);
+    }
     
 }
 ?>
