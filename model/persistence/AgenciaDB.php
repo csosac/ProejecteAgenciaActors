@@ -6,8 +6,6 @@ require_once("config/db.inc.php");
 
 class AgenciaDB {
 
-    //private $arrayDeObjectes;
-
     public function populateActorsDb() {
         $arrayDeObjectes = array();
         $con = new db();
@@ -89,7 +87,6 @@ class AgenciaDB {
         return $actor;
     }
 
-
     public function populateObresDb() {
         $arrayDeObjectes = array();
         $con = new db();
@@ -110,13 +107,12 @@ class AgenciaDB {
 
             array_push($arrayDeObjectes, $obra);
         }
-        
+
         $con = null;
         return $arrayDeObjectes;
     }
-    
-    
-        public function searchObraById($id) {
+
+    public function searchObraById($id) {
         $arrayDeObjectes = array();
         $con = new db();
         $query = $con->prepare("SELECT * FROM obra WHERE id = :id");
@@ -135,17 +131,50 @@ class AgenciaDB {
             $obra->__SET('endDate', $row['endDate']);
             $obra->__SET('directorId', $row['directorId']);
         }
-        
+
         $con = null;
         return $obra;
     }
-    
+
+    public function searchPaperById($id) {
+        $arrayDeObjectes = array();
+        $con = new db();
+        $query = $con->prepare("SELECT * FROM paper WHERE id = :id");
+        $query->bindValue(":id", $id);
+        $result = $con->consultarObjectes($query);
+
+        foreach ($result as $row) {
+
+            $paper = new Paper();
+
+            $paper->__SET('id_paper', $row['id']);
+            $paper->__SET('paper', $row['paper']);
+            $paper->__SET('id_actor', $row['id_actor']);
+            $paper->__SET('id_obra', $row['id_obra']);
+        }
+
+        $con = null;
+        return $paper;
+    }
 
     public function populatePapersDb() {
-        $query = "SELECT * FROM paper;";
+        $arrayDeObjectes = array();
         $con = new db();
-        $arrayDePapers = $con->consultaPapers($query);
-        $con->close();
+        $query = $con->prepare("SELECT * FROM paper;");
+        $result = $con->consultarObjectes($query);
+
+        foreach ($result as $row) {
+
+            $paper = new Paper();
+
+            $paper->__SET('id_paper', $row['id']);
+            $paper->__SET('paper', $row['paper']);
+            $paper->__SET('id_actor', $row['id_actor']);
+            $paper->__SET('id_obra', $row['id_obra']);
+            array_push($arrayDeObjectes, $paper);
+        }
+
+        $con = null;
         return $arrayDePapers;
     }
 
