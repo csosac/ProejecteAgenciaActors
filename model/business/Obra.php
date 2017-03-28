@@ -100,17 +100,17 @@ class Obra
 
     public function eliminar($id) {
         $ObraDB = new ObraDB();
-        return $ObraDB->Eliminar($id);
+        return $ObraDB->eliminar($id);
     }
 
     public function actualitzar(Obra $data) {
         $ObraDB = new ObraDB();
-        $ObraDB->Actualitzar($data);
+        $ObraDB->actualitzar($data);
     }
     
     public function insertar(Obra $data) {
         $ObraDB = new ObraDB();
-        $ObraDB->Insertar($data);
+        $ObraDB->insertar($data);
     }
     
 }
