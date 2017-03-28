@@ -80,25 +80,6 @@ class Paper {
         $PaperDB = new PaperDB();
         $PaperDB->insertar($this);
     }
-
-
-
-    public function getActorById($id_actor) {
-        $ActorDB = new ActorDB();
-        return $ActorDB->Obtenir($id_actor);
-    }
-
-    public function getNameActorById($id_actor) {
-        $ActorDB = new ActorDB();
-        $actor = $ActorDB->Obtenir($id_actor);
-        return $actor->__GET('name') . " " . $actor->__GET('lastname');
-    }
-
-    public function getNameObraById($id_obra) {
-        $ObraDB = new ObraDB();
-        return $ObraDB->Obtenir($id_obra)->__GET('name');
-    }
-
 }
 
 ?>

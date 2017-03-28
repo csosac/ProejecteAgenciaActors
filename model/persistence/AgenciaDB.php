@@ -185,6 +185,14 @@ class AgenciaDB {
         $con->close();
         return $arrayDeUsers;
     }
+    
+    public function getNameActorById($id){
+        return $this->searchActorById($id)->__GET('name')." ".$this->searchActorById($id)->__GET('lastname');
+    }
+    
+    public function getNameObraById($id){
+        return $this->searchObraById($id)->__GET('name');
+    }
 
 }
 ?>

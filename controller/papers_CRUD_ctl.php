@@ -4,6 +4,7 @@ include_once("controller/metodesPropis/function_AutoLoad.php");
 $script ='<script type="text/javascript" src= "view/js/papers.js"></script>';
 if (checkSession()) {
     $paper = new Paper();
+    $agencia = new Agencia();
     $action = "";
     if (isset($_REQUEST['act'])) {
         if ($_REQUEST['act'] == 'llistar') {
