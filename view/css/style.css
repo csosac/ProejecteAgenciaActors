@@ -11,7 +11,7 @@ and open the template in the editor.
 .encabezado{
     background-image: url('../images/header.png');
     min-height: 200px;
-     border-radius: 15px 15px 0px 0px ; 
+    border-radius: 15px 15px 0px 0px ; 
 }
 .articulo{
     line-height: 16pt;
@@ -50,5 +50,9 @@ body{
     font-weight: 200 !important;
 }
 .fa-lg{
-        color:black;
-    }
+    color:black;
+}
+
+form .error {
+    color: #ff0000;
+}

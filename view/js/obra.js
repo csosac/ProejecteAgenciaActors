@@ -1,5 +1,9 @@
 $(document).ready(inicialitzarEvents);
-
+$(document).ready(function () {
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
 function inicialitzarEvents()
 {
     demanaDirector();
@@ -21,3 +25,5 @@ function mostraDirector(dades)
 {
     $("select#director").html(dades);
 }
+
+

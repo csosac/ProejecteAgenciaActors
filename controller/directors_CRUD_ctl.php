@@ -1,5 +1,6 @@
 <?php
-
+$script ="<script type=\"text/javascript\" src= \"view/js/director.js\"></script> <br/>"
+        . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
 include_once("controller/metodesPropis/function_AutoLoad.php");
 $llistar = false;
 if (isset($_REQUEST['act'])) {
@@ -24,7 +25,7 @@ if (isset($_REQUEST['act'])) {
     }
     //este elimina
 }
-if ($llistar = false) {
+if ($llistar == false) {
     if (checkSession()) {
         $action = "";
         if (isset($_REQUEST['act'])) {

@@ -30,7 +30,7 @@
                                 <td class='text-center'><?php echo $r->__GET('type'); ?></td>
                                 <td class='text-center'><?php echo $r->__GET('startDate'); ?></td>
                                 <td class='text-center'><?php echo $r->__GET('endDate'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('directorId'); ?></td>
+                                <td class='text-center'><?php echo $agencia->getNameDirectorById($r->__GET('directorId')); ?></td>
                                 <td class="text-center">
                                     <a href="?ctl=obra&act=veure&id=<?php echo $r->__GET('id_obra'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>
                                 </td>

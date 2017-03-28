@@ -57,8 +57,6 @@ if ($llistar == false) {
                 $action = "?ctl=paper&act=modificar&id=" . $paper->__GET('id_paper');
                 $headerTitle = "Modificar Paper";
                 $button = 'Modificar';
-                require_once 'view/header.php';
-                require_once 'view/formularis/papers/papers_CRUD_view.php';
                 //este enseña uno
             } elseif (isset($_REQUEST['id_obra']) && $_REQUEST['act'] == 'afegir') {
                 $action = "?ctl=paper&act=afegir";
@@ -72,11 +70,7 @@ if ($llistar == false) {
                 $action = "?ctl=paper&act=afegir";
                 $headerTitle = "Afegir Paper";
                 $button = 'Crear';
-                require_once 'view/header.php';
-                require_once 'view/formularis/papers/papers_CRUD_view.php';
             }
-
-            require_once 'view/footer.php';
         }
         require_once 'view/header.php';
         require_once 'view/formularis/papers/papers_CRUD_view.php';

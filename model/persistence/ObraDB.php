@@ -53,7 +53,9 @@ class ObraDB {
             $query->bindValue(":endDate", $data->__GET('endDate'));
             $query->bindValue(":directorId", $data->__GET('directorId'));
             $con->consulta($query);
+            $id = ($con->lastInsertId());
             return $con->lastInsertId();
+            
         } catch (Exception $e) {
             die($e->getMessage());
         }
