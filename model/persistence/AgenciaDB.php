@@ -149,8 +149,8 @@ class AgenciaDB {
 
             $paper->__SET('id_paper', $row['id']);
             $paper->__SET('paper', $row['paper']);
-            $paper->__SET('id_actor', $row['id_actor']);
-            $paper->__SET('id_obra', $row['id_obra']);
+            $paper->__SET('id_actor', $row['actorId']);
+            $paper->__SET('id_obra', $row['obraId']);
         }
 
         $con = null;
