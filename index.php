@@ -55,21 +55,21 @@ switch ($ctl) {
 
     case"actor":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/actors/actors_CRUD_ctl.php";
+            include "controller/actors_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=actor&act=llistar");
         }
         break;
     case"paper":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/papers/papers_CRUD_ctl.php";
+            include "controller/papers_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=paper&act=llistar");
         }
         break;
     case"obra":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/obres/obres_CRUD_ctl.php";
+            include "controller/obres_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=obra&act=llistar");
         }
@@ -77,7 +77,7 @@ switch ($ctl) {
 
     case"director":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/directors/directors_CRUD_ctl.php";
+            include "controller/directors_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=director&act=llistar");
         }
