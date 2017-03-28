@@ -12,6 +12,7 @@ class ActorDB {
             $query = $con->prepare("DELETE FROM actor WHERE id = :id");
             $query->bindValue(":id", $id);
             $con->consulta($query);
+            $con=null;
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -28,6 +29,7 @@ class ActorDB {
             $query->bindValue(":genre", $data->__GET('genre'));
             $query->bindValue(":photoURL", $data->__GET('photoURL'));
             $con->consulta($query);
+            $con=null;
         } catch (Exception $e) {
             die($e->getMessage());
         }
