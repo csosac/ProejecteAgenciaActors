@@ -16,7 +16,6 @@
                     <div class="form-group">
                         <label>Cognom</label>
                         <input class="form-control required"  name="lastname"  value="<?php echo $director->__GET('lastname'); ?>" >
-
                     </div>                   
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button; ?></button>
                 </form>

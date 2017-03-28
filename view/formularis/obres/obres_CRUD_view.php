@@ -26,10 +26,11 @@
                         <input class="form-control" type="text" name="endDate" value="<?php echo $obra->__GET('endDate'); ?>">
                     </div>
                     <div class="form-group">
-                        <label>Director: </label>
-                        <input class="form-control" type="text" name="directorId" value="<?php echo $obra->__GET('directorId'); ?>">
+                        <label>Director:</label>
+                        <select class="form-control" name="directorId" id="director">
+                        </select>
                     </div>
-
+                    <input type="hidden" name="directorid" value="<?php echo $obra->__GET('directorId'); ?>">
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button?></button>
                 </form>
             </div>

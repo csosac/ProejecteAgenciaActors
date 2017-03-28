@@ -9,7 +9,7 @@ function inicialitzarEvents()
 
 function demanaActor($id)
 {
-    //var id = $('#actor').val();
+    var id = $('#actorid').val();
     $.get('index.php?ctl=peticioAJAX&act=actor',{id: id}, mostraActor)
             .fail(function () {
                 console.log("error");
@@ -19,7 +19,7 @@ function demanaActor($id)
 
 function demanaObres($id)
 {
-    var id = $('#obra').val();
+    var id = $('#obraid').val();
     $.get('index.php?ctl=peticioAJAX&act=obra',{id:id}, mostraObra)
             .fail(function () {
                 console.log("error");
