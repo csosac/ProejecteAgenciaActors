@@ -36,7 +36,7 @@ class ActorDB {
     public function Insertar($data) {
         try {
             $con = new db();
-            $query = $con->prepare("INSERT INTO actor (nif,name,lastname,genre,photoURL) VALUES (:nif, :name, :lastname, :genre, :photoURL");
+            $query = $con->prepare("INSERT INTO actor (nif,name,lastname,genre,photoURL) VALUES (:nif, :name, :lastname, :genre, :photoURL)");
             $query->bindValue(":nif", $data->__GET('nif'));
             $query->bindValue(":name", $data->__GET('name'));
             $query->bindValue(":lastname", $data->__GET('lastname'));
