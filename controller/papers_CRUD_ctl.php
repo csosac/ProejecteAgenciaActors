@@ -40,6 +40,8 @@ if (checkSession()) {
                 $action = "?ctl=paper&act=modificar&id=" . $paper->__GET('id_paper');
                 $headerTitle = "Modificar Paper";
                 $button = 'Modificar';
+                require_once 'view/header.php';
+                require_once 'view/formularis/papers/papers_CRUD_view.php';
                //este enseña uno
             } elseif(isset($_REQUEST['id_obra']) && $_REQUEST['act'] == 'afegir'){
                 $action = "?ctl=paper&act=afegir";
@@ -50,7 +52,11 @@ if (checkSession()) {
                 $action = "?ctl=paper&act=llistar";
                 $headerTitle = "Paper";
                 $paper =$agencia->searchPaperById($_REQUEST['id']);
+                $actor =$agencia->searchActorById($paper->getId_actor());
+                $obra = $agencia->searchObraById($paper->getId_obra());
                 $button = 'Tornar';
+                require_once 'view/header.php';
+                require_once 'view/formularis/papers/paper_fitxa_view.php';
              //este elimina
             }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
                 $paper->eliminar($_REQUEST['id']);
@@ -60,9 +66,10 @@ if (checkSession()) {
                 $action = "?ctl=paper&act=afegir";
                 $headerTitle = "Afegir Paper";
                 $button = 'Crear';
+                require_once 'view/header.php';
+                require_once 'view/formularis/papers/papers_CRUD_view.php';
             }
-            require_once 'view/header.php';
-            require_once 'view/formularis/papers/papers_CRUD_view.php';
+            
             require_once 'view/footer.php';
         }
     }
