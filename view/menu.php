@@ -22,7 +22,7 @@
                     <a href="?ctl=actor" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actors<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="?ctl=actor&act=llistar">Actors</a></li>
-                        <li><a href="?ctl=papers">Papers</a></li>
+                        <li><a href="?ctl=paper">Papers</a></li>
                         <?php if (checkSession()) { ?>
                             <li><a href="?ctl=actor&act=afegir">Afegir Actor</a></li>
                         <?php } ?>
