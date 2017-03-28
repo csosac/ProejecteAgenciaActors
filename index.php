@@ -8,13 +8,13 @@ include 'controller/metodesPropis/getCookie.php';
 require_once("config/inici.inc.php");
 require_once("controller/metodesPropis/function_AutoLoad.php");
 
-if (isset($_SESSION['agencia'])) {
-    $agencia = unserialize($_SESSION['agencia']);
-} else {
-    $agencia = New Agencia("Agencia Actors");
-    $agencia->populateAgencia();
-    $_SESSION['agencia'] = serialize($agencia);
-}
+//if (isset($_SESSION['agencia'])) {
+//    $agencia = unserialize($_SESSION['agencia']);
+//} else {
+//    $agencia = New Agencia("Agencia Actors");
+//    $agencia->populateAgencia();
+//    $_SESSION['agencia'] = serialize($agencia);
+//}
 $ctl = "index";
 
 if (isset($_REQUEST['ctl'])) {
@@ -30,6 +30,14 @@ if (isset($_REQUEST['ctl'])) {
 }
 
 switch ($ctl) {
+    case"adjudicarPaper";
+        if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
+            include "controller/actors/adjudicarPapers_ctl.php";
+        } else {
+            header("Location: index.php?ctl=actor&act=llistar");
+        }
+        break;
+        break;    
     case"peticioAJAX";
         if ($act == 'actor'){
             include "controller/dadesActor.php";
@@ -47,21 +55,21 @@ switch ($ctl) {
 
     case"actor":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/actors/actors_CRUD_ctl.php";
+            include "controller/actors_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=actor&act=llistar");
         }
         break;
     case"paper":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/papers/papers_CRUD_ctl.php";
+            include "controller/papers_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=paper&act=llistar");
         }
         break;
     case"obra":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/obres/obres_CRUD_ctl.php";
+            include "controller/obres_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=obra&act=llistar");
         }
@@ -69,7 +77,7 @@ switch ($ctl) {
 
     case"director":
         if ($act == 'afegir' || $act == 'modificar' || $act == 'llistar' || $act == 'veure' || $act == 'eliminar') {
-            include "controller/directors/directors_CRUD_ctl.php";
+            include "controller/directors_CRUD_ctl.php";
         } else {
             header("Location: index.php?ctl=director&act=llistar");
         }

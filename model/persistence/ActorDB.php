@@ -6,66 +6,12 @@ require_once("config/db.inc.php");
 
 class ActorDB {
 
-    private $pdo;
-
-    public function __CONSTRUCT() {
-        try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=agencia', 'root', '');
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Llistar() {
-        try {
-            $result = array();
-
-            $stm = $this->pdo->prepare("SELECT * FROM actor");
-            $stm->execute();
-
-            foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
-                $actor = new Actor();
-                $actor->__SET('id_actor', $r->id);
-                $actor->__SET('nif', $r->nif);
-                $actor->__SET('name', $r->name);
-                $actor->__SET('lastname', $r->lastname);
-                $actor->__SET('genre', $r->genre);
-                $actor->__SET('photoURL', $r->photoURL);
-
-                $result[] = $actor;
-            }
-            return $result;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Obtenir($id) {
-        try {
-            $stm = $this->pdo->prepare("SELECT * FROM actor WHERE id = ?");
-            $stm->execute(array($id));
-
-            $r = $stm->fetch(PDO::FETCH_OBJ);
-
-            $actor = new Actor();
-            $actor->__SET('id_actor', $r->id);
-            $actor->__SET('nif', $r->nif);
-            $actor->__SET('name', $r->name);
-            $actor->__SET('lastname', $r->lastname);
-            $actor->__SET('genre', $r->genre);
-            $actor->__SET('photoURL', $r->photoURL);
-            return $actor;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
     public function Eliminar($id) {
         try {
-            $stm = $this->pdo->prepare("DELETE FROM actor WHERE id = ?");
-
-            $stm->execute(array($id));
+            $con = new db();
+            $query = $con->prepare("DELETE FROM actor WHERE id = :id");
+            $query->bindParam(":id", $id);
+            $con->consulta($query);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -73,36 +19,31 @@ class ActorDB {
 
     public function Actualitzar(Actor $data) {
         try {
-            $sql = "UPDATE actor SET nif = ?, name  = ?, lastname = ? , genre = ?, photoURL = ? WHERE id = ?";
-
-            $stm = $this->pdo->prepare($sql);
-            $stm->execute(array(
-                $data->__GET('nif'),
-                $data->__GET('name'),
-                $data->__GET('lastname'),
-                $data->__GET('genre'),
-                $data->__GET('photoURL'),
-                $data->__GET('id_actor'))
-            );
+            $con = new db();
+            $query = $con->prepare("UPDATE actor SET nif = :nif, name  = :name, lastname = :lastname , genre = :genre, photoURL = :photoURL WHERE id = :id");
+            $query->bindValue(":id", $data->__GET('id_actor'));
+            $query->bindValue(":nif", $data->__GET('nif'));
+            $query->bindValue(":name", $data->__GET('name'));
+            $query->bindValue(":lastname", $data->__GET('lastname'));
+            $query->bindValue(":genre", $data->__GET('genre'));
+            $query->bindValue(":photoURL", $data->__GET('photoURL'));
+            $con->consulta($query);
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
-    public function Registrar(Actor $data) {
+    public function Insertar($data) {
         try {
-            $sql = "INSERT INTO actor (nif,name,lastname,genre,photoURL) 
-		        VALUES (?, ?, ? , ? , ?)";
-
-            $this->pdo->prepare($sql)
-                    ->execute(
-                            array(
-                                $data->__GET('nif'),
-                                $data->__GET('name'),
-                                $data->__GET('lastname'),
-                                $data->__GET('genre'),
-                                $data->__GET('photoURL'))
-            );
+            $con = new db();
+            $query = $con->prepare("INSERT INTO actor (nif,name,lastname,genre,photoURL) VALUES (:nif, :name, :lastname, :genre, :photoURL");
+            $query->bindValue(":nif", $data->__GET('nif'));
+            $query->bindValue(":name", $data->__GET('name'));
+            $query->bindValue(":lastname", $data->__GET('lastname'));
+            $query->bindValue(":genre", $data->__GET('genre'));
+            $query->bindValue(":photoURL", $data->__GET('photoURL'));
+            $con->consulta($query);
+            $con = null;
         } catch (Exception $e) {
             die($e->getMessage());
         }

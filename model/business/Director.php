@@ -64,29 +64,19 @@ class Director {
         $this->lastname = $lastname;
     }
 
-        public function Llistar() {
-        $DirectorDB = new DirectorDB();
-        return $DirectorDB->Llistar();
-    }
-
-    public function Obtenir($id) {
-        $DirectorDB = new DirectorDB();
-        return $DirectorDB->Obtenir($id);
-    }
-
-    public function Eliminar($id) {
+    public function eliminar($id) {
         $DirectorDB = new DirectorDB();
         return $DirectorDB->Eliminar($id);
     }
 
-    public function Actualitzar(Director $data) {
+    public function actualitzar($data) {
         $DirectorDB = new DirectorDB();
         $DirectorDB->Actualitzar($data);
     }
     
-    public function Registrar(Director $data) {
+    public function insertar($data) {
         $DirectorDB = new DirectorDB();
-        $DirectorDB->Registrar($data);
+        $DirectorDB->insertar($data);
     }
 }
 

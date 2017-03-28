@@ -9,19 +9,21 @@ if (isset($_REQUEST['recordarUsuari'])) {
     deleteCookie("usuari", "");
 }
 
-if (isset($_SESSION['agencia'])) {
-    $agencia = unserialize($_SESSION['agencia']);
-} else {
-    $agencia = New Agencia("Agencia Actors");
-    $agencia->populateAgencia();
-    $_SESSION['agencia'] = serialize($agencia);
-}
+//if (isset($_SESSION['agencia'])) {
+//    $agencia = unserialize($_SESSION['agencia']);
+//} else {
+//    $agencia = New Agencia("Agencia Actors");
+//    $agencia->populateAgencia();
+//    $_SESSION['agencia'] = serialize($agencia);
+//}
+$user = new User();
 
 $loginError = false;
 if (empty($_REQUEST['pass']) || empty($_REQUEST['username']))
     $loginError = true;
 if (isset($_REQUEST['Submit']) && !empty($_REQUEST['pass']) && !empty($_REQUEST['username'])) {
-    if ($agencia->validarUsuari($_REQUEST['username'], $_REQUEST['pass'])) {
+    $user =$user->getUserByUsername($_REQUEST['username']);
+    if ($user->validarUsuari($_REQUEST['username'], $_REQUEST['pass'])) {
         $_SESSION["login"] = true;
         $_SESSION["usuari"] = $_REQUEST['username'];
         header("Location: ?ctl=index");

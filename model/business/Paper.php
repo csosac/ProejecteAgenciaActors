@@ -65,6 +65,47 @@ class Paper {
         $this->id_obra = $id_obra;
     }
 
+    public function Llistar() {
+        $PaperDB = new PaperDB();
+        return $PaperDB->Llistar();
+    }
+
+    public function Obtenir($id) {
+        $PaperDB = new PaperDB();
+        return $PaperDB->Obtenir($id);
+    }
+
+    public function Eliminar($id) {
+        $PaperDB = new PaperDB();
+        return $PaperDB->Eliminar($id);
+    }
+
+    public function Actualitzar(Paper $data) {
+        $PaperDB = new PaperDB();
+        $PaperDB->Actualitzar($data);
+    }
+
+    public function Insertar(Paper $data) {
+        $PaperDB = new PaperDB();
+        $PaperDB->Insertar($data);
+    }
+
+    public function getActorById($id_actor) {
+        $ActorDB = new ActorDB();
+        return $ActorDB->Obtenir($id_actor);
+    }
+
+    public function getNameActorById($id_actor) {
+        $ActorDB = new ActorDB();
+        $actor = $ActorDB->Obtenir($id_actor);
+        return $actor->__GET('name') . " " . $actor->__GET('lastname');
+    }
+
+    public function getNameObraById($id_obra) {
+        $ObraDB = new ObraDB();
+        return $ObraDB->Obtenir($id_obra)->__GET('name');
+    }
+
 }
 
 ?>

@@ -4,10 +4,11 @@ include_once("controller/metodesPropis/function_AutoLoad.php");
 
 if (checkSession()) {
     $actor = new Actor();
+    $agencia = new Agencia();
     $action = "";
     if (isset($_REQUEST['act'])) {
         if ($_REQUEST['act'] == 'llistar') {
-            $arrayDeActors = $actor->Llistar();
+            $arrayDeActors = $agencia->getArrayDeActors();
             $headerTitle = "Llista Actors";
             $button = 'Crear';
             require_once 'view/header.php';
@@ -16,18 +17,16 @@ if (checkSession()) {
         } else {
             if (isset($_REQUEST['submit'])) {
                 if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $actor=$actor->Obtenir($_REQUEST['id']);
+                    $actor=$agencia->searchActorById($_REQUEST['id']);
                 }
                 $actor->__SET('name', $_REQUEST['name']);
                 $actor->__SET('lastname', $_REQUEST['lastname']);
                 $actor->__SET('nif', $_REQUEST['nif']);
                 $actor->__SET('genre', $_REQUEST['genre']);
                 $actor->__SET('photoURL', $_REQUEST['photoURL']);
-                
-
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
-                    $actor->Registrar($actor);
+                    $actor->Insertar();
                     header("Location: index.php?ctl=actor&act=llistar");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
@@ -37,7 +36,7 @@ if (checkSession()) {
                 }
                 //act modificar sense submit
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'modificar') {
-                $actor = $actor->Obtenir($_REQUEST['id']);
+                $actor = $agencia->searchActorById($_REQUEST['id']);
                 $action = "?ctl=actor&act=modificar&id=" . $actor->__GET('id_actor');
                 $headerTitle = "Modificar Actor";
                 $button = 'Modificar';
@@ -47,7 +46,7 @@ if (checkSession()) {
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
                 $action = "?ctl=actor&act=llistar";
                 $headerTitle = "Actor";
-                $actor = $actor->Obtenir($_REQUEST['id']);
+                $actor = $agencia->searchActorById($_REQUEST['id']);
                 $button = 'Tornar';
                 
                 require_once 'view/header.php';
