@@ -110,7 +110,7 @@ class Obra
     
     public function insertar(Obra $data) {
         $ObraDB = new ObraDB();
-        $ObraDB->insertar($data);
+        return $ObraDB->insertar($data);
     }
     
 }
