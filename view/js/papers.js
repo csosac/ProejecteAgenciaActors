@@ -2,14 +2,13 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
-    
     demanaActor();
     demanaObres();
 }
 
-function demanaActor($id)
+function demanaActor()
 {
-    //var id = $('#actor').val();
+    var id = $('#actorid').val();
     $.get('index.php?ctl=peticioAJAX&act=actor',{id: id}, mostraActor)
             .fail(function () {
                 console.log("error");
@@ -17,9 +16,9 @@ function demanaActor($id)
     return false;
 }
 
-function demanaObres($id)
+function demanaObres()
 {
-    var id = $('#obra').val();
+    var id = $('#obraid').val();
     $.get('index.php?ctl=peticioAJAX&act=obra',{id:id}, mostraObra)
             .fail(function () {
                 console.log("error");

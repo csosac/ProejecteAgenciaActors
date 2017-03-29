@@ -19,17 +19,18 @@
                     </div>
                     <div class="form-group">
                         <label>Data inici: </label>
-                        <input class="form-control" type="text" name="startDate" value="<?php echo $obra->__GET('startDate'); ?>">
+                        <input class="form-control js-datepicker" type="text" name="startDate" value="<?php echo $obra->__GET('startDate'); ?>">
                     </div>
                     <div class="form-group">
                         <label>Data finalització: </label>
-                        <input class="form-control" type="text" name="endDate" value="<?php echo $obra->__GET('endDate'); ?>">
+                        <input class="form-control js-datepicker" type="text" name="endDate" value="<?php echo $obra->__GET('endDate'); ?>">
                     </div>
                     <div class="form-group">
-                        <label>Director: </label>
-                        <input class="form-control" type="text" name="directorId" value="<?php echo $obra->__GET('directorId'); ?>">
+                        <label>Director:</label>
+                        <select class="form-control" name="directorId" id="director">
+                        </select>
                     </div>
-
+                    <input type="hidden" id="directorid" value="<?php echo $obra->__GET('directorId'); ?>">
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button?></button>
                 </form>
             </div>

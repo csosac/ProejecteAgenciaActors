@@ -11,16 +11,16 @@
                     </div>
                     <div class="form-group">
                         <label>Actor:</label>
-                        <select class="form-control" id="actor">
+                        <select class="form-control" name="actorId" id="actor">
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Obra:</label>
-                        <select class="form-control" id="obra">
+                        <select class="form-control" name="obraId" id="obra">
                         </select>
                     </div>
-                    <input type="hidden" name="actorid" value="<?php echo $paper->__GET('id_actor'); ?>">
-                    <input type="hidden" name="obraid" value="<?php echo $paper->__GET('id_obra'); ?>">
+                    <input type="hidden" id="actorid" value="<?php echo $paper->__GET('id_actor'); ?>">
+                    <input type="hidden" id="obraid" value="<?php echo $paper->__GET('id_obra'); ?>">
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button ?></button>
                 </form>
             </div>

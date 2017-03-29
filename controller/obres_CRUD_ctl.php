@@ -1,6 +1,10 @@
 <?php
 
 include_once("controller/metodesPropis/function_AutoLoad.php");
+$script = '<script type="text/javascript" src= "view/js/obra.js"></script> <br/> '
+        . '<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>';
+
+
 $llistar = false;
 if (isset($_REQUEST['act'])) {
     $agencia = new Agencia();
@@ -22,6 +26,7 @@ if (isset($_REQUEST['act'])) {
 
         require_once 'view/header.php';
         require_once 'view/formularis/obres/obra_fitxa_view.php';
+        require_once 'view/footer.php';
 
         //este elimina
     }
@@ -44,10 +49,9 @@ if ($llistar == false) {
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
                     $id_obra = $obra->insertar($obra);
-                    header("Location: index.php?ctl=paper&act=afegir&id_obra='" . $id_obra);
+                    header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
-
                     $obra->actualitzar($obra);
                     header("Location: index.php?ctl=obra&act=llistar");
                 }
@@ -57,8 +61,6 @@ if ($llistar == false) {
                 $action = "?ctl=obra&act=modificar&id=" . $obra->__GET('id_obra');
                 $headerTitle = "Modificar Obra";
                 $button = 'Modificar';
-                require_once 'view/header.php';
-                require_once 'view/formularis/obres/obres_CRUD_view.php';
                 //este enseña uno
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
                 $obra->eliminar($_REQUEST['id']);
@@ -68,10 +70,9 @@ if ($llistar == false) {
                 $action = "?ctl=obra&act=afegir";
                 $headerTitle = "Afegir Obra";
                 $button = 'Crear';
-                require_once 'view/header.php';
-                require_once 'view/formularis/obres/obres_CRUD_view.php';
             }
-
+            require_once 'view/header.php';
+            require_once 'view/formularis/obres/obres_CRUD_view.php';
             require_once 'view/footer.php';
         }
     } else {
