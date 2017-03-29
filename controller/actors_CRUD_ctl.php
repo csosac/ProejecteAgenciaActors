@@ -1,5 +1,6 @@
 <?php
-
+$script ="<script type=\"text/javascript\" src= \"view/js/actor.js\"></script> <br/>"
+        . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
 include_once("controller/metodesPropis/function_AutoLoad.php");
 $llistar = false;
 
