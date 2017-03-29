@@ -1,23 +1,38 @@
 <?php
 
 include_once("controller/metodesPropis/function_AutoLoad.php");
+$llistar = false;
 
-if (checkSession()) {
+if (isset($_REQUEST['act'])) {
     $actor = new Actor();
     $agencia = new Agencia();
-    $action = "";
-    if (isset($_REQUEST['act'])) {
-        if ($_REQUEST['act'] == 'llistar') {
-            $arrayDeActors = $agencia->getArrayDeActors();
-            $headerTitle = "Llista Actors";
-            $button = 'Crear';
-            require_once 'view/header.php';
-            require_once 'view/formularis/actors/actors_view.php';
-            require_once 'view/footer.php';
-        } else {
+    if ($_REQUEST['act'] == 'llistar') {
+
+        $llistar = true;
+        $arrayDeActors = $agencia->getArrayDeActors();
+        $headerTitle = "Llista Actors";
+        $button = 'Crear';
+        require_once 'view/header.php';
+        require_once 'view/formularis/actors/actors_view.php';
+        require_once 'view/footer.php';
+    } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure') {
+        $llistar = true;
+        $action = "?ctl=actor&act=llistar";
+        $headerTitle = "Actor";
+        $actor = $agencia->searchActorById($_REQUEST['id']);
+        $button = 'Tornar';
+
+        require_once 'view/header.php';
+        require_once 'view/formularis/actors/actor_fitxa_view.php';
+    }
+}
+if ($llistar == false) {
+    if (checkSession()) {
+        $action = "";
+        if (isset($_REQUEST['act'])) {
             if (isset($_REQUEST['submit'])) {
-                if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $actor=$agencia->searchActorById($_REQUEST['id']);
+                if ($_REQUEST['act'] == 'modificar' && isset($_REQUEST['id'])) {
+                    $actor = $agencia->searchActorById($_REQUEST['id']);
                 }
                 $actor->__SET('name', $_REQUEST['name']);
                 $actor->__SET('lastname', $_REQUEST['lastname']);
@@ -42,18 +57,8 @@ if (checkSession()) {
                 $button = 'Modificar';
                 require_once 'view/header.php';
                 require_once 'view/formularis/actors/actors_CRUD_view.php';
-               //este enseña uno
-            } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
-                $action = "?ctl=actor&act=llistar";
-                $headerTitle = "Actor";
-                $actor = $agencia->searchActorById($_REQUEST['id']);
-                $button = 'Tornar';
-                
-                require_once 'view/header.php';
-                require_once 'view/formularis/actors/actor_fitxa_view.php';
-                
-             //este elimina
-            }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
+                //este enseña uno
+            } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
                 $actor->eliminar($_REQUEST['id']);
                 header("Location: index.php?ctl=actor&act=llistar");
                 //añade
@@ -64,12 +69,11 @@ if (checkSession()) {
                 require_once 'view/header.php';
                 require_once 'view/formularis/actors/actors_CRUD_view.php';
             }
-            
+
             require_once 'view/footer.php';
         }
+    } else {
+        include "controller/login/login_ctl.php";
     }
-} else {
-    include "controller/login/login_ctl.php";
 }
-
     

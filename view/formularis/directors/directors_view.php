@@ -12,8 +12,10 @@
                                 <th>Nom</th>
                                 <th>Cognoms</th>                     
                                 <th class="text-center">Veure</th>
-                                <th class="text-center">Modificar</th>
-                                <th class="text-center">Eliminar</th>
+                                <?php if (checkSession()) { ?>
+                                    <th class="text-center">Modificar</th>
+                                    <th class="text-center">Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </thead>    
                         <?php
@@ -22,21 +24,25 @@
                             <tr>
                                 <td><?php echo $r->__GET('nif'); ?></td>
                                 <td><?php echo $r->__GET('name'); ?></td>
-                                <td><?php echo $r->__GET('lastname'); ?></td>
+                                <td><?php echo $r->__GET('lastname'); ?></td>                
                                 <td class="text-center">
                                     <a href="?ctl=director&act=veure&id=<?php echo $r->__GET('id_director'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>
-                                <td class="text-center">            
-                                    <a href="?ctl=director&act=modificar&id=<?php echo $r->__GET('id_director'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
-                                </td>
-                                <td class="text-center">
-                                    <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=director&act=eliminar&id=<?php echo $r->id_director; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
-                                </td>
+                                <?php if (checkSession()) { ?>
+                                    <td class="text-center">            
+                                        <a href="?ctl=director&act=modificar&id=<?php echo $r->__GET('id_director'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=director&act=eliminar&id=<?php echo $r->id_director; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php endforeach; ?>
                     </table> 
                 </div>
-                <button onclick="window.location.href='?ctl=director&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button;?></button>
+                <?php if (checkSession()) { ?>
+                    <button onclick="window.location.href = '?ctl=director&act=afegir'" name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button; ?></button>
+                <?php } ?>    
                 </form>
             </div>
         </div> 

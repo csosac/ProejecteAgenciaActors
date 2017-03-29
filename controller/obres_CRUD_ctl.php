@@ -1,23 +1,43 @@
 <?php
 
 include_once("controller/metodesPropis/function_AutoLoad.php");
+$script = '<script type="text/javascript" src= "view/js/obra.js"></script> <br/> '
+        . '<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>';
 
-if (checkSession()) {
+
+$llistar = false;
+if (isset($_REQUEST['act'])) {
     $agencia = new Agencia();
     $obra = new Obra();
-    $action = "";
-    if (isset($_REQUEST['act'])) {
-        if ($_REQUEST['act'] == 'llistar') {
-            $arrayDeObres = $agencia->getArrayDeObres();
-            $headerTitle = "Llista Obres";
-            $button = 'Crear';
-            require_once 'view/header.php';
-            require_once 'view/formularis/obres/obres_view.php';
-            require_once 'view/footer.php';
-        } else {
+    if ($_REQUEST['act'] == 'llistar') {
+        $llistar = true;
+        $arrayDeObres = $agencia->getArrayDeObres();
+        $headerTitle = "Llista Obres";
+        $button = 'Crear';
+        require_once 'view/header.php';
+        require_once 'view/formularis/obres/obres_view.php';
+        require_once 'view/footer.php';
+    } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure') {
+        $llistar = true;
+        $action = "?ctl=obra&act=llistar";
+        $headerTitle = "Obra";
+        $obra = $agencia->searchObraById($_REQUEST['id']);
+        $button = 'Tornar';
+
+        require_once 'view/header.php';
+        require_once 'view/formularis/obres/obra_fitxa_view.php';
+        require_once 'view/footer.php';
+
+        //este elimina
+    }
+}
+if ($llistar == false) {
+    if (checkSession()) {
+        $action = "";
+        if (isset($_REQUEST['act'])) {
             if (isset($_REQUEST['submit'])) {
-                if ($_REQUEST['act']=='modificar' && isset($_REQUEST['id'])){
-                    $obra=$agencia->searchObraById($_REQUEST['id']);
+                if ($_REQUEST['act'] == 'modificar' && isset($_REQUEST['id'])) {
+                    $obra = $agencia->searchObraById($_REQUEST['id']);
                 }
                 $obra->__SET('name', $_REQUEST['name']);
                 $obra->__SET('description', $_REQUEST['description']);
@@ -29,10 +49,9 @@ if (checkSession()) {
                 //act = afegir
                 if ($_REQUEST['act'] == 'afegir') {
                     $id_obra = $obra->insertar($obra);
-                    header("Location: index.php?ctl=paper&act=afegir&id_obra='".$id_obra);
+                    header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
-
                     $obra->actualitzar($obra);
                     header("Location: index.php?ctl=obra&act=llistar");
                 }
@@ -42,20 +61,8 @@ if (checkSession()) {
                 $action = "?ctl=obra&act=modificar&id=" . $obra->__GET('id_obra');
                 $headerTitle = "Modificar Obra";
                 $button = 'Modificar';
-                require_once 'view/header.php';
-                require_once 'view/formularis/obres/obres_CRUD_view.php';
-               //este enseña uno
-            } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure'){
-                $action = "?ctl=obra&act=llistar";
-                $headerTitle = "Obra";
-                $obra = $agencia->searchObraById($_REQUEST['id']);
-                $button = 'Tornar';
-                
-                require_once 'view/header.php';
-                require_once 'view/formularis/obres/obra_fitxa_view.php';
-                
-             //este elimina
-            }elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
+                //este enseña uno
+            } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {
                 $obra->eliminar($_REQUEST['id']);
                 header("Location: index.php?ctl=obra&act=llistar");
                 //añade
@@ -63,15 +70,13 @@ if (checkSession()) {
                 $action = "?ctl=obra&act=afegir";
                 $headerTitle = "Afegir Obra";
                 $button = 'Crear';
-                require_once 'view/header.php';
-                require_once 'view/formularis/obres/obres_CRUD_view.php';
             }
-            
+            require_once 'view/header.php';
+            require_once 'view/formularis/obres/obres_CRUD_view.php';
             require_once 'view/footer.php';
         }
+    } else {
+        include "controller/login/login_ctl.php";
     }
-} else {
-    include "controller/login/login_ctl.php";
 }
-
     
