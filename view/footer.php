@@ -3,29 +3,28 @@
         <div class="row">
 
             <div class="col-md-offset-1 col-md-5">
-                <h3>Explora</h3>
-                <ul>				
-<!--                    <li><a href="?ctl=index.html">Inicio</a></li>
-                    <li><a href="?ctl=quienes_somos">¿Quienes somos?</a></li>
-                    <li><a href="?ctl=a_que_nos_dedicamos">¿A que nos dedicamos?</a></li>
-                    <li><a href="?ctl=producte">Productos</a></li>
-                    <li><a href="?ctl=cuerda">Instrumentos de cuerda</a></li>
-                    <li><a href="?ctl=percusion">Instrumentos de percusión</a></li>-->
-                </ul>
+                <h3>Explora</h3>		
+                <p><a class='enllac' href="?ctl=index">Inici</a><p>
+                <p><a class='enllac' href="?ctl=actor&act=llistar">Actors</a><p>
+                <p><a class='enllac' href="?ctl=paper">Papers</a><p>
+                <p><a class='enllac' href="?ctl=obra&act=llistar">Obres</a></li>
+                <p><a class='enllac' href="?ctl=director&act=llistar">Directors</a></p>
+                <p><a class='enllac' href="?ctl=contacto">Contacte</a></p>
+                
             </div>
 
 
             <div class="col-md-5">
-                <h3>Datos de Contacto</h3>
-                <p>Instruments</p>
+                <h3>Dades de contacte</h3>
+                <p>Agència d'actors</p>
                 <p>Camp de les Moreres, 14 Granollers (08401) Catalunya</p>
-                <p><span class="fa fa-envelope-o fa-1x"></span> info@instruments.cat</p>
-                <p><span class="fa fa-phone"></span>Teléfono: 93860002</p>
+                <p><span class="fa fa-envelope-o fa-1x"></span> info@agenciaActors.cat</p>
+                <p><span class="fa fa-phone"></span>Telèfono: 93860002</p>
             </div>
 
         </div>
     </div>
-    <div class="copyright">
+    <div class="copyright text-center">
         <small>Copyright © 2016 | Disseny Agencia Actors</small>
     </div>
 </div>
