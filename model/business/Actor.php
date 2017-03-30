@@ -95,11 +95,80 @@ class Actor {
         $ActorDB = new ActorDB();
         $ActorDB->actualitzar($data);
     }
-    
+
     public function insertar() {
         $ActorDB = new ActorDB();
         $ActorDB->insertar($this);
     }
+
+    function validateNif($nif) {
+        $valid = True;
+
+        $letra = substr($nif, -1);
+        $numeros = substr($nif, 0, -1);
+        if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8) {
+            $valid = True;
+        } else {
+            $valid = False;
+        }
+
+        return $valid;
+    }
+
+    function validateName($name) {
+        $txt = trim($name);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateLastname($lastname) {
+        $txt = trim($lastname);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validatePhotoUrl($photoURL) {
+        $txt = trim($photoURL);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateGenre($genre) {
+
+        $valid = False;
+
+        if ($genre != null) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    public function validateDirector() {
+
+        if ($this->validateGenre($this->__GET("genre")) == True && $this->validatePhotoUrl($this->__GET("photoURL")) == True && $this->validateNif($this->__GET("nif")) == True && $this->validateName($this->__GET("name")) == True && $this->validateLastname($this->__GET("lastname")) == True) {
+
+            return True;
+        } else {
+            return False;
+        }
+    }
+
 }
 
 ?>
