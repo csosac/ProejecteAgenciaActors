@@ -1,5 +1,6 @@
 <?php
-$script ="<script type=\"text/javascript\" src= \"view/js/director.js\"></script> <br/>"
+
+$script = "<script type=\"text/javascript\" src= \"view/js/director.js\"></script> <br/>"
         . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
 include_once("controller/metodesPropis/function_AutoLoad.php");
 $llistar = false;
@@ -33,14 +34,21 @@ if ($llistar == false) {
                 if ($_REQUEST['act'] == 'modificar' && isset($_REQUEST['id'])) {
                     $director = $agencia->searchDirectorById($_REQUEST['id']);
                 }
+                
                 $director->__SET('name', $_REQUEST['name']);
                 $director->__SET('lastname', $_REQUEST['lastname']);
                 $director->__SET('nif', $_REQUEST['nif']);
 
-                //act = afegir
-                if ($_REQUEST['act'] == 'afegir') {
+                 // validar
+                if (!$director->validateDirector($_REQUEST['nif'], $_REQUEST['name'], $_REQUEST['lastname'])) {
+                  header("Location: index.php?ctl=error&act=validar");
+                  
+                  //act = afegir
+                }else if ($_REQUEST['act'] == 'afegir') {
+
                     $director->insertar($director);
                     header("Location: index.php?ctl=director&act=llistar");
+
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
