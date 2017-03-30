@@ -23,7 +23,8 @@ function demanaDirector()
 
 function mostraDirector(dades)
 {
-    $("select#director").html(dades);
+     var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    $("select#director").html(txt);
 }
 
 
