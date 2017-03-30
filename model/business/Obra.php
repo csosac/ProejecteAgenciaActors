@@ -160,7 +160,7 @@ function validateDirectorId($directorId) {
     function validateStartDate($startDate){}
 
 
-    public function validateDirector() {
+    public function validateObra() {
 
         if ($this->validateDirectorId($this->__GET("directorId")) == True && $this->validateName($this->__GET("name")) == True && $this->validateDescription($this->__GET("description")) == True && $this->validateType($this->__GET("type")) == True && $this->validateEndDate($this->__GET("endDate")) == True && $this->validateStartDate($this->__GET("startDate")) == True) {
 

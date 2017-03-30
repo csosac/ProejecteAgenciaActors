@@ -159,7 +159,7 @@ class Actor {
         return $valid;
     }
 
-    public function validateDirector() {
+    public function validateActor() {
 
         if ($this->validateGenre($this->__GET("genre")) == True && $this->validatePhotoUrl($this->__GET("photoURL")) == True && $this->validateNif($this->__GET("nif")) == True && $this->validateName($this->__GET("name")) == True && $this->validateLastname($this->__GET("lastname")) == True) {
 
