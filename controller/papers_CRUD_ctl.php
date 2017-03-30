@@ -1,7 +1,9 @@
 <?php
 
 include_once("controller/metodesPropis/function_AutoLoad.php");
-$script = '<script type="text/javascript" src= "view/js/papers.js"></script>';
+$script ="<script type=\"text/javascript\" src= \"view/js/papers.js\"></script> <br/>"
+        . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
+
 $llistar = false;
 if (isset($_REQUEST['act'])) {
     $agencia = new Agencia();
@@ -43,8 +45,10 @@ if ($llistar == false) {
                 if (!$paper->validatePaper()) {
                     header("Location: index.php?ctl=error&act=validar");
 
+
                     //act = afegir
                 } elseif ($_REQUEST['act'] == 'afegir') {
+
                     $paper->registrar($paper);
                     header("Location: index.php?ctl=paper&act=afegir&id_obra" . $paper->__GET('id_obra'));
                     //act = modificar

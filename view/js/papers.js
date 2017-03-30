@@ -2,10 +2,19 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
+    $('input[name=paper]').blur(comprovaNom);
     demanaActor();
     demanaObres();
 }
 
+function comprovaNom() {
+    var paper = $('input[name=paper]').val();
+    if (paper == "") {
+        $('input[name=paper]').append("<label>Aquest camp no pot estar buit:</label>");
+    } else {
+        alert("")
+    }
+}
 function demanaActor()
 {
     var id = $('#actorid').val();
