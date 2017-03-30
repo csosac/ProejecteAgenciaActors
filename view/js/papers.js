@@ -28,10 +28,12 @@ function demanaObres()
 
 function mostraActor(dades)
 {
-    $("select#actor").html(dades);
+   var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    $("select#actor").html(txt);
 }
 
 function mostraObra(dades)
 {
-    $("select#obra").html(dades);
+     var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    $("select#obra").html(txt);
 }
