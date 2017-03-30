@@ -112,6 +112,63 @@ class Obra
         $ObraDB = new ObraDB();
         return $ObraDB->insertar($data);
     }
-    
+ 
+    function validateName($name) {
+        $txt = trim($name);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+    function validateDescription($description) {
+        $txt = trim($description);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateType($type) {
+        $txt = trim($type);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+function validateDirectorId($directorId) {       
+        $valid = False;
+
+        if ($directorId != null) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+    function validateEndDate($endDate){
+        
+        
+    }
+    function validateStartDate($startDate){}
+
+
+    public function validateDirector() {
+
+        if ($this->validateDirectorId($this->__GET("directorId")) == True && $this->validateName($this->__GET("name")) == True && $this->validateDescription($this->__GET("description")) == True && $this->validateType($this->__GET("type")) == True && $this->validateEndDate($this->__GET("endDate")) == True && $this->validateStartDate($this->__GET("startDate")) == True) {
+
+            return True;
+        } else {
+            return False;
+        }
+    }
+
 }
 ?>
