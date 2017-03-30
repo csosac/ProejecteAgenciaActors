@@ -3,8 +3,8 @@ $(document).ready(function () {
         rules: {
             name: {required: true, minlength: 2},
             lastname: {required: true, minlength: 2},
-            nif: {required: true, pattern: /^\d{8}[a-zA-Z]$/},
-        },
+            nif: {required: true, minlength: 9}
+        }, // pattern: /^\d{8}[a-zA-Z]$/
         messages: {
             name: {
                 required: "Has d'introduir el nom"
