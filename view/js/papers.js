@@ -12,7 +12,7 @@ function comprovaNom() {
     if (paper == "") {
         $('input[name=paper]').append("<label>Aquest camp no pot estar buit:</label>");
     } else {
-        alert("")
+        
     }
 }
 function demanaActor()
