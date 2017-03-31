@@ -40,8 +40,9 @@ if ($llistar == false) {
                     $paper = $agencia->searchPaperById($_REQUEST['id']);
                 }
                 $paper->__SET('paper', $_REQUEST['paper']);
-                $paper->__SET('id_actor', $_REQUEST['id_actor']);
-                $paper->__SET('id_obra', $_REQUEST['id_obra']);
+                $paper->__SET('id_actor', $_REQUEST['actorId']);
+                $paper->__SET('id_obra', $_REQUEST['obraId']);
+                
                 if (!$paper->validatePaper()) {
                     header("Location: index.php?ctl=error&act=validar");
 
@@ -49,7 +50,7 @@ if ($llistar == false) {
                     //act = afegir
                 } elseif ($_REQUEST['act'] == 'afegir') {
 
-                    $paper->registrar($paper);
+                    $paper->insertar($paper);
                     header("Location: index.php?ctl=paper&act=afegir&id_obra" . $paper->__GET('id_obra'));
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {

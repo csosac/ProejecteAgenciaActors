@@ -36,9 +36,9 @@ class PaperDB {
         try {
             $con = new db();
             $query = $con->prepare("INSERT INTO paper (paper,actorId,obraId) VALUES (:paper, :actorId, :obraId)");
-            $query->bindValue(":paper", $data->__GET('nif'));
-            $query->bindValue(":actorId", $data->__GET('name'));
-            $query->bindValue(":obraId", $data->__GET('lastname'));
+            $query->bindValue(":paper", $data->__GET('paper'));
+            $query->bindValue(":actorId", $data->__GET('id_actor'));
+            $query->bindValue(":obraId", $data->__GET('id_obra'));
             $con->consulta($query);
             $con = null;
         } catch (Exception $e) {
