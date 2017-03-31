@@ -76,9 +76,9 @@ class Paper {
         $PaperDB->actualitzar($data);
     }
     
-    public function insertar() {
+    public function insertar(Paper $data) {
         $PaperDB = new PaperDB();
-        $PaperDB->insertar($this);
+        return $PaperDB->insertar($this);
     }
 
     
