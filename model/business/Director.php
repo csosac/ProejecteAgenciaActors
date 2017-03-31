@@ -73,11 +73,58 @@ class Director {
         $DirectorDB = new DirectorDB();
         $DirectorDB->actualitzar($data);
     }
-    
+
     public function insertar($data) {
         $DirectorDB = new DirectorDB();
         $DirectorDB->insertar($data);
     }
+
+    function validateNif($nif) {
+        $valid = True;
+
+        $letra = substr($nif, -1);
+        $numeros = substr($nif, 0, -1);
+        if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8) {
+            $valid = True;
+        } else {
+            $valid = False;
+        }
+
+        return $valid;
+    }
+
+    function validateName($name) {
+        $txt = trim($name);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateLastname($lastname) {
+        $txt = trim($lastname);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    public function validateDirector() {
+
+        if ($this->validateNif($this->__GET("nif")) == True && $this->validateName($this->__GET("name")) == True && $this->validateLastname($this->__GET("lastname")) == True) {
+
+            return True;
+        } else {
+            return False;
+        }
+    }
+
 }
 
 ?>

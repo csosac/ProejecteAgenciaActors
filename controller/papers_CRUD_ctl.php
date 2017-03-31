@@ -42,9 +42,13 @@ if ($llistar == false) {
                 $paper->__SET('paper', $_REQUEST['paper']);
                 $paper->__SET('id_actor', $_REQUEST['id_actor']);
                 $paper->__SET('id_obra', $_REQUEST['id_obra']);
+                if (!$paper->validatePaper()) {
+                    header("Location: index.php?ctl=error&act=validar");
 
-                //act = afegir
-                if ($_REQUEST['act'] == 'afegir') {
+
+                    //act = afegir
+                } elseif ($_REQUEST['act'] == 'afegir') {
+
                     $paper->registrar($paper);
                     header("Location: index.php?ctl=paper&act=afegir&id_obra" . $paper->__GET('id_obra'));
                     //act = modificar

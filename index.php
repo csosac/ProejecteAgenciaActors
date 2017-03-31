@@ -76,6 +76,11 @@ switch ($ctl) {
             header("Location: index.php?ctl=director&act=llistar");
         }
         break;
+    case"error":
+        if ($act == 'validar') {
+            include "controller/validar.php";
+        } 
+        break;
 
     default:
         include "controller/" . $ctl . "_ctl.php";
