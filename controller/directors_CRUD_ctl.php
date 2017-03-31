@@ -40,11 +40,11 @@ if ($llistar == false) {
                 $director->__SET('nif', $_REQUEST['nif']);
 
                  // validar
-                if (!$director->validateDirector($_REQUEST['nif'], $_REQUEST['name'], $_REQUEST['lastname'])) {
-                  header("Location: index.php?ctl=error&act=validar");
-                  
-                  //act = afegir
-                }else if ($_REQUEST['act'] == 'afegir') {
+                if (!$director->validateDirector()) {
+                    header("Location: index.php?ctl=error&act=validar");
+
+                    //act = afegir
+                } else if ($_REQUEST['act'] == 'afegir') {
 
                     $director->insertar($director);
                     header("Location: index.php?ctl=director&act=llistar");
