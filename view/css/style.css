@@ -58,6 +58,70 @@ form .error {
     color: #ff0000;
 }
 
+/* 
+    index
+*/
+
+#carrusel{float:center; width:auto; overflow:hidden; min-height:250px; position:relative; margin-top:20px;}
+#carrusel .izquierda_flecha{position:absolute; left:10px; z-index:1; top:50%; margin-top:-9px; font-size: 50px;}
+#carrusel .derecha_flecha{position:absolute; right:10px; z-index:1; top:50%; margin-top:-9px; font-size: 50px;}
+.carrusel{width:4000px;left:0px; position:absolute; z-index:0}
+.carrusel>div{
+    float: left;
+    height: 400px;
+    margin-right: 5px;
+    width: 195px;
+    text-align:center;
+}
+.carrusel .img_carrusel{cursor:pointer;}
+
+#content {
+    float:left;
+    width:600px;
+    margin-bottom:40px;
+    margin:0px auto;
+}
+
+.actor {
+    border:#CCCCCC 1px solid;
+}
+/*
+.slide-wrapper {
+    position: relative
+}
+
+
+ MISC 
+#homepage-feature .item {
+    overflow: hidden;
+    height: 400px;
+    background-color: transparent;
+    background-size: cover;
+}
+#homepage-feature > .carousel-control {
+    width: 30px;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: none;
+    filter: none;
+    opacity: 1;
+}
+#homepage-feature > .carousel-control span {
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+#layer    {
+    position: fixed;
+    top: 0px;
+    background-color:rgba(0,0,0,0);
+    width: 100%;
+    z-index:5;
+}*/
 a{
     color: #4c4c4c !important;
 }
