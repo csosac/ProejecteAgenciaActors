@@ -29,10 +29,10 @@
                 <div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <img class="img-responsive img-circle imgIndiceSubRow" src="view/images/quiensomos.jpg" alt="imagen llamada">
                     <h4>¿Qui som?</h4>
-                    <p>Som una agencia d'actors que traballem per a moltes companyies</p>
-                    <p>T'ajudem a trobar anuncis, pelicules, obres..</p>
-                    <p>Si encara no estas en una agencia, a que estas esperant?</p>
-                    <p>Empresa lider en models i actors</p>		
+                    <p>Som una agència d'actors que treballem per a moltes companyies</p>
+                    <p>T'ajudem a trobar anuncis, pel·lícules, obres..</p>
+                    <p>Si encara no estàs en una agència, que esperes??</p>
+                    <p>Empresa líder en models i actors</p>		
                 </div>
                 <div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <img class="img-responsive img-circle imgIndiceSubRow" src="view/images/casting.jpg" alt="imagen casting">
@@ -40,12 +40,12 @@
                     <p>Agència d'actors</p>
                     <p>Camp de les Moreres, 14 Granollers (08401) Catalunya</p>
                     <p><span class="fa fa-envelope-o fa-1x"></span> info@agenciaActors.cat</p>
-                    <p><span class="fa fa-phone"></span>Telèfono: 93860002</p>
+                    <p><span class="fa fa-phone"></span>Telèfon: 93860002</p>
                 </div>
                 <div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <img class="img-responsive img-circle imgIndiceSubRow" src="view/images/llamada.jpg" alt="imagen llamada">
                     <h4>¿Vols que t'ajudem?</h4>
-                    <p>T'assesorem sempre que ho necessitis</p>
+                    <p>T'Assessorem sempre que ho necessitis</p>
                     <p>Consultan's!</p>
                     <div class="btn-llamada">
                         <button class="btn">Truca</button>
