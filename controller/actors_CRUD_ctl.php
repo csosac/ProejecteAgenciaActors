@@ -22,6 +22,7 @@ if (isset($_REQUEST['act'])) {
         $action = "?ctl=actor&act=llistar";
         $headerTitle = "Actor";
         $actor = $agencia->searchActorById($_REQUEST['id']);
+        $arrayDePapers = $agencia->getArrayDePapersByIdActor($_REQUEST['id']);
         $button = 'Tornar';
 
         require_once 'view/header.php';
