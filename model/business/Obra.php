@@ -1,7 +1,7 @@
 <?php
 
-class Obra
-{
+class Obra {
+
     private $id_obra;
     private $name;
     private $description;
@@ -9,8 +9,8 @@ class Obra
     private $startDate;
     private $endDate;
     private $directorId;
-        
-        function __construct() {
+
+    function __construct() {
         switch (func_num_args()) {
             case 6:
                 $this->setId_obra(null);
@@ -32,7 +32,7 @@ class Obra
                 break;
         }
     }
- 
+
     public function __GET($k) {
         return $this->$k;
     }
@@ -41,7 +41,6 @@ class Obra
         return $this->$k = $v;
     }
 
-    
     function getId_obra() {
         return $this->id_obra;
     }
@@ -107,11 +106,79 @@ class Obra
         $ObraDB = new ObraDB();
         $ObraDB->actualitzar($data);
     }
-    
+
     public function insertar(Obra $data) {
         $ObraDB = new ObraDB();
         return $ObraDB->insertar($data);
     }
-    
+
+    function validateName($name) {
+        $txt = trim($name);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateDescription($description) {
+        $txt = trim($description);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateType($type) {
+        $txt = trim($type);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateDirectorId($directorId) {
+        $valid = False;
+
+        if ($directorId != null) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateDate($date) {
+        $format = 'Y-m-d';
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
+    }
+
+    function validateEndDate($endDate) {
+        validateDate($endDate);
+    }
+
+    function validateStartDate($startDate) {
+          validateDate($startDate);
+    }
+
+    public function validateObra() {
+
+        if ($this->validateDirectorId($this->__GET("directorId")) == True && $this->validateName($this->__GET("name")) == True && $this->validateDescription($this->__GET("description")) == True && $this->validateType($this->__GET("type")) == True && $this->validateDate($this->__GET("endDate")) == True && $this->validateDate($this->__GET("startDate")) == True) {
+
+            return True;
+        } else {
+            return False;
+        }
+    }
+
 }
+
 ?>

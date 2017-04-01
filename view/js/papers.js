@@ -2,10 +2,19 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
+    $('input[name=paper]').blur(comprovaNom);
     demanaActor();
     demanaObres();
 }
 
+function comprovaNom() {
+    var paper = $('input[name=paper]').val();
+    if (paper == "") {
+        $('input[name=paper]').append("<label>Aquest camp no pot estar buit:</label>");
+    } else {
+        
+    }
+}
 function demanaActor()
 {
     var id = $('#actorid').val();
@@ -28,10 +37,12 @@ function demanaObres()
 
 function mostraActor(dades)
 {
-    $("select#actor").html(dades);
+   var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    $("select#actor").html(txt);
 }
 
 function mostraObra(dades)
 {
-    $("select#obra").html(dades);
+     var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    $("select#obra").html(txt);
 }

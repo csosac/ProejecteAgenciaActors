@@ -2,7 +2,8 @@
 
 include_once("controller/metodesPropis/function_AutoLoad.php");
 $script = '<script type="text/javascript" src= "view/js/obra.js"></script> <br/> '
-        . '<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>';
+        . '<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>'
+        . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
 
 
 $llistar = false;
@@ -45,11 +46,14 @@ if ($llistar == false) {
                 $obra->__SET('startDate', $_REQUEST['startDate']);
                 $obra->__SET('endDate', $_REQUEST['endDate']);
                 $obra->__SET('directorId', $_REQUEST['directorId']);
+                if (!$obra->validateObra()) {
+                    header("Location: index.php?ctl=error&act=validar");
 
-                //act = afegir
-                if ($_REQUEST['act'] == 'afegir') {
+                    //act = afegir
+                } else if ($_REQUEST['act'] == 'afegir') {
                     $id_obra = $obra->insertar($obra);
-                    header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
+                  //  header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
+                  header("Location: index.php?ctl=paper&act=afegir");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
                     $obra->actualitzar($obra);

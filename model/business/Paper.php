@@ -76,9 +76,41 @@ class Paper {
         $PaperDB->actualitzar($data);
     }
     
-    public function insertar() {
+    public function insertar(Paper $data) {
         $PaperDB = new PaperDB();
-        $PaperDB->insertar($this);
+        return $PaperDB->insertar($this);
+    }
+
+    
+    function validateName($name) {
+        $txt = trim($name);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
+
+    function validateId($id) {
+        $valid = True;
+
+        if ( $id == null || $id == "") {
+            $valid = False;
+        }
+
+        return $valid;
+    }
+
+    public function validatePaper() {
+
+        if ($this->validateName($this->__GET("paper")) == True && $this->validateId($this->__GET("id_actor")) == True && $this->validateId($this->__GET("id_obra")) == True) {
+
+            return True;
+        } else {
+            return False;
+        }
     }
 }
 

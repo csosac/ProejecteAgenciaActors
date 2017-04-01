@@ -1,5 +1,7 @@
 <?php
 
+$script = "<script type=\"text/javascript\" src= \"view/js/actor.js\"></script> <br/>"
+        . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
 include_once("controller/metodesPropis/function_AutoLoad.php");
 $llistar = false;
 
@@ -39,8 +41,11 @@ if ($llistar == false) {
                 $actor->__SET('nif', $_REQUEST['nif']);
                 $actor->__SET('genre', $_REQUEST['genre']);
                 $actor->__SET('photoURL', $_REQUEST['photoURL']);
-                //act = afegir
-                if ($_REQUEST['act'] == 'afegir') {
+                if (!$actor->validateActor()) {
+                    header("Location: index.php?ctl=error&act=validar");
+
+                    //act = afegir
+                } elseif ($_REQUEST['act'] == 'afegir') {
                     $actor->insertar();
                     header("Location: index.php?ctl=actor&act=llistar");
                     //act = modificar

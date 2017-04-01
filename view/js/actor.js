@@ -3,8 +3,8 @@ $(document).ready(function () {
         rules: {
             name: {required: true, minlength: 2},
             lastname: {required: true, minlength: 2},
-
-            nif: {required: true, minlength: 9, pattern: /^\d{8}[a-zA-Z]$/},
+            nif: {required: true, pattern: /^\d{8}[a-zA-Z]$/},
+            photoURL: {required: true},
         },
         messages: {
             name: {
@@ -14,9 +14,13 @@ $(document).ready(function () {
                 required: "Has d'introduir el cognom"
             },
             nif: {
-                pattern: "Has d'introduir el dni en el format correcte",
-                required: "Has d'introduir un dni"
+                required: "Has d'introduir un dni",
+                pattern: "Has d'introduir el dni en el format correcte"
+            },
+            photoURL: {
+                required: "Has d'introduir una foto"
             }
+            
         },
         submitHandler: function (form) {
             form.submit();
