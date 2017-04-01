@@ -52,8 +52,7 @@ if ($llistar == false) {
                     //act = afegir
                 } else if ($_REQUEST['act'] == 'afegir') {
                     $id_obra = $obra->insertar($obra);
-                  //  header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
-                  header("Location: index.php?ctl=paper&act=afegir");
+                    header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
                     $obra->actualitzar($obra);

@@ -4,7 +4,7 @@
     <div class="articulo contenido"> 
         <div class="row">
             <h3> <?php echo $headerTitle; ?></h3>
-            <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-6 col-lg-offset-2 col-lg-6 ">
+            <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-2 col-lg-6 ">
                 <h3>Nom : </h3><p><?php echo $director->__GET('name')." ".$director->__GET('lastname'); ?></p>
                 <h3>DNI: </h3><p><?php echo $director->__GET('nif'); ?></p>
             </div>        
