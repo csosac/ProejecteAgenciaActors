@@ -5,7 +5,7 @@ function inicialitzarEvents()
     demanaObres();
     $('input[name=paper]').blur(comprovaNom);
     var d = $('#obra').val();
-    if ($('#obra').val() == null) {
+    if ($('#obra').val() == null ||$('#obra').val() ==  '- Selecciona -') {
         $('#lblActor').append("<br/><label id='noActor'>Selecciona primer la obra</label>");
         $('#actor').hide();
     }

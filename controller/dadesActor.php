@@ -1,6 +1,6 @@
 <?php
 
-$idActor = "";
+$idActor = "d";
 if (isset($_REQUEST['idActor']))
     $idActor = $_REQUEST['idActor'];
 $idObra = "";
