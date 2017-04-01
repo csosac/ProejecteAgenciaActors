@@ -2,11 +2,20 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
+    demanaObres();
     $('input[name=paper]').blur(comprovaNom);
+    var d = $('#obra').val();
+    if ($('#obra').val() == null ||$('#obra').val() ==  '- Selecciona -') {
+        $('#lblActor').append("<br/><label id='noActor'>Selecciona primer la obra</label>");
+        $('#actor').hide();
+    }
     demanaActor();
     var n = $("#obra");
-    n.change(demanaActor);
-    demanaObres();
+    n.change(function () {
+        $('#noActor').hide();
+        $('#actor').show();
+        demanaActor();
+    });
 }
 
 function comprovaNom() {
@@ -21,7 +30,7 @@ function demanaActor()
 {
     var id = $('#actorid').val();
     var idobra = $('#obra').val();
-    $.get('index.php?ctl=peticioAJAX&act=actor', {idActor: id, idObra : idobra}, mostraActor)
+    $.get('index.php?ctl=peticioAJAX&act=actor', {idActor: id, idObra: idobra}, mostraActor)
             .fail(function () {
                 console.log("error");
             });
@@ -31,11 +40,21 @@ function demanaActor()
 function demanaObres()
 {
     var id = $('#obraid').val();
-    $.get('index.php?ctl=peticioAJAX&act=obra', {id: id}, mostraObra)
-            .fail(function () {
-                console.log("error");
-            });
-    return false;
+
+    $.ajax({
+        async: false,
+        cache: false,
+        dataType: "text",
+        type: 'GET',
+        url: 'index.php?ctl=peticioAJAX&act=obra',
+        data: "id=" + id,
+        success: function (respuesta) {
+            mostraObra(respuesta);
+        },
+        error: function () {
+            console.log("error");
+        }
+    });
 }
 
 function mostraActor(dades)
