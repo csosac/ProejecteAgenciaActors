@@ -10,13 +10,13 @@
                         <input class="form-control" type="text" name="paper" value="<?php echo $paper->__GET('paper'); ?>">
                     </div>
                     <div class="form-group">
-                        <label>Actor:</label>
-                        <select class="form-control" name="actorId" id="actor">
+                        <label>Obra:</label>
+                        <select class="form-control" name="obraId" id="obra">
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Obra:</label>
-                        <select class="form-control" name="obraId" id="obra">
+                        <label id="lblActor">Actor:</label>
+                        <select class="form-control" name="actorId" id="actor">
                         </select>
                     </div>
                     <input type="hidden" id="actorid" value="<?php echo $paper->__GET('id_actor'); ?>">
