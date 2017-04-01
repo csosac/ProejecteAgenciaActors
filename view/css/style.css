@@ -62,16 +62,23 @@ form .error {
     index
 */
 
-#carrusel{float:center; width:auto; overflow:hidden; min-height:250px; position:relative; margin-top:20px;}
+#carrusel{float:center; width:auto; overflow:hidden; height:200px; position:relative; margin-top:20px;}
 #carrusel .izquierda_flecha{position:absolute; left:10px; z-index:1; top:50%; margin-top:-9px; font-size: 50px;}
 #carrusel .derecha_flecha{position:absolute; right:10px; z-index:1; top:50%; margin-top:-9px; font-size: 50px;}
-.carrusel{width:4000px;left:0px; position:absolute; z-index:0}
+.carrusel{
+/*    width:4000px;
+    left:0px; */
+    height: 200px;
+    position:absolute; z-index:0}
 .carrusel>div{
+/*    
+    
+    */
+    height: 200px;
+    width: 250px;
     float: left;
-    height: 400px;
-    margin-right: 5px;
-    width: 195px;
     text-align:center;
+    margin-right: 5px;
 }
 .carrusel .img_carrusel{cursor:pointer;}
 
@@ -84,6 +91,11 @@ form .error {
 
 .actor {
     border:#CCCCCC 1px solid;
+}
+
+.imatgeInici{
+    max-height: 120px; 
+    margin: 0 auto;
 }
 /*
 .slide-wrapper {
