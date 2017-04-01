@@ -74,12 +74,12 @@
                     </ul>
                 </li>
                 
-                <li 
-                <?php
+                <li class="dropdown 
+                <?php 
                 if ($ctl == 'contacto') {
                     echo 'class="active';
                 }
-                ?>>
+                ?>">
                     <a href="?ctl=contacto">Contacto</a>
                 </li>
             </ul>
