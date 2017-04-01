@@ -59,8 +59,7 @@ class db extends PDO {
     }
 
     public function consulta($query) {
-        
-        $query("SET NAMES 'utf8'");
+        $query->execute();
     }
 
     public function consultarObjectes($query) {

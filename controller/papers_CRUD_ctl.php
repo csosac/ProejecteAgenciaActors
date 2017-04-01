@@ -51,7 +51,7 @@ if ($llistar == false) {
                 } elseif ($_REQUEST['act'] == 'afegir') {
 
                     $paper->insertar($paper);
-                    header("Location: index.php?ctl=paper&act=afegir&id_obra" . $paper->__GET('id_obra'));
+                    header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $paper->__GET('id_obra'));
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
 
@@ -67,6 +67,8 @@ if ($llistar == false) {
                 //este enseña uno
             } elseif (isset($_REQUEST['id_obra']) && $_REQUEST['act'] == 'afegir') {
                 $action = "?ctl=paper&act=afegir";
+                $paper = new Paper();
+                $paper->__SET('id_obra', $_REQUEST['id_obra']);
                 $headerTitle = "Afegir Paper";
                 $button = 'Crear';
             } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'eliminar') {

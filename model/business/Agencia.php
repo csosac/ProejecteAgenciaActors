@@ -109,5 +109,15 @@ class Agencia {
         $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->getNameDirectorById($id_director);
     }
+    
+    public function getArrayDePapersByIdActor($id_actor){
+        $AgenciaDB = new AgenciaDB();
+        return $AgenciaDB->getPapersByIdActor($id_actor);
+    }
+    
+    public function getArrayDeObresByIdDirector($id_director){
+        $AgenciaDB = new AgenciaDB();
+        return $AgenciaDB->getObresByIdDirector($id_director);
+    }
 
 }
