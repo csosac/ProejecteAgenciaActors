@@ -2,7 +2,7 @@ var posicion = 0;
 var imagenes = new Array();
 $(document).ready(function () {
     //alert(jQuery('.texto').html());
-    var numeroImatges = 6;
+    var numeroImatges = $("#actorscount").val();
     if (numeroImatges <= 3) {
         $('.derecha_flecha').css('display', 'none');
         $('.izquierda_flecha').css('display', 'none');
@@ -12,7 +12,7 @@ $(document).ready(function () {
         if (posicion > 0) {
             posicion = posicion - 1;
         } else {
-            posicion = numeroImatges - 3;
+            posicion = numeroImatges - 1;
         }
         $(".carrusel").animate({"left": -($('#actor_' + posicion).position().left)}, 600);
         return false;
@@ -31,14 +31,12 @@ $(document).ready(function () {
     });
 
     $('.derecha_flecha').on('click', function () {
-        if (numeroImatges > posicion + 3) {
+        if (numeroImatges > posicion + 1) {
             posicion = posicion + 1;
         } else {
             posicion = 0;
         }
-        $(".carrusel").animate(
-                {left: -(
-                    $('#actor_' + posicion).position().left)}, 600);
+        $(".carrusel").animate({left: -($('#actor_' + posicion).position().left)}, 600);
         return false;
     });
 
