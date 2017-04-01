@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf8">
         <meta name="keywords" content="HTML, Meta Tags, Metadata" />
         <meta name="description" content="Index de la página." />
         <meta name="author" content="Cristina Roige, Rocio Alor, Daniel Fernandez, Cristian Sosa" />
