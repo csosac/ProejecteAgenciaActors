@@ -27,8 +27,8 @@
                             ?>
                             <tr>
                                 <td class='text-center col-xs-1'><?php echo $r->__GET('name'); ?></td>
-                                <td class="col-xs-1"><img src="<?php echo $r->__GET('photoUrlObra'); ?>" class="imgListaCrud img-responsive img-rounded" alt="Cinque Terre"/> </td>
-                                <td class='text-center col-xs-1'><?php echo $r->__GET('description'); ?></td>
+                                <td class="col-xs-1"><img src="<?php echo $r->__GET('photoUrlObra'); ?>" class="img-responsive img-rounded" alt="Cinque Terre"/></td>
+                                <td class='text-center col-xs-3'><?php echo $r->__GET('description'); ?></td>
                                 <td class='text-center col-xs-1'><?php echo $r->__GET('type'); ?></td>
                                 <td class='text-center col-xs-1'><?php echo $r->__GET('startDate'); ?></td>
                                 <td class='text-center col-xs-1'><?php echo $r->__GET('endDate'); ?></td>
