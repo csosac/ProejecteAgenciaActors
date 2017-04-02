@@ -104,6 +104,7 @@ class AgenciaDB {
             $obra->__SET('startDate', $row['startDate']);
             $obra->__SET('endDate', $row['endDate']);
             $obra->__SET('directorId', $row['directorId']);
+            $obra->__SET('photoUrlObra', $row['photoUrlObra']);
 
             array_push($arrayDeObjectes, $obra);
         }
@@ -113,15 +114,14 @@ class AgenciaDB {
     }
 
     public function searchObraById($id) {
-        $arrayDeObjectes = array();
+        $arrayDeObjectes = array();//I això perquè serveix???
         $con = new db();
         $query = $con->prepare("SELECT * FROM obra WHERE id = :id");
         $query->bindValue(":id", $id);
         $result = $con->consultarObjectes($query);
-
+        
+        $obra = new Obra();
         foreach ($result as $row) {
-
-            $obra = new Obra();
 
             $obra->__SET('id_obra', $row['id']);
             $obra->__SET('name', $row['name']);
@@ -130,6 +130,7 @@ class AgenciaDB {
             $obra->__SET('startDate', $row['startDate']);
             $obra->__SET('endDate', $row['endDate']);
             $obra->__SET('directorId', $row['directorId']);
+            $obra->__SET('photoUrlObra', $row['photoUrlObra']);
         }
 
         $con = null;
