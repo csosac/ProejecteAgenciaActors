@@ -8,17 +8,17 @@ $(document).ready(function () {
         },
         messages: {
             name: {
-                required: "Has d'introduir el nom"
+                required: "Has d'introduir el nom."
             },
             lastname: {
-                required: "Has d'introduir el cognom"
+                required: "Has d'introduir el cognom."
             },
             nif: {
-                required: "Has d'introduir un dni",
-                pattern: "Has d'introduir el dni en el format correcte"
+                required: "Has d'introduir un dni.",
+                pattern: "Has d'introduir el dni en el format correcte."
             },
             photoURL: {
-                required: "Has d'introduir una foto"
+                required: "Has d'introduir una foto."
             }
             
         },

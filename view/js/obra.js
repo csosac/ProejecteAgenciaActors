@@ -13,7 +13,8 @@ $(document).ready(function () {
             type: {required: true, minlength: 2},
             startDate: {required: true},
             endDate: {required: true},
-            directorId: {required: true, minlength: 1}
+            directorId: {required: true, minlength: 1},
+            photoUrlObra: {required: true}
         },
         messages: {
             name: {
@@ -33,6 +34,9 @@ $(document).ready(function () {
             },
             directorId: {
                 required: "Has de triar el director."
+            },
+            photoUrlObra: {
+                required: "Has d'introduir una foto."
             }
         },
         submitHandler: function (form) {

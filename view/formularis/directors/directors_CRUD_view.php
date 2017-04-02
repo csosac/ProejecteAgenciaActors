@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 ">
                 <h3> <?php echo $headerTitle; ?></h3>
-                <form method="post" name="formulari" action="<?php echo $action; ?>">
+                <form method="post" name="formulariDirector" action="<?php echo $action; ?>">
                     <div class="form-group">
                         <label>NIF:</label>
                         <input class="form-control required"  name="nif"  value="<?php echo $director->__GET('nif'); ?>" >                  
@@ -16,7 +16,11 @@
                     <div class="form-group">
                         <label>Cognom</label>
                         <input class="form-control required"  name="lastname"  value="<?php echo $director->__GET('lastname'); ?>" >
-                    </div>                   
+                    </div>    
+                    <div class="form-group">
+                        <label>URL de la foto</label>
+                        <input class="form-control required" type="text" name="photoUrlDirector"  value="<?php echo $director->__GET('photoUrlDirector'); ?>" >
+                    </div>
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button; ?></button>
                 </form>
             </div>

@@ -9,6 +9,7 @@ class Obra {
     private $startDate;
     private $endDate;
     private $directorId;
+    private $photoUrlObra;
 
     function __construct() {
         switch (func_num_args()) {
@@ -19,7 +20,7 @@ class Obra {
                 $this->setType(func_get_args()[2]);
                 $this->setStartDate(func_get_args()[3]);
                 $this->setEndDate(func_get_args()[4]);
-                $this->setObraId(func_get_args()[5]);
+                $this->setPhotoUrlObra(func_get_args()[5]);
                 break;
             case 7:
                 $this->setId_obra(func_get_args()[0]);
@@ -28,7 +29,7 @@ class Obra {
                 $this->setType(func_get_args()[3]);
                 $this->setStartDate(func_get_args()[4]);
                 $this->setEndDate(func_get_args()[5]);
-                $this->setObraId(func_get_args()[6]);
+                $this->setPhotoUrlObra(func_get_args()[6]);
                 break;
         }
     }
@@ -68,8 +69,12 @@ class Obra {
     function getObraId() {
         return $this->directorId;
     }
+    
+    function getPhotoUrlObra() {
+        return $this->photoUrlObra;
+    }
 
-    function setId_obra($id_obra) {
+        function setId_obra($id_obra) {
         $this->id_obra = $id_obra;
     }
 
@@ -97,7 +102,11 @@ class Obra {
         $this->directorId = $directorId;
     }
 
-    public function eliminar($id) {
+    function setPhotoUrlObra($photoUrlObra) {
+        $this->photoUrlObra = $photoUrlObra;
+    }
+
+        public function eliminar($id) {
         $ObraDB = new ObraDB();
         return $ObraDB->eliminar($id);
     }
@@ -169,9 +178,19 @@ class Obra {
           validateDate($startDate);
     }
 
+    function validatePhotoUrlObra($photoURL) {
+        $txt = trim($photoURL);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
     public function validateObra() {
 
-        if ($this->validateDirectorId($this->__GET("directorId")) == True && $this->validateName($this->__GET("name")) == True && $this->validateDescription($this->__GET("description")) == True && $this->validateType($this->__GET("type")) == True && $this->validateDate($this->__GET("endDate")) == True && $this->validateDate($this->__GET("startDate")) == True) {
+        if ($this->validateDirectorId($this->__GET("directorId")) == True && $this->validateName($this->__GET("name")) == True && $this->validateDescription($this->__GET("description")) == True && $this->validateType($this->__GET("type")) == True && $this->validateDate($this->__GET("endDate")) == True && $this->validateDate($this->__GET("startDate")) == True && $this->validatePhotoUrlObra($this->__GET("photoUrlObra")) == True) {
 
             return True;
         } else {

@@ -15,6 +15,7 @@ if (isset($_REQUEST['act'])) {
         $button = 'Crear';
         require_once 'view/header.php';
         require_once 'view/formularis/directors/directors_view.php';
+        require_once 'view/footer.php';
     } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure') {
         $llistar = true;
         $action = "?ctl=director&act=llistar";
@@ -24,9 +25,10 @@ if (isset($_REQUEST['act'])) {
         $button = 'Tornar';
         require_once 'view/header.php';
         require_once 'view/formularis/directors/directors_fitxa_view.php';
+        require_once 'view/footer.php';
     }
 
-    require_once 'view/footer.php';
+    
 }
 if ($llistar == false) {
     if (checkSession()) {
@@ -40,7 +42,7 @@ if ($llistar == false) {
                 $director->__SET('name', $_REQUEST['name']);
                 $director->__SET('lastname', $_REQUEST['lastname']);
                 $director->__SET('nif', $_REQUEST['nif']);
-
+                $director->__SET('photoUrlDirector', $_REQUEST['photoUrlDirector']);
                 // validar
                 if (!$director->validateDirector()) {
                     header("Location: index.php?ctl=error&act=validar");

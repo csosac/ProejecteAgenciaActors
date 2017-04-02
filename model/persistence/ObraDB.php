@@ -26,7 +26,7 @@ class ObraDB {
     public function actualitzar($data) {
         try {
             $con = new db();
-            $query = $con->prepare("UPDATE obra SET name = :name, description  = :description, type = :type, startDate = :startDate, endDate = :endDate, directorId = :directorId WHERE id = :id");
+            $query = $con->prepare("UPDATE obra SET name = :name, description  = :description, type = :type, startDate = :startDate, endDate = :endDate, photoUrlObra =:photoUrlObra, directorId = :directorId WHERE id = :id");
             
             $query->bindValue(":name", $data->__GET('name'));
             $query->bindValue(":description", $data->__GET('description'));
@@ -35,6 +35,7 @@ class ObraDB {
             $query->bindValue(":endDate", $data->__GET('endDate'));
             $query->bindValue(":directorId", $data->__GET('directorId'));
             $query->bindValue(":id", $data->__GET('id_obra'));
+            $query->bindValue(":photoUrlObra", $data->__GET('photoUrlObra'));
             $con->consulta($query);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -44,14 +45,15 @@ class ObraDB {
     public function insertar($data) {
         try {
             $con = new db();
-            $query = $con->prepare("INSERT INTO obra (name,description,type,startDate,endDate,directorId) 
-		        VALUES (:name, :description, :type , :startDate , :endDate , :directorId)");
+            $query = $con->prepare("INSERT INTO obra (name,description,type,startDate,endDate,directorId,photoUrlObra) 
+		        VALUES (:name, :description, :type , :startDate , :endDate , :directorId, :photoUrlObra)");
             $query->bindValue(":name", $data->__GET('name'));
             $query->bindValue(":description", $data->__GET('description'));
             $query->bindValue(":type", $data->__GET('type'));
             $query->bindValue(":startDate", $data->__GET('startDate'));
             $query->bindValue(":endDate", $data->__GET('endDate'));
             $query->bindValue(":directorId", $data->__GET('directorId'));
+            $query->bindValue(":photoUrlObra", $data->__GET('photoUrlObra'));
             $con->consulta($query);
             $id = ($con->lastInsertId());
             return $con->lastInsertId();
