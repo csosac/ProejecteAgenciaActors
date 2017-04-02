@@ -46,6 +46,7 @@ if ($llistar == false) {
                 $obra->__SET('startDate', $_REQUEST['startDate']);
                 $obra->__SET('endDate', $_REQUEST['endDate']);
                 $obra->__SET('directorId', $_REQUEST['directorId']);
+                $obra->__SET('photoUrlObra', $_REQUEST['photoUrlObra']);
                 if (!$obra->validateObra()) {
                     header("Location: index.php?ctl=error&act=validar");
 

@@ -30,6 +30,10 @@
                         <select class="form-control " name="directorId" id="director" >
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>URL de la foto</label>
+                        <input class="form-control" type="text" name="photoUrlObra" required value="<?php echo $obra->__GET('photoUrlObra'); ?>">
+                    </div>
                     <input type="hidden" id="directorid" value="<?php echo $obra->__GET('directorId'); ?>">
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button?></button>
                 </form>

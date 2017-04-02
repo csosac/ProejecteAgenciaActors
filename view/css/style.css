@@ -137,3 +137,7 @@ form .error {
 a{
     color: #4c4c4c !important;
 }
+.imatgeFitxa{
+    height: 800px !important; 
+    margin: 0 auto;
+}
