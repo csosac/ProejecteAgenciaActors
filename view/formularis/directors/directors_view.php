@@ -10,7 +10,8 @@
                             <tr>
                                 <th>Nif</th>
                                 <th>Nom</th>
-                                <th>Cognoms</th>                     
+                                <th>Cognoms</th>     
+                                <th class='text-center'>Foto</th> 
                                 <th class="text-center">Veure</th>
                                 <?php if (checkSession()) { ?>
                                     <th class="text-center">Modificar</th>
@@ -24,7 +25,8 @@
                             <tr>
                                 <td><?php echo $r->__GET('nif'); ?></td>
                                 <td><?php echo $r->__GET('name'); ?></td>
-                                <td><?php echo $r->__GET('lastname'); ?></td>                
+                                <td><?php echo $r->__GET('lastname'); ?></td> 
+                                <td><img src="<?php echo $r->__GET('photoUrlDirector'); ?>" class="imgListaCrud img-responsive img-rounded " alt="Cinque Terre"/> </td>
                                 <td class="text-center">
                                     <a href="?ctl=director&act=veure&id=<?php echo $r->__GET('id_director'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>                                
                                 </td>

@@ -21,11 +21,12 @@ class DirectorDB {
     public function actualitzar($data) {
         try {
             $con = new db();
-            $sql =$con->prepare("UPDATE director SET nif = :nif, name  = :name, lastname = :lastname WHERE id = :id");
+            $sql =$con->prepare("UPDATE director SET nif = :nif, name  = :name, lastname = :lastname, photoUrlDirector = :photoUrlDirector WHERE id = :id");
             $sql->bindValue(":id", $data->__GET('id_director'));
             $sql->bindValue(":nif", $data->__GET('nif'));
             $sql->bindValue(":name", $data->__GET('name'));
             $sql->bindValue(":lastname", $data->__GET('lastname'));
+            $sql->bindValue(":photoUrlDirector", $data->__GET('photoUrlDirector'));
             $con->consulta($sql);  
             $con=null;
         } catch (Exception $e) {
@@ -36,11 +37,12 @@ class DirectorDB {
     public function insertar($data) {
         try {
             $con = new db();
-            $sql = $con->prepare("INSERT INTO director (nif,name,lastname) 
-		        VALUES (:nif, :name, :lastname)");
+            $sql = $con->prepare("INSERT INTO director (nif,name,lastname,photoUrlDirector) 
+		        VALUES (:nif, :name, :lastname, :photoUrlDirector)");
             $sql->bindValue(":nif", $data->__GET('nif'));
             $sql->bindValue(":name", $data->__GET('name'));
             $sql->bindValue(":lastname", $data->__GET('lastname'));
+            $sql->bindValue(":photoUrlDirector", $data->__GET('photoUrlDirector'));
             $con->consulta($sql);
             $con = null;
         } catch (Exception $e) {

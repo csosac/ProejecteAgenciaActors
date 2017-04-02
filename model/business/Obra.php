@@ -20,8 +20,7 @@ class Obra {
                 $this->setType(func_get_args()[2]);
                 $this->setStartDate(func_get_args()[3]);
                 $this->setEndDate(func_get_args()[4]);
-                $this->setObraId(func_get_args()[5]);
-                
+                $this->setPhotoUrlObra(func_get_args()[5]);
                 break;
             case 7:
                 $this->setId_obra(func_get_args()[0]);
@@ -30,7 +29,7 @@ class Obra {
                 $this->setType(func_get_args()[3]);
                 $this->setStartDate(func_get_args()[4]);
                 $this->setEndDate(func_get_args()[5]);
-                $this->setObraId(func_get_args()[6]);
+                $this->setPhotoUrlObra(func_get_args()[6]);
                 break;
         }
     }

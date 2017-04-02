@@ -43,6 +43,7 @@ class AgenciaDB {
             $director->__SET('nif', $row['nif']);
             $director->__SET('name', $row['name']);
             $director->__SET('lastname', $row['lastname']);
+            $director->__SET('photoUrlDirector', $row['photoUrlDirector']);
 
             array_push($arrayDeObjectes, $director);
         }
@@ -63,6 +64,7 @@ class AgenciaDB {
             $director->__SET('nif', $row['nif']);
             $director->__SET('name', $row['name']);
             $director->__SET('lastname', $row['lastname']);
+            $director->__SET('photoUrlDirector', $row['photoUrlDirector']);
         }
         $con = null;
         return $director;
@@ -239,6 +241,7 @@ class AgenciaDB {
             $obra->__SET('startDate', $row['startDate']);
             $obra->__SET('endDate', $row['endDate']);
             $obra->__SET('directorId', $row['directorId']);
+            $obra->__SET('photoUrlObra', $row['photoUrlObra']);
             array_push($arrayDeObjectes, $obra);
         }
 
