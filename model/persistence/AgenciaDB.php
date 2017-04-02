@@ -43,6 +43,7 @@ class AgenciaDB {
             $director->__SET('nif', $row['nif']);
             $director->__SET('name', $row['name']);
             $director->__SET('lastname', $row['lastname']);
+            $director->__SET('photoUrlDirector', $row['photoUrlDirector']);
 
             array_push($arrayDeObjectes, $director);
         }
@@ -63,6 +64,7 @@ class AgenciaDB {
             $director->__SET('nif', $row['nif']);
             $director->__SET('name', $row['name']);
             $director->__SET('lastname', $row['lastname']);
+            $director->__SET('photoUrlDirector', $row['photoUrlDirector']);
         }
         $con = null;
         return $director;
@@ -104,6 +106,7 @@ class AgenciaDB {
             $obra->__SET('startDate', $row['startDate']);
             $obra->__SET('endDate', $row['endDate']);
             $obra->__SET('directorId', $row['directorId']);
+            $obra->__SET('photoUrlObra', $row['photoUrlObra']);
 
             array_push($arrayDeObjectes, $obra);
         }
@@ -113,15 +116,14 @@ class AgenciaDB {
     }
 
     public function searchObraById($id) {
-        $arrayDeObjectes = array();
+        $arrayDeObjectes = array();//I això perquè serveix???
         $con = new db();
         $query = $con->prepare("SELECT * FROM obra WHERE id = :id");
         $query->bindValue(":id", $id);
         $result = $con->consultarObjectes($query);
-
+        
+        $obra = new Obra();
         foreach ($result as $row) {
-
-            $obra = new Obra();
 
             $obra->__SET('id_obra', $row['id']);
             $obra->__SET('name', $row['name']);
@@ -130,6 +132,7 @@ class AgenciaDB {
             $obra->__SET('startDate', $row['startDate']);
             $obra->__SET('endDate', $row['endDate']);
             $obra->__SET('directorId', $row['directorId']);
+            $obra->__SET('photoUrlObra', $row['photoUrlObra']);
         }
 
         $con = null;
@@ -185,17 +188,65 @@ class AgenciaDB {
         $con->close();
         return $arrayDeUsers;
     }
-    
-    public function getNameActorById($id){
-        return $this->searchActorById($id)->__GET('name')." ".$this->searchActorById($id)->__GET('lastname');
+
+    public function getNameActorById($id) {
+        return $this->searchActorById($id)->__GET('name') . " " . $this->searchActorById($id)->__GET('lastname');
     }
-    
-    public function getNameObraById($id){
+
+    public function getNameObraById($id) {
         return $this->searchObraById($id)->__GET('name');
     }
-    
-    public function getNameDirectorById($id){
-        return $this->searchDirectorById($id)->__GET('name')." ".$this->searchDirectorById($id)->__GET('lastname');
+
+    public function getNameDirectorById($id) {
+        return $this->searchDirectorById($id)->__GET('name') . " " . $this->searchDirectorById($id)->__GET('lastname');
+    }
+
+    public function getPapersByIdActor($id) {
+        $arrayDeObjectes = array();
+        $con = new db();
+        $query = $con->prepare("SELECT * FROM paper WHERE actorId = :id");
+        $query->bindValue(":id", $id);
+        $result = $con->consultarObjectes($query);
+
+        foreach ($result as $row) {
+
+            $paper = new Paper();
+
+            $paper->__SET('id_paper', $row['id']);
+            $paper->__SET('paper', $row['paper']);
+            $paper->__SET('id_actor', $row['actorId']);
+            $paper->__SET('id_obra', $row['obraId']);
+            array_push($arrayDeObjectes, $paper);
+        }
+
+        $con = null;
+        return $arrayDeObjectes;
+    }
+
+    public function getObresByIdDirector($id) {
+        $arrayDeObjectes = array();
+        $con = new db();
+        $query = $con->prepare("SELECT * FROM obra WHERE directorId = :id");
+        $query->bindValue(":id", $id);
+        $result = $con->consultarObjectes($query);
+
+        foreach ($result as $row) {
+
+            $obra = new Obra();
+
+            $obra->__SET('id_obra', $row['id']);
+            $obra->__SET('name', $row['name']);
+            $obra->__SET('description', $row['description']);
+            $obra->__SET('type', $row['type']);
+            $obra->__SET('startDate', $row['startDate']);
+            $obra->__SET('endDate', $row['endDate']);
+            $obra->__SET('directorId', $row['directorId']);
+            $obra->__SET('photoUrlObra', $row['photoUrlObra']);
+            array_push($arrayDeObjectes, $obra);
+        }
+
+        $con = null;
+        return $arrayDeObjectes;
     }
 
 }

@@ -14,7 +14,7 @@
             </div>
 
 
-            <div class="col-md-5">
+            <div class="col-md-5 text-right">
                 <h3>Dades de contacte</h3>
                 <p>Agència d'actors</p>
                 <p>Camp de les Moreres, 14 Granollers (08401) Catalunya</p>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="copyright text-center">
-        <small>Copyright © 2016 | Disseny Agencia Actors</small>
+        <small>Copyright © 2016 | Disseny Agència Actors</small>
     </div>
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

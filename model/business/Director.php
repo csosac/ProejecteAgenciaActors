@@ -6,20 +6,23 @@ class Director {
     private $nif;
     private $name;
     private $lastname;
+    private $photoUrlDirector;
 
     function __construct() {
         switch (func_num_args()) {
-            case 3:
+            case 4:
                 $this->setId_director(null);
                 $this->setName(func_get_args()[0]);
                 $this->setNif(func_get_args()[1]);
                 $this->setLastname(func_get_args()[2]);
+                $this->setPhotoUrlDirector(func_get_arg(3));
                 break;
-            case 4:
+            case 5:
                 $this->setId_director(func_get_args()[0]);
                 $this->setName(func_get_args()[1]);
                 $this->setNif(func_get_args()[2]);
                 $this->setLastname(func_get_args()[3]);
+                $this->setPhotoUrlDirector(func_get_arg(4));
                 break;
         }
     }
@@ -48,7 +51,11 @@ class Director {
         return $this->lastname;
     }
 
-    function setId_director($id_director) {
+    function getPhotoUrlDirector() {
+        return $this->photoUrlDirector;
+    }
+
+        function setId_director($id_director) {
         $this->id_director = $id_director;
     }
 
@@ -64,7 +71,11 @@ class Director {
         $this->lastname = $lastname;
     }
 
-    public function eliminar($id) {
+    function setPhotoUrlDirector($photoUrlDirector) {
+        $this->photoUrlDirector = $photoUrlDirector;
+    }
+
+        public function eliminar($id) {
         $DirectorDB = new DirectorDB();
         return $DirectorDB->eliminar($id);
     }
@@ -114,10 +125,21 @@ class Director {
 
         return $valid;
     }
+    
+    function validatePhotoUrDirector($photoURL) {
+        $txt = trim($photoURL);
+        $valid = False;
+
+        if (strlen($txt) >= 2) {
+            $valid = True;
+        }
+
+        return $valid;
+    }
 
     public function validateDirector() {
 
-        if ($this->validateNif($this->__GET("nif")) == True && $this->validateName($this->__GET("name")) == True && $this->validateLastname($this->__GET("lastname")) == True) {
+        if ($this->validateNif($this->__GET("nif")) == True && $this->validateName($this->__GET("name")) == True && $this->validateLastname($this->__GET("lastname")) == True && $this->validatePhotoUrDirector($this->__GET("photoUrlDirector")) == True) {
 
             return True;
         } else {

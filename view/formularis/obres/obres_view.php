@@ -8,16 +8,17 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class='text-center'>Nom</th>
-                                <th class='text-center'>Descripcio</th>
-                                <th class='text-center'>Tipus</th>                     
-                                <th class='text-center'>Data inici</th>
-                                <th class='text-center'>Data finalització</th>
-                                <th class='text-center'>Director</th>  
-                                <th class="text-center">Veure</th>
+                                <th class='text-center col-xs-1'>Nom</th>
+                                <th class='text-center col-xs-1'>Cartell</th>
+                                <th class='text-center col-xs-3'>Descripció</th>
+                                <th class='text-center col-xs-1'>Tipus</th>                     
+                                <th class='text-center col-xs-1'>Data inici</th>
+                                <th class='text-center col-xs-1'>Data finalització</th>
+                                <th class='text-center col-xs-1'>Director</th>  
+                                <th class="text-center col-xs-1">Veure</th>
                                 <?php if (checkSession()) { ?>
-                                    <th class="text-center">Modificar</th>
-                                    <th class="text-center">Eliminar</th>
+                                    <th class="text-center col-xs-1">Modificar</th>
+                                    <th class="text-center col-xs-1">Eliminar</th>
                                 <?php } ?>
                             </tr>
                         </thead>    
@@ -25,20 +26,21 @@
                         foreach ($arrayDeObres as $r):
                             ?>
                             <tr>
-                                <td class='text-center'><?php echo $r->__GET('name'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('description'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('type'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('startDate'); ?></td>
-                                <td class='text-center'><?php echo $r->__GET('endDate'); ?></td>
-                                <td class='text-center'><?php echo $agencia->getNameDirectorById($r->__GET('directorId')); ?></td>
-                                <td class="text-center">
+                                <td class='text-center col-xs-1'><?php echo $r->__GET('name'); ?></td>
+                                <td class="col-xs-1"><img src="<?php echo $r->__GET('photoUrlObra'); ?>" class="img-responsive img-rounded" alt="Cinque Terre"/></td>
+                                <td class='text-center col-xs-3'><?php echo $r->__GET('description'); ?></td>
+                                <td class='text-center col-xs-1'><?php echo $r->__GET('type'); ?></td>
+                                <td class='text-center col-xs-1'><?php echo $r->__GET('startDate'); ?></td>
+                                <td class='text-center col-xs-1'><?php echo $r->__GET('endDate'); ?></td>
+                                <td class='text-center col-xs-1'><?php echo $agencia->getNameDirectorById($r->__GET('directorId')); ?></td>
+                                <td class="text-center col-xs-1">
                                     <a href="?ctl=obra&act=veure&id=<?php echo $r->__GET('id_obra'); ?>"><span class="fa fa-eye text-center fa-lg" aria-hidden="true"/></a>
                                 </td>
                                 <?php if (checkSession()) { ?>
-                                    <td class="text-center">
+                                    <td class="text-center col-xs-1">
                                         <a href="?ctl=obra&act=modificar&id=<?php echo $r->__GET('id_obra'); ?>"><span class="fa fa-pencil fa-lg" aria-hidden="true"/></a>
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center col-xs-1">
                                         <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?ctl=obra&act=eliminar&id=<?php echo $r->id_obra; ?>"><span class="fa fa-trash fa-lg" aria-hidden="true"/></a>
                                     </td>
                                         <?php } ?>

@@ -2,6 +2,7 @@
 
 $script = "<script type=\"text/javascript\" src= \"view/js/director.js\"></script> <br/>"
         . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
+
 include_once("controller/metodesPropis/function_AutoLoad.php");
 $llistar = false;
 if (isset($_REQUEST['act'])) {
@@ -19,12 +20,15 @@ if (isset($_REQUEST['act'])) {
         $llistar = true;
         $action = "?ctl=director&act=llistar";
         $headerTitle = "Director";
+        $obres = $agencia->getArrayDeObresByIdDirector($_REQUEST['id']);
         $director = $agencia->searchDirectorById($_REQUEST['id']);
         $button = 'Tornar';
         require_once 'view/header.php';
         require_once 'view/formularis/directors/directors_fitxa_view.php';
+        require_once 'view/footer.php';
     }
-    //este elimina
+
+    
 }
 if ($llistar == false) {
     if (checkSession()) {
@@ -34,12 +38,12 @@ if ($llistar == false) {
                 if ($_REQUEST['act'] == 'modificar' && isset($_REQUEST['id'])) {
                     $director = $agencia->searchDirectorById($_REQUEST['id']);
                 }
-                
+
                 $director->__SET('name', $_REQUEST['name']);
                 $director->__SET('lastname', $_REQUEST['lastname']);
                 $director->__SET('nif', $_REQUEST['nif']);
-
-                 // validar
+                $director->__SET('photoUrlDirector', $_REQUEST['photoUrlDirector']);
+                // validar
                 if (!$director->validateDirector()) {
                     header("Location: index.php?ctl=error&act=validar");
 

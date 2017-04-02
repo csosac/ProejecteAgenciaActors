@@ -49,8 +49,8 @@ class db extends PDO {
     }
 
     private function connect() {
-        $dsn = 'mysql:host=' . $this->server . ';dbname=' . $this->dbname;
-        parent::__construct($dsn, $this->getUsername(), $this->getPassword());
+        $dsn = 'mysql:host=' . $this->server . ';dbname=' . $this->dbname."";
+        parent::__construct($dsn, $this->getUsername(), $this->getPassword(),array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
         //$this->link = new PDO($this->getServer(),$this->getUsername(),$this->getPassword());        
     }
 

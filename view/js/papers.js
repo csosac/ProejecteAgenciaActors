@@ -2,9 +2,20 @@ $(document).ready(inicialitzarEvents);
 
 function inicialitzarEvents()
 {
-    $('input[name=paper]').blur(comprovaNom);
-    demanaActor();
     demanaObres();
+    $('input[name=paper]').blur(comprovaNom);
+    var d = $('#obra').val();
+    if ($('#obra').val() == null ||$('#obra').val() ==  '- Selecciona -') {
+        $('#lblActor').append("<br/><label id='noActor'>Selecciona primer la obra</label>");
+        $('#actor').hide();
+    }
+    demanaActor();
+    var n = $("#obra");
+    n.change(function () {
+        $('#noActor').hide();
+        $('#actor').show();
+        demanaActor();
+    });
 }
 
 function comprovaNom() {
@@ -12,13 +23,14 @@ function comprovaNom() {
     if (paper == "") {
         $('input[name=paper]').append("<label>Aquest camp no pot estar buit:</label>");
     } else {
-        
+
     }
 }
 function demanaActor()
 {
     var id = $('#actorid').val();
-    $.get('index.php?ctl=peticioAJAX&act=actor',{id: id}, mostraActor)
+    var idobra = $('#obra').val();
+    $.get('index.php?ctl=peticioAJAX&act=actor', {idActor: id, idObra: idobra}, mostraActor)
             .fail(function () {
                 console.log("error");
             });
@@ -28,21 +40,31 @@ function demanaActor()
 function demanaObres()
 {
     var id = $('#obraid').val();
-    $.get('index.php?ctl=peticioAJAX&act=obra',{id:id}, mostraObra)
-            .fail(function () {
-                console.log("error");
-            });
-    return false;
+
+    $.ajax({
+        async: false,
+        cache: false,
+        dataType: "text",
+        type: 'GET',
+        url: 'index.php?ctl=peticioAJAX&act=obra',
+        data: "id=" + id,
+        success: function (respuesta) {
+            mostraObra(respuesta);
+        },
+        error: function () {
+            console.log("error");
+        }
+    });
 }
 
 function mostraActor(dades)
 {
-   var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    var txt = "<option>- Selecciona -<\/option><br/>" + dades;
     $("select#actor").html(txt);
 }
 
 function mostraObra(dades)
 {
-     var txt = "<option>- Selecciona -<\/option><br/>" + dades;
+    var txt = "<option>- Selecciona -<\/option><br/>" + dades;
     $("select#obra").html(txt);
 }

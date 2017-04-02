@@ -46,14 +46,14 @@ if ($llistar == false) {
                 $obra->__SET('startDate', $_REQUEST['startDate']);
                 $obra->__SET('endDate', $_REQUEST['endDate']);
                 $obra->__SET('directorId', $_REQUEST['directorId']);
+                $obra->__SET('photoUrlObra', $_REQUEST['photoUrlObra']);
                 if (!$obra->validateObra()) {
                     header("Location: index.php?ctl=error&act=validar");
 
                     //act = afegir
                 } else if ($_REQUEST['act'] == 'afegir') {
                     $id_obra = $obra->insertar($obra);
-                  //  header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
-                  header("Location: index.php?ctl=paper&act=afegir");
+                    header("Location: index.php?ctl=paper&act=afegir&id_obra=" . $id_obra . "");
                     //act = modificar
                 } elseif ($_REQUEST['act'] == 'modificar') {
                     $obra->actualitzar($obra);
