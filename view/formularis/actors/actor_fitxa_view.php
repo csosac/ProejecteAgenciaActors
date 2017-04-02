@@ -32,5 +32,13 @@
                     <?php endforeach; ?>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-offset-5 col-xs-2 col-sm-offset-5 col-sm-2 col-md-offset-5 col-md-2 col-lg-offset-5 col-lg-2">
+                <br/>
+                <div class="btn-llamada">
+                    <button class="btn" onclick="location.href = 'javascript:history.back(1)';"><span class='glyphicon glyphicon-arrow-left'/> Tornar</button>
+                </div>
+            </div>
+        </div>   
     </div>
 </div>
