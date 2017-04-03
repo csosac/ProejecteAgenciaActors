@@ -1,21 +1,28 @@
 <?php
 
 include_once("controller/metodesPropis/function_AutoLoad.php");
-$script ="<script type=\"text/javascript\" src= \"view/js/papers.js\"></script> <br/>"
+$script = "<script type=\"text/javascript\" src= \"view/js/papers.js\"></script> <br/>"
         . "<script src=\"https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js\" type=\"text/javascript\"></script>";
 
 $llistar = false;
 if (isset($_REQUEST['act'])) {
     $agencia = new Agencia();
 
-    if ($_REQUEST['act'] == 'llistar') {
+    if (!isset($_REQUEST['optionradio']) && $_REQUEST['act'] == 'llistar') {
+        $action = "?ctl=paper&act=llistar";//Afegit X comentar Rocio
         $llistar = true;
-        $arrayDePapers = $agencia->getArrayDePapers();
+        $arrayDePapers ="";
+        $tipus = "";
+        if(isset($_REQUEST['optradio'])){
+            $arrayDePapers = $agencia->searchPaperByTipus($_REQUEST['optradio']);
+        }else{
+            $arrayDePapers = $agencia->getArrayDePapers();
+        }
         $headerTitle = "Llista Papers";
         $button = 'Crear';
         require_once 'view/header.php';
         require_once 'view/formularis/papers/papers_view.php';
-        require_once 'view/footer.php';
+    
     } elseif (isset($_REQUEST['id']) && $_REQUEST['act'] == 'veure') {
         $paper = $agencia->searchPaperById($_REQUEST['id']);
         $actor = $agencia->searchActorById($paper->__GET('id_actor'));
@@ -27,6 +34,7 @@ if (isset($_REQUEST['act'])) {
         $button = 'Tornar';
         require_once 'view/header.php';
         require_once 'view/formularis/papers/paper_fitxa_view.php';
+        require_once 'view/footer.php';
     }
 }
 
@@ -42,11 +50,10 @@ if ($llistar == false) {
                 $paper->__SET('paper', $_REQUEST['paper']);
                 $paper->__SET('id_actor', $_REQUEST['actorId']);
                 $paper->__SET('id_obra', $_REQUEST['obraId']);
-                
+                $paper->__SET('tipusPaper', $_REQUEST['tipusPaper']);
                 if (!$paper->validatePaper()) {
                     header("Location: index.php?ctl=error&act=validar");
-
-
+                    
                     //act = afegir
                 } elseif ($_REQUEST['act'] == 'afegir') {
 

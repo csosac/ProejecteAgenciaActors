@@ -19,6 +19,12 @@
                         <select class="form-control" name="actorId" id="actor">
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>Paper:</label>
+                       <label class="radio-inline"><input type="radio" name="tipusPaper" value="primari">Primari</label>
+                     <label class="radio-inline"><input type="radio" name="tipusPaper" value="secondari">Secondari</label>
+                     <label class="radio-inline"><input type="radio" name="tipusPaper" value="extra">Extra</label>
+                    </div>
                     <input type="hidden" id="actorid" value="<?php echo $paper->__GET('id_actor'); ?>">
                     <input type="hidden" id="obraid" value="<?php echo $paper->__GET('id_obra'); ?>">
                     <button name="submit" class="btn btn-lg btn-block btn-default"><?php echo $button ?></button>

@@ -6,21 +6,23 @@ class Paper {
     private $paper;
     private $id_actor;
     private $id_obra;
+    private $tipusPaper;
 
     function __construct() {
         switch (func_num_args()) {
-            case 3:
+            case 4:
                 $this->setId_paper(null);
                 $this->setPaper(func_get_args()[0]);
                 $this->setId_actor(func_get_args()[1]);
                 $this->setId_obra(func_get_args()[2]);
+                $this->setTipusPaper(func_get_args()[3]);
                 break;
-            case 4:
+            case 5:
                 $this->setId_paper(func_get_args()[0]);
                 $this->setPaper(func_get_args()[1]);
                 $this->setId_actor(func_get_args()[2]);
                 $this->setId_obra(func_get_args()[3]);
-
+                $this->setTipusPaper(func_get_args()[4]);
                 break;
         }
     }
@@ -48,8 +50,11 @@ class Paper {
     function getId_obra() {
         return $this->id_obra;
     }
+    function getTipusPaper() {
+        return $this->tipusPaper;
+    }
 
-    function setId_paper($id_paper) {
+        function setId_paper($id_paper) {
         $this->id_paper = $id_paper;
     }
 
@@ -64,8 +69,12 @@ class Paper {
     function setId_obra($id_obra) {
         $this->id_obra = $id_obra;
     }
+    
+    function setTipusPaper($tipusPaper) {
+        $this->tipusPaper = $tipusPaper;
+    }
 
-
+    
     public function eliminar($id) {
         $PaperDB = new PaperDB();
         return $PaperDB->eliminar($id);
@@ -105,7 +114,7 @@ class Paper {
 
     public function validatePaper() {
 
-        if ($this->validateName($this->__GET("paper")) == True && $this->validateId($this->__GET("id_actor")) == True && $this->validateId($this->__GET("id_obra")) == True) {
+        if ($this->validateName($this->__GET("paper")) == True && $this->validateId($this->__GET("id_actor")) == True && $this->validateId($this->__GET("id_obra")) == True&& $this->validateName($this->__GET("tipusPaper")) == True) {
 
             return True;
         } else {

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-03-2017 a las 15:30:16
--- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 7.0.2
+-- Temps de generació: 03-04-2017 a les 15:25:21
+-- Versió del servidor: 10.1.19-MariaDB
+-- Versió de PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `agencia`
+-- Base de dades: `agencia`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `actor`
+-- Estructura de la taula `actor`
 --
 
 CREATE TABLE `actor` (
@@ -36,40 +36,50 @@ CREATE TABLE `actor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `actor`
+-- Bolcant dades de la taula `actor`
 --
 
 INSERT INTO `actor` (`id`, `nif`, `name`, `lastname`, `genre`, `photoURL`) VALUES
-(1, '47807198H', 'Emma', 'Watson', 'female', NULL),
-(2, '47807196H', 'Rupert', 'Grint', 'male', NULL),
-(3, '47807123A', 'Daniel', 'Radcliffe', 'male', NULL),
-(4, '47807123C', 'Jennifer', 'Laurence', 'female', NULL);
+(1, '12345678Z', 'Nieves', 'Bravo', 'female', 'view/images/actors/nieves_bravo.png'),
+(2, '47807196H', 'Alfredo', 'Landa', 'male', 'view/images/actors/alfredo_landa.png'),
+(3, '47807123A', 'Antonio', 'Banderas', 'male', 'view/images/actors/antonio_banderas.png'),
+(6, '39893660E', 'Amparo', 'Baro', 'female', 'view/images/actors/amparo_baro.png'),
+(7, '12345876M', 'Ana', 'Duato', 'female', 'view/images/actors/ana_duato.png'),
+(8, '12345878F', 'Antonio', 'Resines', 'male', 'view/images/actors/antonio_resines.png'),
+(12, '12365874Q', 'Marivel', 'Verdu', 'female', 'view/images/actors/marivel_verdu.png'),
+(13, '12358746H', 'Carmen', 'Machi', 'female', 'view/images/actors/carmen_machi.png'),
+(14, '12354746C', 'Belen', 'Rueda', 'female', 'view/images/actors/belen_rueda.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `director`
+-- Estructura de la taula `director`
 --
 
 CREATE TABLE `director` (
   `id` int(11) NOT NULL,
   `nif` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photoUrlDirector` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `director`
+-- Bolcant dades de la taula `director`
 --
 
-INSERT INTO `director` (`id`, `nif`, `name`, `lastname`) VALUES
-(1, '47807197H', 'David', 'Yates'),
-(2, '47807123B', 'Sam', 'Raimi');
+INSERT INTO `director` (`id`, `nif`, `name`, `lastname`, `photoUrlDirector`) VALUES
+(1, '47807197H', 'David', 'Yates', 'view/images/directors/david_yates.png'),
+(4, '15935789D', 'Joan LluÃ­s ', 'Bozzo', 'view/images/directors/j_l_bozzo.png'),
+(5, '15935780T', 'Mario', 'Gas', 'view/images/directors/mario_gas.png'),
+(9, '15935000W', 'Magda', 'Puyo', 'view/images/directors/magda_puyo.png'),
+(10, '15930000Q', 'Quim', 'Masferrer', 'view/images/directors/quim_masferrer.png'),
+(11, '15474236C', 'David', 'Cortés', 'view/images/directors/rodrigo_cortes.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `obra`
+-- Estructura de la taula `obra`
 --
 
 CREATE TABLE `obra` (
@@ -79,45 +89,53 @@ CREATE TABLE `obra` (
   `type` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
   `startDate` date DEFAULT NULL,
   `endDate` date DEFAULT NULL,
-  `directorId` int(11) DEFAULT NULL
+  `directorId` int(11) DEFAULT NULL,
+  `photoUrlObra` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `obra`
+-- Bolcant dades de la taula `obra`
 --
 
-INSERT INTO `obra` (`id`, `name`, `description`, `type`, `startDate`, `endDate`, `directorId`) VALUES
-(1, 'Harry Potter y la piedra filosofal', 'Harry Potter y la piedra filosofal es una película de fantasía y aventuras basada en el libro homónimo de J. K. Rowling, dirigida por el cineasta Chris Columbus y estrenada en 2001', 'ciencia ficcion', '2012-01-01', '2012-01-02', 1),
-(2, 'Spiderman', 'Spider-Man (El Hombre Araña en Hispanoamérica) es una película estadounidense de 2002 dirigida por Sam Raimi, escrita por David Koepp, e inspirada en el personaje homónimo creado por Stan Lee y Steve Ditko en 1962. Fue la segunda de la serie de películas ', 'ciencia ficcion', '2012-01-01', '2012-01-02', 2),
-(3, 'Los Juegos del Hambre', 'Los juegos del hambre: sinsajo - Parte 1 es el tercer largometraje de la trilogía de Los juegos del hambre, de la escritora estadounidense Suzanne Collins', 'ciencia ficcion', '2014-01-01', '2014-04-08', NULL);
+INSERT INTO `obra` (`id`, `name`, `description`, `type`, `startDate`, `endDate`, `directorId`, `photoUrlObra`) VALUES
+(1, 'Cop de Rock', 'COP DE ROCK és un missatge d’amor, d’admiració, i d’agraïment a les bandes mítiques que van fer possible el miracle del ROCK CATALÀ a principis de la dècada dels 90 del segle XX i fins als nostres dies. També és un missatge d’estímul i record a un públic ', 'Musical', '2017-05-14', '2018-01-02', 1, 'view/images/obres/copRock.png'),
+(2, 'Fuenteovejuna', 'El nucli de la història gira al voltant de la lluita solidària d''un poble contra la tirania d''un cacic, símbol del despotisme i dels privilegis inamovibles de les classes dominants. ', 'Tragèdia', '2012-01-01', '2012-01-02', 4, 'view/images/obres/fuenteovejuna.png'),
+(7, 'L''auca del senyor esteve', 'Rusinyol narra la vida del senyor Esteve, un home gris, prudent i prÃ ctic, amo dâ€™una botiga, La Puntual, que el seu avi havia fundat el 1830. Els dies monÃ²tons i la vida assenyada del protagonista dedicats a afermar i eixamplar el negoci, es veuran tr', 'Tragedia', '2017-04-02', '2017-05-06', 4, 'view/images/obres/auca.png'),
+(8, 'El café de la Marina', 'Caterina, ha estat abandonada pel seu amant i ha hagut d''avortar. La seva tristor es posa de manifest quan la seva germana Rosa es casa amb Rafel, un jove pescador, mentre ella ha de suportar els rumors i xiuxiueigs que es produeixen al cafè on treballa, ', 'Tragèdia', '2017-04-05', '2017-05-06', 9, 'view/images/obres/cafe_marina.png'),
+(9, 'Cor de boxejador', 'història d’un jove que, a causa dels seus problemes amb la justícia, ha de realitzar treballs socials en un geriàtric on coneixerà a un boxejador retirat. Evidentment, la confrontació de dos personatges molt diferents serà el motor d’aquesta història peti', 'Drama', '2017-04-18', '2017-04-26', 5, 'view/images/obres/cor_boxejador.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `paper`
+-- Estructura de la taula `paper`
 --
 
 CREATE TABLE `paper` (
   `id` int(11) NOT NULL,
   `paper` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `actorId` int(11) DEFAULT NULL,
-  `obraId` int(11) DEFAULT NULL
+  `obraId` int(11) DEFAULT NULL,
+  `tipusPaper` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `paper`
+-- Bolcant dades de la taula `paper`
 --
 
-INSERT INTO `paper` (`id`, `paper`, `actorId`, `obraId`) VALUES
-(1, 'Hermione Grangere', 1, 1),
-(2, 'Ronald Weasley', 2, 1),
-(3, 'Katniss Everdreen', 4, 3),
-(4, 'Katniss Everdreen', 4, 1);
+INSERT INTO `paper` (`id`, `paper`, `actorId`, `obraId`, `tipusPaper`) VALUES
+(1, 'Hermione Grangere', 1, 1, 'primari'),
+(2, 'Ronald Weasley', 2, 1, 'primari'),
+(3, 'Katniss Everdreen', 7, 7, 'primari'),
+(5, 'Laurencia', 12, 2, 'primari'),
+(6, 'Jacinta', 14, 2, 'primari'),
+(7, 'Comendador1', 8, 2, 'secondari'),
+(8, 'Bombau Cham', 3, 9, 'secondari'),
+(9, 'Rafa Cruz', 2, 9, 'secondari');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user`
+-- Estructura de la taula `user`
 --
 
 CREATE TABLE `user` (
@@ -128,39 +146,39 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `user`
+-- Bolcant dades de la taula `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
 (1, 'admin', 'admin', NULL);
 
 --
--- Índices para tablas volcadas
+-- Indexos per taules bolcades
 --
 
 --
--- Indices de la tabla `actor`
+-- Index de la taula `actor`
 --
 ALTER TABLE `actor`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_447556F9ADE62BBB` (`nif`);
 
 --
--- Indices de la tabla `director`
+-- Index de la taula `director`
 --
 ALTER TABLE `director`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_1E90D3F0ADE62BBB` (`nif`);
 
 --
--- Indices de la tabla `obra`
+-- Index de la taula `obra`
 --
 ALTER TABLE `obra`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_8244BE2221DB3FB1` (`directorId`);
 
 --
--- Indices de la tabla `paper`
+-- Index de la taula `paper`
 --
 ALTER TABLE `paper`
   ADD PRIMARY KEY (`id`),
@@ -168,52 +186,52 @@ ALTER TABLE `paper`
   ADD KEY `IDX_57698A6AA1D6191D` (`obraId`);
 
 --
--- Indices de la tabla `user`
+-- Index de la taula `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT per les taules bolcades
 --
 
 --
--- AUTO_INCREMENT de la tabla `actor`
+-- AUTO_INCREMENT per la taula `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT de la tabla `director`
+-- AUTO_INCREMENT per la taula `director`
 --
 ALTER TABLE `director`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT de la tabla `obra`
+-- AUTO_INCREMENT per la taula `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de la tabla `paper`
+-- AUTO_INCREMENT per la taula `paper`
 --
 ALTER TABLE `paper`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT de la tabla `user`
+-- AUTO_INCREMENT per la taula `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Restricciones para tablas volcadas
+-- Restriccions per taules bolcades
 --
 
 --
--- Filtros para la tabla `obra`
+-- Restriccions per la taula `obra`
 --
 ALTER TABLE `obra`
   ADD CONSTRAINT `FK_8244BE2221DB3FB1` FOREIGN KEY (`directorId`) REFERENCES `director` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `paper`
+-- Restriccions per la taula `paper`
 --
 ALTER TABLE `paper`
   ADD CONSTRAINT `FK_57698A6A6DCBA9B2` FOREIGN KEY (`actorId`) REFERENCES `actor` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,

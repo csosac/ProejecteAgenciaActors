@@ -154,10 +154,33 @@ class AgenciaDB {
             $paper->__SET('paper', $row['paper']);
             $paper->__SET('id_actor', $row['actorId']);
             $paper->__SET('id_obra', $row['obraId']);
+            $paper->__SET('tipusPaper', $row['tipusPaper']);
         }
 
         $con = null;
         return $paper;
+    }
+    public function searchPaperByType($tipusPaper) {
+        $arrayDeObjectes = array();
+        $con = new db();
+        $query = $con->prepare("SELECT * FROM paper WHERE tipusPaper = :tipusPaper");
+        $query->bindValue(":tipusPaper", $tipusPaper);
+        $result = $con->consultarObjectes($query);
+
+        foreach ($result as $row) {
+
+            $paper = new Paper();
+
+            $paper->__SET('id_paper', $row['id']);
+            $paper->__SET('paper', $row['paper']);
+            $paper->__SET('id_actor', $row['actorId']);
+            $paper->__SET('id_obra', $row['obraId']);
+            $paper->__SET('tipusPaper', $row['tipusPaper']);
+            array_push($arrayDeObjectes, $paper);
+        }
+
+        $con = null;
+        return $arrayDeObjectes;
     }
 
     public function populatePapersDb() {
@@ -174,6 +197,7 @@ class AgenciaDB {
             $paper->__SET('paper', $row['paper']);
             $paper->__SET('id_actor', $row['actorId']);
             $paper->__SET('id_obra', $row['obraId']);
+            $paper->__SET('tipusPaper', $row['tipusPaper']);
             array_push($arrayDeObjectes, $paper);
         }
 
