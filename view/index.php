@@ -47,7 +47,7 @@
                     <h4>¿Vols que t'ajudem?</h4>
                     <p>T'Assessorem sempre que ho necessitis</p>
                     <p>Consultan's!</p>
-                    <div class="btn-llamada">
+                    <div>
                         <button class="btn">Truca</button>
                     </div>					
                 </div>

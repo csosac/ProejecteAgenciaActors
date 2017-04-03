@@ -20,12 +20,12 @@ class PaperDB {
     public function actualitzar($data) {
         try {
             $con = new db();
-            $query = $con->prepare("UPDATE paper SET paper = :paper, actorId  = :actorId, obraId = :obraId  WHERE id = :id");
+            $query = $con->prepare("UPDATE paper SET paper = :paper, actorId  = :actorId, obraId = :obraId, tipusPaper = :tipusPaper  WHERE id = :id");
   
             $query->bindValue(":paper", $data->__GET('paper'));
             $query->bindValue(":actorId", $data->__GET('id_actor'));
             $query->bindValue(":obraId", $data->__GET('id_obra'));
-            $query->bindValue(":id", $data->__GET('id_paper'));
+            $query->bindValue(":tipusPaper", $data->__GET('tipusPaper'));
             $con->consulta($query);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -36,10 +36,11 @@ class PaperDB {
         public function insertar($data) {
         try {
             $con = new db();
-            $query = $con->prepare("INSERT INTO paper (paper,actorId,obraId) VALUES (:paper, :actorId, :obraId)");
+            $query = $con->prepare("INSERT INTO paper (paper,actorId,obraId,tipusPaper) VALUES (:paper, :actorId, :obraId, :tipusPaper)");
             $query->bindValue(":paper", $data->__GET('paper'));
             $query->bindValue(":actorId", $data->__GET('id_actor'));
             $query->bindValue(":obraId", $data->__GET('id_obra'));
+            $query->bindValue(":tipusPaper", $data->__GET('tipusPaper'));
             $con->consulta($query);
             $con = null;
         } catch (Exception $e) {

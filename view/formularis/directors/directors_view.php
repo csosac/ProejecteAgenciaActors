@@ -2,7 +2,7 @@
 <div class="container-fluid ">
     <div class="articulo contenido"> 
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6 ">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 "> 
                 <h3> <?php echo $headerTitle; ?></h3>
                 <div class="table-responsive">
                     <table class="table table-hover">

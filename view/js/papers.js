@@ -4,6 +4,8 @@ function inicialitzarEvents()
 {
     demanaObres();
     $('input[name=paper]').blur(comprovaNom);
+     $('input[name=tipusPaper]').blur(comprovaTipus);
+    
     var d = $('#obra').val();
     if ($('#obra').val() == null ||$('#obra').val() ==  '- Selecciona -') {
         $('#lblActor').append("<br/><label id='noActor'>Selecciona primer la obra</label>");
@@ -22,6 +24,14 @@ function comprovaNom() {
     var paper = $('input[name=paper]').val();
     if (paper == "") {
         $('input[name=paper]').append("<label>Aquest camp no pot estar buit:</label>");
+    } else {
+
+    }
+}
+function comprovaTipus() {
+    var paper = $('input[name=tipusPaper]').val();
+    if (paper == "") {
+        $('input[name=tipusPaper]').append("<label>Aquest camp no pot estar buit:</label>");
     } else {
 
     }

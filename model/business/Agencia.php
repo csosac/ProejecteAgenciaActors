@@ -94,7 +94,11 @@ class Agencia {
         $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->searchPaperById($id);
     }
-
+    //per comentar rocio
+    public function searchPaperByTipus($type) {
+        $AgenciaDB = new AgenciaDB();
+        return $AgenciaDB->searchPaperByType($type);
+    }
     public function getNameActorById($id_actor) {
         $AgenciaDB = new AgenciaDB();
         return $AgenciaDB->getNameActorById($id_actor);
